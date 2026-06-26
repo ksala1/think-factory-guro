@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>페이지를 찾을 수 없습니다 - 생각공장 구로</title>
+  <link rel="icon" type="image/png" href="assets/tab-logo.png">
+  <link rel="stylesheet" href="css/style.css?v=2.3">
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+    .error-container {
+      max-width: 500px;
+      animation: fadeInError 1s ease-out;
+    }
+    @keyframes fadeInError {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .error-code {
+      font-family: var(--font-serif-en), 'Cormorant Garamond', serif;
+      font-size: 7rem;
+      font-weight: 300;
+      color: var(--accent-gold);
+      margin: 0;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .error-title {
+      font-family: var(--font-serif-kr), 'Noto Serif KR', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #fff;
+      margin: 1.5rem 0 1rem;
+      letter-spacing: -0.5px;
+    }
+    .error-desc {
+      font-family: var(--font-sans-kr), sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-secondary, #aaa);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      word-break: keep-all;
+    }
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: var(--accent-gold);
+      color: #111;
+      padding: 1rem 2rem;
+      font-family: var(--font-sans-kr), sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(197, 160, 105, 0.2);
+    }
+    .back-home-btn:hover {
+      background-color: hsl(36, 43%, 62%);
+      box-shadow: 0 6px 20px rgba(197, 160, 105, 0.35);
+      transform: translateY(-2px);
+    }
+    .back-home-btn svg {
+      transition: transform 0.2s ease;
+    }
+    .back-home-btn:hover svg {
+      transform: translateX(-4px);
+    }
+    .error-divider {
+      width: 50px;
+      height: 1px;
+      background: rgba(197, 160, 105, 0.3);
+      margin: 2rem auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">페이지를 찾을 수 없습니다</h2>
+    <div class="error-divider"></div>
+    <p class="error-desc">
+      요청하신 주소가 올바르지 않거나 변경되어 찾을 수 없습니다.<br>
+      입력하신 주소를 다시 한번 확인해 주시기 바랍니다.
+    </p>
+    <a href="/" class="back-home-btn">
+      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>홈으로 돌아가기</span>
+    </a>
+  </div>
+</body>
+</html>

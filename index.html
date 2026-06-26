@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>생각공장 구로</title>
+  <meta name="description" content="구일역 초역세권, 프리미엄 스카이브릿지와 독보적인 공유 라운지를 품은 스마트 지식산업센터, 생각공장 구로의 공식 홈페이지입니다.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/tab-logo.png">
+
+  <link rel="stylesheet" href="css/style.css?v=3.8">
+</head>
+<body>
+
+  <!-- ==========================================
+       1. NAVIGATION HEADER
+       ========================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="assets/main-logo.png" alt="생각공장 구로 로고">
+      </a>
+      
+      <nav class="nav-links">
+        <a href="#concept">브랜드 소개</a>
+        <a href="#explorer">공간 탐색</a>
+        <a href="#unitplan">층별 안내</a>
+        <a href="#호실상세보기">호실 상세보기</a>
+      </nav>
+      
+      <div class="nav-cta">
+        <a href="#호실상세보기" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">
+          <span>맞춤 조회</span>
+        </a>
+      </div>
+      
+      <button class="menu-toggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ==========================================
+       2. HERO LANDING SECTION (VIDEO BACKGROUND)
+       ========================================== -->
+  <section class="hero" id="home">
+    <div class="hero-video-container">
+      <!-- Premium Local Drone Video Background -->
+      <video autoplay muted loop playsinline id="heroVideo">
+        <source src="assets/drone.mp4" type="video/mp4">
+      </video>
+    </div>
+    
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-container">
+      <!-- Left side: Hero Text -->
+      <div class="hero-content">
+        <div class="hero-label-top">생각공장 지식산업센터</div>
+        <h1 class="hero-title-large">구로</h1>
+        <p class="hero-info-text">
+          서울특별시 구로구 구로동 636-89 (구일역 도보 3분)<br>
+          대표 문의번호: 1600-1234
+        </p>
+        <div class="hero-action-links">
+          <a href="#호실상세보기" class="hero-action-link">호실 상세보기</a>
+          <a href="#unitplan" class="hero-action-link">층별 안내</a>
+          <a href="#explorer" class="hero-action-link">공간 투어</a>
+        </div>
+      </div>
+
+      <!-- Right side: Quick Booking/Inquiry Card (benchmarked from Four Seasons welcome card) -->
+      <div class="hero-booking-card animate-on-scroll delay-150">
+        <h3>성공적인 비즈니스를<br>계획해 보세요.</h3>
+        <form id="heroQuickForm">
+          <div class="booking-field">
+            <label for="heroTimeline">입주 예정 시기</label>
+            <select id="heroTimeline" required>
+              <option value="" disabled selected>선택해 주세요</option>
+              <option value="now">즉시 입주 희망</option>
+              <option value="6m">6개월 이내</option>
+              <option value="1y">1년 이내 / 투자 목적</option>
+            </select>
+          </div>
+          
+          <div class="booking-field">
+            <label for="heroArea">희망 면적 규모</label>
+            <select id="heroArea" required>
+              <option value="" disabled selected>선택해 주세요</option>
+              <option value="under50">50평 미만 (소형)</option>
+              <option value="50to100">50평 ~ 100평 (중형)</option>
+              <option value="over100">100평 이상 (대형/사옥)</option>
+            </select>
+          </div>
+          
+          <div class="booking-field">
+            <label for="heroEmail">이메일 주소</label>
+            <input type="email" id="heroEmail" placeholder="이메일을 입력하세요" required>
+          </div>
+          
+          <div class="booking-actions">
+            <button type="submit" class="booking-btn-primary">상담 예약</button>
+            <a href="#호실상세보기" class="booking-btn-secondary">호실 상세보기</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <button class="video-mute-btn" id="videoMuteBtn" aria-label="음소거 토글">
+      <!-- Muted icon (shown by default) -->
+      <svg class="mute-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+        <line x1="22" y1="9" x2="16" y2="15"></line>
+        <line x1="16" y1="9" x2="22" y2="15"></line>
+      </svg>
+      <!-- Unmuted icon (hidden by default) -->
+      <svg class="unmute-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      </svg>
+    </button>
+    
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="line"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. BRAND CONCEPT SECTION
+       ========================================== -->
+  <section class="concept id-section" id="concept">
+    <div class="container">
+      <div class="concept-grid">
+        <div class="concept-media animate-on-scroll">
+          <img src="assets/facade.png" alt="생각공장 구로 건물 외관">
+        </div>
+        
+        <div class="concept-info animate-on-scroll delay-150">
+          <span class="section-tag">BRAND CONCEPT</span>
+          <h2 class="section-title">
+            새로운 영감을 불어넣는<br>
+            <span>도심형 캠퍼스 오피스</span>
+          </h2>
+          <p class="section-desc">
+            '생각공장'은 지식산업센터의 전통적인 패러다임을 깨고, 크리에이티브한 비즈니스를 유도하는 고품격 스마트 오피스 브랜드입니다. 
+            스카이 브리지와 열린 수변광장을 연결하여 안양천 조망과 자연 친화적 쉼터를 제공하며, 일과 삶의 균형을 완성합니다.
+          </p>
+          
+          <div class="concept-stat-box">
+            <div class="stat-item">
+              <h4>B5 ~ 18F</h4>
+              <p>지하 5층 ~ 지상 18층의 2개 동으로 건축된 압도적 규모</p>
+            </div>
+            <div class="stat-item">
+              <h4>40,000평</h4>
+              <p>연면적 약 4만 평에 이르는 구로 서남권 비즈니스 랜드마크</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5. PREMIUM SPACE EXPLORER (Four Seasons Benchmarking)
+       ========================================== -->
+  <section class="space-explorer-section id-section" id="explorer">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-tag">SPACE EXPLORER</span>
+        <h2 class="section-title">비즈니스가 실현되는 <span>대표 공간 탐색</span></h2>
+        <p class="section-desc">정제된 공간 설계를 통해 직원의 편의성과 기업 브랜딩을 모두 충족하는 명품 공간을 소개합니다.</p>
+      </div>
+
+      <!-- Carousel Navigation Tabs -->
+      <div class="tabs-container animate-on-scroll">
+        <button class="tab-btn active" data-slide="0">01 외관 및 스카이브릿지</button>
+        <button class="tab-btn" data-slide="1">02 그랜드 로비</button>
+        <button class="tab-btn" data-slide="2">03 코워킹 생각라운지</button>
+        <button class="tab-btn" data-slide="3">04 VIP 룸</button>
+      </div>
+
+      <!-- Carousel Slide View Area -->
+      <div class="explorer-view animate-on-scroll delay-100">
+        
+        <!-- Slide 0: Exterior -->
+        <div class="explorer-slide active">
+          <div class="slide-media">
+            <img id="facadeImg" src="assets/main1.png" alt="외관 및 스카이브릿지">
+          </div>
+          <div class="slide-content">
+            <h3>스카이브릿지로 완성된 랜드마크 외관</h3>
+            <p>
+              두 개의 독립적인 타워를 공중에서 연결하는 고급 스카이브릿지 설계를 차용했습니다. 
+              단순한 오피스를 넘어 도시의 실루엣을 바꾸는 입체적인 구조미를 선보이며, 스카이브릿지 내부에는 입주자 전용 파노라마 휴식 공간이 꾸며집니다.
+            </p>
+            <div class="slide-specs">
+              <div class="spec-line">
+                <span>공간 구분</span>
+                <span>건물 외관 / 조경</span>
+              </div>
+              <div class="spec-line">
+                <span>조망 특화</span>
+                <span>안양천 영구 조망</span>
+              </div>
+              <div class="spec-line">
+                <span>주요 마감</span>
+                <span>커튼월 글래스 & 메탈</span>
+              </div>
+              <div class="spec-line">
+                <span>연계 시설</span>
+                <span>스카이라운지 카페</span>
+              </div>
+            </div>
+            <div class="slide-actions">
+              <a href="#호실상세보기" class="btn-primary"><span>상담 신청하기</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 1: Lobby -->
+        <div class="explorer-slide">
+          <div class="slide-media">
+            <img src="assets/lobby.png" alt="그랜드 로비">
+          </div>
+          <div class="slide-content">
+            <h3>호텔식 서비스가 시작되는 그랜드 로비</h3>
+            <p>
+              높은 천장고와 자연 채광을 가득 머금은 메인 로비는 귀사의 바이어와 방문객에게 최상급 첫인상을 선물합니다.
+              고급 대리석과 세련된 패브릭 마감재, 그리고 기품 있는 디자인 서가가 조화를 이룬 호텔 라운지 콘셉트의 데스크가 운영됩니다.
+            </p>
+            <div class="slide-specs">
+              <div class="spec-line">
+                <span>공간 컨셉</span>
+                <span>호텔식 그랜드 로비</span>
+              </div>
+              <div class="spec-line">
+                <span>주요 시설</span>
+                <span>안내 데스크 / 디자인 서가</span>
+              </div>
+              <div class="spec-line">
+                <span>인테리어</span>
+                <span>천연 대리석 & 프리미엄 석재</span>
+              </div>
+              <div class="spec-line">
+                <span>보안 체계</span>
+                <span>스마트 스피드게이트</span>
+              </div>
+            </div>
+            <div class="slide-actions">
+              <a href="#호실상세보기" class="btn-primary"><span>방문 상담 신청</span></a>
+ 
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Lounge -->
+        <div class="explorer-slide">
+          <div class="slide-media">
+            <img id="restZoneImg" src="assets/concept_photos/rest zone1.jpg" alt="생각라운지">
+          </div>
+          <div class="slide-content">
+            <h3>영감을 확장하는 코워킹 생각라운지</h3>
+            <p>
+              부서 간의 자연스러운 교류와 파트너사 협업을 돕기 위해 최적의 디자이너 가구와 라이브러리 존을 마련했습니다.
+              화상 회의 시스템이 완비된 프리미엄 미팅룸, 집중 근무 부스, 고성능 바 테이블 커피 스테이션이 어우러진 차세대 업무 환경을 제안합니다.
+            </p>
+            <div class="slide-specs">
+              <div class="spec-line">
+                <span>공간 특징</span>
+                <span>오피스 속 도심형 캠퍼스</span>
+              </div>
+              <div class="spec-line">
+                <span>회의 존</span>
+                <span>다양한 크기의 비즈니스 미팅룸</span>
+              </div>
+              <div class="spec-line">
+                <span>업무 인프라</span>
+                <span>초고속 Wi-Fi</span>
+              </div>
+              <div class="spec-line">
+                <span>휴게 시설</span>
+                <span>집중 부스 및 카페 라운지</span>
+              </div>
+            </div>
+            <div class="slide-actions">
+              <a href="#호실상세보기" class="btn-primary"><span>시설 예약 상담</span></a>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: VIP Room -->
+        <div class="explorer-slide">
+          <div class="slide-media">
+            <img id="vipRoomImg" src="assets/concept_photos/vip1.png" alt="VIP 룸">
+          </div>
+          <div class="slide-content">
+            <h3>성공적인 비즈니스를 위한 최고급 VIP 룸</h3>
+            <p>
+              공식 의전과 VIP 내빈 응대, 최고 의사결정권자들을 위한 독립적이고 품격 있는 커뮤니티 공간입니다. 
+              고급 호텔 스위트룸 감성의 세련된 인테리어와 수입 명품 가구, 그리고 프라이빗 오디오 시스템을 갖추고 비즈니스의 품격을 높여 드립니다.
+            </p>
+            <div class="slide-specs">
+              <div class="spec-line">
+                <span>공간 위치</span>
+                <span>지상 18층 VIP 익스클루시브 존</span>
+              </div>
+              <div class="spec-line">
+                <span>주요 시설</span>
+                <span>최상급 쇼파 존 & 8인 미팅 테이블</span>
+              </div>
+              <div class="spec-line">
+                <span>공간 의전</span>
+                <span>컨시어지 리셉션 바 연계</span>
+              </div>
+              <div class="spec-line">
+                <span>운영 형태</span>
+                <span>입주자 전용 사전 예약제</span>
+              </div>
+            </div>
+            <div class="slide-actions">
+              <a href="#호실상세보기" class="btn-primary"><span>공간 예약 신청하기</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Arrow Navigation Controls -->
+      <div class="explorer-controls animate-on-scroll">
+        <button class="control-btn" id="prevSlide" aria-label="이전 공간">
+          <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <button class="control-btn" id="nextSlide" aria-label="다음 공간">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5.5 UNIT PLAN EXPLORER (New Section from PDF analysis)
+       ========================================== -->
+  <section class="unit-plan-section id-section" id="unitplan">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 4rem;">
+        <span class="section-tag">UNIT PLAN</span>
+        <h2 class="section-title">비즈니스 규모에 맞춘 <span>층별 평면 및 호실 배치</span></h2>
+        <p class="section-desc">지하 5층부터 지상 18층까지, 제조업을 위한 드라이브인 공장부터 고품격 스카이 오피스까지 다양하게 구성된 최적의 공간 배치를 확인해 보세요.</p>
+      </div>
+
+      <div class="unit-explorer-grid">
+        <!-- Left Column: Floor Selector Card -->
+        <div class="unit-selector-card animate-on-scroll">
+          <h3>층 구역 선택</h3>
+          <p>원하시는 층 구역을 선택하시면 상세 도면 및 배치 호실 정보를 확인할 수 있습니다.</p>
+          
+          <div class="select-wrapper">
+            <select id="unitFloorSelect" class="unit-select-input">
+              <option value="high" selected>지상 13층 ~ 18층 (고층부 오피스)</option>
+              <option value="mid">지상 5층 ~ 12층 (중/저층부 오피스)</option>
+              <option value="low">지상 1층 ~ 4층 (로비 및 근린생활시설)</option>
+              <option value="basement">지하 5층 ~ 지하 1층 (드라이브인 공장)</option>
+            </select>
+          </div>
+          <div id="subFloorTabs" class="sub-floor-tabs">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Floor Info Board -->
+        <div class="unit-info-board animate-on-scroll delay-100" id="unitFloorInfo">
+          <div class="floor-info-layout">
+            <div class="floor-info-content">
+              <div class="floor-info-header">
+                <h3>지상 18층 (최상층 오피스)</h3>
+                <p>최상층 랜드마크 오피스 및 스카이브릿지 연결층. 안양천 파노라마 조망권이 가장 극대화되는 럭셔리 업무 공간입니다.</p>
+              </div>
+              
+              <div class="floor-wings-grid">
+                <div class="wing-box">
+                  <span class="wing-tag east">EAST 동 배치 호실</span>
+                  <p class="wing-units">E1801 ~ E1806</p>
+                </div>
+                <div class="wing-box">
+                  <span class="wing-tag west">WEST 동 배치 호실</span>
+                  <p class="wing-units">W1801 ~ W1806</p>
+                </div>
+              </div>
+              
+              <div class="floor-tags">
+                <span class="floor-tag-item"># 최상층 조망</span>
+                <span class="floor-tag-item"># 스카이브릿지 연계</span>
+                <span class="floor-tag-item"># 섹션 오피스</span>
+              </div>
+            </div>
+            
+            <div class="floor-info-map">
+              <a href="#" class="floor-map-link" data-img="assets/extracted_pages/floor_18.png" data-title="지상 18층" title="클릭하여 크게 보기">
+                <img src="assets/extracted_pages/floor_18.png" alt="지상 18층 평면 도면">
+              </a>
+              <span class="map-caption">💡 이미지를 클릭하시면 원본 도면을 보실 수 있습니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- ==========================================
+       8. 호실 상세보기 SECTION (임대 매칭 확인)
+       ========================================== -->
+  <section class="호실상세보기-section id-section" id="호실상세보기">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 4rem;">
+        <span class="section-tag">호실 상세보기</span>
+        <h2 class="section-title">내 조건에 맞는 <span>실시간 호실 상세보기</span></h2>
+        <p class="section-desc">알맞은 호실을 찾기 위해 정보를 분석하여 실물 사진과 면적 정보를 매칭합니다.</p>
+      </div>
+      
+      <div class="호실상세보기-widget-grid">
+        <!-- Left Column: 생각공장 공식 임대 분석기 Status Card -->
+        <div class="status-card-container animate-on-scroll">
+          <div class="status-card">
+            <div class="status-header">
+              <div class="brand-logo">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="hsl(36, 43%, 56%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                  <line x1="9" y1="22" x2="9" y2="16"></line>
+                  <line x1="15" y1="22" x2="15" y2="16"></line>
+                  <line x1="9" y1="16" x2="15" y2="16"></line>
+                  <path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01M12 6h.01M12 10h.01"></path>
+                </svg>
+                <span><strong>생각공장</strong> 임대 조건 분석</span>
+              </div>
+              <div id="companyStatus" style="font-size: 0.82rem; margin-top: 0.6rem; color: hsl(36, 43%, 56%); font-weight: 600; display: none;"></div>
+            </div>
+            
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <span class="metric-label">희망 월 임대료</span>
+                <span class="metric-value" id="valTargetRent">₩ --</span>
+              </div>
+              
+              <div class="metric-item">
+                <span class="metric-label">권장 보증금 한도</span>
+                <span class="metric-value" id="valDepositLimit">₩ --</span>
+              </div>
+              
+              <div class="metric-item full-width-divider"></div>
+              
+              <div class="metric-item">
+                <span class="metric-label">추천 평형 규모</span>
+                <span class="metric-value" id="valRecArea">-- <span class="sub-unit">평</span></span>
+              </div>
+              
+              <div class="metric-item">
+                <span class="metric-label">매칭 호실 수</span>
+                <span class="metric-value" id="valRecMatchCount">-- <span class="sub-unit">개호실</span></span>
+              </div>
+            </div>
+            
+            <button class="btn-primary-호실상세보기" id="openModalBtn">
+              <span>내 입주 조건 확인하기</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: 5 Property Cards using assets/호실사진 -->
+        <div class="listings-wrapper animate-on-scroll delay-100">
+          <button class="nav-arrow prev" id="listingsPrevBtn" aria-label="이전 추천 호실">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          
+          <div class="listings-container" id="listingsContainer">
+            <!-- Dynamically populated via js/main.js -->
+            <div class="property-card locked">
+              <div class="image-wrapper" style="background:#222; height:200px;"></div>
+              <div class="property-details">
+                <div class="skeleton-group">
+                  <div class="skeleton skeleton-title"></div>
+                  <div class="skeleton skeleton-text-short"></div>
+                  <div class="skeleton skeleton-text-long"></div>
+                  <div class="skeleton skeleton-text-pill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="property-card locked">
+              <div class="image-wrapper" style="background:#222; height:200px;"></div>
+              <div class="property-details">
+                <div class="skeleton-group">
+                  <div class="skeleton skeleton-title"></div>
+                  <div class="skeleton skeleton-text-short"></div>
+                  <div class="skeleton skeleton-text-long"></div>
+                  <div class="skeleton skeleton-text-pill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="property-card locked">
+              <div class="image-wrapper" style="background:#222; height:200px;"></div>
+              <div class="property-details">
+                <div class="skeleton-group">
+                  <div class="skeleton skeleton-title"></div>
+                  <div class="skeleton skeleton-text-short"></div>
+                  <div class="skeleton skeleton-text-long"></div>
+                  <div class="skeleton skeleton-text-pill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="property-card locked">
+              <div class="image-wrapper" style="background:#222; height:200px;"></div>
+              <div class="property-details">
+                <div class="skeleton-group">
+                  <div class="skeleton skeleton-title"></div>
+                  <div class="skeleton skeleton-text-short"></div>
+                  <div class="skeleton skeleton-text-long"></div>
+                  <div class="skeleton skeleton-text-pill"></div>
+                </div>
+              </div>
+            </div>
+            <div class="property-card locked">
+              <div class="image-wrapper" style="background:#222; height:200px;"></div>
+              <div class="property-details">
+                <div class="skeleton-group">
+                  <div class="skeleton skeleton-title"></div>
+                  <div class="skeleton skeleton-text-short"></div>
+                  <div class="skeleton skeleton-text-long"></div>
+                  <div class="skeleton skeleton-text-pill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button class="nav-arrow next" id="listingsNextBtn" aria-label="다음 추천 호실">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       9. FOOTER
+       ========================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="assets/main-logo.png" alt="생각공장 구로 로고">
+          </a>
+          <p>생각공장 구로 지식산업센터 프리미엄 비즈니스 성장을 돕는 혁신적인 스마트 오피스 환경을 제안합니다.</p>
+        </div>
+        
+        <div class="footer-menu">
+          <div class="footer-menu-col">
+            <h5>메뉴 바로가기</h5>
+            <ul>
+              <li><a href="#concept">브랜드 철학</a></li>
+              <li><a href="#explorer">공간 갤러리</a></li>
+              <li><a href="#unitplan">층별 유닛 배치</a></li>
+              <li><a href="#호실상세보기">호실 상세보기</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-menu-col">
+            <h5>관련 서비스</h5>
+            <ul>
+              <li><a href="https://www.skdnd.com" target="_blank">SK D&D 홈페이지</a></li>
+              <li><a href="#호실 상세분석">입주 조건 분석</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 THINK FACTORY GURO. All Rights Reserved.</p>
+        <a href="#" id="openPrivacyPolicyBtn" style="color: hsl(36, 43%, 56%); font-weight: bold; font-size: 0.75rem; text-decoration: underline; margin-left: 1rem; cursor: pointer;">개인정보처리방침</a>
+      </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- ==========================================
+       9. 호실 상세보기 MODAL
+       ========================================== -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-window">
+      <!-- Modal Close Button -->
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <!-- Modal Content Header -->
+      <div class="modal-header-modal">
+        <h2>입주 조건 확인</h2>
+      </div>
+      
+      <div class="modal-body-modal">
+        <!-- Brand Illustration -->
+        <div class="modal-illustration-container">
+          <div class="illustration-art">
+            <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="160" cy="90" r="70" fill="#E6F0FF" />
+              <!-- Premium Building Icon Representation -->
+              <path d="M120 130h80v-70c0-5-4-9-9-9h-62c-5 0-9 4-9 9v70z" fill="hsl(36, 43%, 56%)" opacity="0.8"/>
+              <path d="M135 130h10v-20h-10v20zm20 0h10v-20h-10v20zm20 0h10v-20h-10v20z" fill="#FFF"/>
+              <path d="M135 95h10v-15h-10v15zm20 0h10v-15h-10v15zm20 0h10v-15h-10v15z" fill="#FFF"/>
+              <rect x="150" y="35" width="20" height="15" rx="2" fill="#2E7D32"/>
+              <text x="157" y="46" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFF">₩</text>
+            </svg>
+          </div>
+          <h3>내 입주 조건 확인</h3>
+          <p>기업의 임대 예산과 업종을 분석하여 실시간으로 적합한 호실을 매칭해 드립니다.</p>
+        </div>
+        
+        <!-- Interactive Form -->
+                <form id="호실상세보기Form" class="modal-form">
+          <div class="form-row-modal">
+            <div class="form-group-modal">
+              <label for="inputCompanyName">회사명</label>
+              <div class="input-wrapper-modal">
+                <input type="text" id="inputCompanyName" placeholder="회사명을 입력하세요" style="padding-left: 0.8rem;" required>
+              </div>
+            </div>
+            
+            <div class="form-group-modal">
+              <label for="inputPhone">전화번호</label>
+              <div class="input-wrapper-modal">
+                <input type="tel" id="inputPhone" placeholder="전화번호를 입력하세요" style="padding-left: 0.8rem;" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row-modal">
+            <div class="form-group-modal">
+              <label for="inputEmail">이메일 주소</label>
+              <div class="input-wrapper-modal">
+                <input type="email" id="inputEmail" placeholder="예: contact@domain.com" style="padding-left: 0.8rem;" required>
+              </div>
+            </div>
+            
+            <div class="form-group-modal">
+              <label for="inputRent" class="label-info-row-modal">
+                <span>희망 월 임대료</span>
+                <span class="info-tooltip-trigger-modal" data-tooltip="입주 시 지급 가능한 최대 월세 범위입니다.">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                </span>
+              </label>
+              <div class="input-wrapper-modal">
+                <span class="input-prefix-modal">₩</span>
+                <input type="text" id="inputRent" value="3,000,000" required>
+                <span class="input-suffix-modal">/월</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 개인정보 수집 및 이용 동의 영역 -->
+          <div class="privacy-consent-container-modal">
+            <div class="privacy-terms-box-modal">
+              <h5>[필수] 개인정보 수집 및 이용 동의 약관</h5>
+              <p>1. 수집·이용 목적: 생각공장 구로 지식산업센터 입주 조건 매칭 및 전문 상담 제공</p>
+              <p>2. 수집 항목: 회사명, 전화번호, 이메일 주소, 희망 월 임대료</p>
+              <p>3. 보유 및 이용 기간: <strong>상담 및 호실 매칭 완료 후 1년</strong> (또는 정보주체의 파기 요청 시 즉시 파기)</p>
+              <p>4. 동의 거부 권리 및 불이익: 귀하는 개인정보 수집 및 이용 동의를 거부할 권리가 있으나, 거부 시 입주 조건 분석 및 매칭 조회 서비스 이용이 불가능합니다.</p>
+            </div>
+            <label class="privacy-consent-label-modal">
+              <input type="checkbox" id="inputPrivacyConsent">
+              <span class="checkbox-custom-modal"></span>
+              <span>위 개인정보 수집 및 이용약관에 동의합니다. (필수)</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit-호실상세보기" id="submitBtn">
+            <span>내 입주 조건 매칭 조회</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       호실 상세 사진 갤러리 모달 (Gallery Modal)
+       ========================================== -->
+  <div id="galleryModalBackdrop" class="gallery-modal-backdrop">
+    <div class="gallery-modal-container">
+      <button class="gallery-close-btn" id="closeGalleryBtn" aria-label="닫기">&times;</button>
+      
+      <div class="gallery-modal-header">
+        <h3 id="galleryModalTitle">호실 상세 사진 갤러리</h3>
+        <p id="galleryModalSpecs">E1705호 | 전용 35.4평</p>
+      </div>
+      
+      <div class="gallery-main-view">
+        <button class="gallery-nav-btn prev" id="galleryPrevBtn" aria-label="이전 사진">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="gallery-image-container">
+          <img id="galleryMainImage" src="" alt="호실 상세 사진">
+        </div>
+        <button class="gallery-nav-btn next" id="galleryNextBtn" aria-label="다음 사진">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="gallery-thumbnails" id="galleryThumbnails">
+        <!-- Dynamically populated thumbnails -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       특별분양 프로모션 팝업창 (Promo Popup)
+       ========================================== -->
+  <div class="promo-popup-backdrop" id="promoPopupBackdrop">
+    <div class="promo-popup-container">
+      <button class="promo-popup-close-btn" id="closePromoBtn" aria-label="팝업 닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="promo-popup-header">
+        <span class="promo-badge">SPECIAL PROMOTION</span>
+        <h2>생각공장 구로 특별분양</h2>
+        <p class="promo-subtitle">구일역 초역세권 프리미엄 비즈니스의 시작</p>
+      </div>
+      <div class="promo-popup-body">
+        <div class="promo-benefits-list">
+          <div class="promo-benefit-item">
+            <div class="benefit-icon">10%</div>
+            <div class="benefit-details">
+              <h4>선착순 30%할인</h4>
+              <p>초기 자금 부담을 최소화한 합리적 계약 조건</p>
+            </div>
+          </div>
+          <div class="promo-benefit-item">
+            <div class="benefit-icon">무이자</div>
+            <div class="benefit-details">
+              <h4>금리1%대 잔금대출</h4>
+              <p>입주 지정일까지 중도금 금융비용 전액 지원</p>
+            </div>
+          </div>
+        </div>
+        
+        <a href="tel:010-3329-1252" class="promo-cta-btn" id="promoCtaBtn" style="text-decoration: none; box-sizing: border-box;">
+          <span>상세분양 (전화 연결)</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="promo-popup-footer">
+        <label class="promo-checkbox-label">
+          <input type="checkbox" id="promoHideTodayCheckbox">
+          <span class="checkbox-custom"></span>
+          <span>오늘 하루 보지 않기</span>
+        </label>
+        <button class="promo-text-close-btn" id="closePromoTextBtn">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       개인정보처리방침 모달 (Privacy Policy Modal)
+       ========================================== -->
+  <div class="modal-backdrop" id="privacyPolicyModalBackdrop">
+    <div class="modal-window" style="max-width: 600px; background: #1a1a1a; border: 1px solid hsl(36, 43%, 45%);">
+      <button class="modal-close-btn" id="closePrivacyPolicyBtn" aria-label="닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-header-modal" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 1rem;">
+        <h2 style="font-family: var(--font-serif-kr); font-weight: 500; font-size: 1.6rem;">개인정보처리방침</h2>
+      </div>
+      <div class="modal-body-modal" style="text-align: left; padding: 1.5rem 1rem 0.5rem; max-height: 400px; overflow-y: auto; font-family: var(--font-sans-kr); box-sizing: border-box; line-height: 1.6;">
+        <p style="font-size: 0.88rem; color: #fff; margin-top: 0; margin-bottom: 1.2rem;"><strong>생각공장 구로 특별분양 홍보관</strong>(이하 '회사'라 함)은 고객님의 개인정보를 중요시하며, "개인정보 보호법"을 준수하고 있습니다.</p>
+        
+        <h4 style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">1. 개인정보의 수집 및 이용 목적</h4>
+        <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.<br>
+        - 생각공장 구로 지식산업센터 분양/임대 관련 상담 신청 및 최적 호실 추천 매칭 서비스 제공</p>
+        
+        <h4 style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">2. 수집하는 개인정보 항목</h4>
+        <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">회사는 최초 상담 신청 및 호실 매칭 조회 시 아래와 같은 필수 개인정보를 수집하고 있습니다.<br>
+        - 수집항목: 회사명, 전화번호, 이메일 주소, 희망 월 임대료</p>
+        
+        <h4 style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">3. 개인정보의 보유 및 이용기간</h4>
+        <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.<br>
+        - <strong>보유 기간: 상담 신청 및 호실 매칭 완료 후 1년</strong> (또는 정보 주체의 파기 요청 시 즉시 파기)</p>
+        
+        <h4 style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">4. 동의를 거부할 권리 및 불이익</h4>
+        <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">고객님은 개인정보 수집 및 이용 동의를 거부할 권리가 있습니다. 단, 거부 시 본 홈페이지의 실시간 입주 역량 조건 분석 및 맞춤 호실 매칭 서비스를 이용하실 수 없습니다.</p>
+        
+        <h4 style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">5. 개인정보의 파기절차 및 방법</h4>
+        <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">회사는 원칙적으로 보유 기간이 경과한 개인정보는 복구 및 재생할 수 없는 기술적 방법을 사용하여 영구 파기합니다.</p>
+        
+        <h4 style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">6. 개인정보 보호책임자 지정</h4>
+        <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 0.5rem 0; font-weight: 300;">회사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보보호책임자를 지정하고 있습니다.<br>
+        - 개인정보 담당 부서: 생각공장 구로 분양 사업부<br>
+        - 문의처: 공식 분양 홍보관 데스크 (이메일: privacy@asd.co.kr)</p>
+      </div>
+    </div>
+
+  <!-- ==========================================
+       도면 크게 보기 모달 (Floor Plan Detail Modal)
+       ========================================== -->
+  <div class="modal-backdrop" id="floorPlanModalBackdrop">
+    <div class="modal-window" style="max-width: 900px; background: #1a1a1a; border: 1px solid hsl(36, 43%, 45%); padding: 1rem;">
+      <button class="modal-close-btn" id="closeFloorPlanBtn" aria-label="닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-header-modal" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+        <h2 id="floorPlanModalTitle" style="font-family: var(--font-serif-kr); font-weight: 500; font-size: 1.4rem; color: #fff; margin-top: 0; margin-bottom: 0;">층 평면 도면</h2>
+      </div>
+      <div class="modal-body-modal" style="text-align: center; overflow: auto; max-height: 75vh; display: flex; align-items: center; justify-content: center; background: #000; border-radius: 4px; padding: 1rem; box-sizing: border-box;">
+        <img id="floorPlanModalImg" src="" alt="평면 도면" style="max-width: 100%; max-height: 70vh; object-fit: contain;">
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/main.js?v=3.8"></script>
+</body>
+</html>
