@@ -709,15 +709,19 @@ header.scrolled .nav-cta {
   border: 1px solid var(--glass-border);
 }
 
-.concept-media img {
+.concept-media img, .concept-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.concept-media:hover img {
+.concept-media:hover img, .concept-media:hover video {
   transform: scale(1.05);
+}
+
+.concept-mobile-video {
+  display: none;
 }
 
 .concept-info {
@@ -1609,6 +1613,14 @@ footer {
   }
   
   .hero-mobile-image-container {
+    display: block !important;
+  }
+
+  .concept-desktop-image {
+    display: none !important;
+  }
+
+  .concept-mobile-video {
     display: block !important;
   }
 
