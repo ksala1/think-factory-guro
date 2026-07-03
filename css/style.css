@@ -1665,17 +1665,21 @@ footer {
     border: none !important;
     border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
     border-radius: 16px 16px 0 0 !important;
-    padding: 2.25rem 1.5rem 1.5rem 1.5rem !important;
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15) !important;
   }
   
   .hero-booking-card h3 {
-    font-size: 1.25rem !important;
-    margin-bottom: 1rem !important;
+    display: none !important;
   }
   
   .booking-field {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.6rem !important;
+    padding-bottom: 0.2rem !important;
+  }
+
+  .booking-actions {
+    margin-top: 0.75rem !important;
   }
 
   .concept-desktop-image {
