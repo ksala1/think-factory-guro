@@ -98,21 +98,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. SPACE EXPLORER TAB & SLIDER (Four Seasons Benchmarking)
+  // 4. SPACE EXPLORER TAB & SLIDER CAROUSEL (Card Slider)
   // ==========================================
   const tabBtns = document.querySelectorAll('.tab-btn');
-  const slides = document.querySelectorAll('.explorer-slide');
+  const slides = document.querySelectorAll('.explorer-card');
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
+  const track = document.getElementById('explorerTrack');
 
   let currentSlideIndex = 0;
 
-  const showSlide = (index) => {
-    // Boundary check
-    if (index >= slides.length) index = 0;
-    if (index < 0) index = slides.length - 1;
+  const updateCarousel = () => {
+    if (!track || slides.length === 0) return;
+    const card = slides[0];
+    const cardStyle = window.getComputedStyle(card);
+    const cardWidth = card.getBoundingClientRect().width;
+    const cardMargin = parseFloat(cardStyle.marginRight) || 0;
+    const step = cardWidth + cardMargin;
     
-    currentSlideIndex = index;
+    // Centering calculation: center the active card in the track container
+    const containerWidth = track.parentElement.getBoundingClientRect().width;
+    const offset = (containerWidth / 2) - (cardWidth / 2) - (currentSlideIndex * step);
+    
+    // Apply translate offset
+    track.style.transform = `translateX(${offset}px)`;
+
+    // Update active class on slides/cards
+    slides.forEach((slide, idx) => {
+      if (idx === currentSlideIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
 
     // Update active tabs
     tabBtns.forEach((btn, idx) => {
@@ -122,15 +140,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.remove('active');
       }
     });
+  };
 
-    // Update active slides
-    slides.forEach((slide, idx) => {
-      if (idx === currentSlideIndex) {
-        slide.classList.add('active');
-      } else {
-        slide.classList.remove('active');
-      }
-    });
+  const showSlide = (index) => {
+    // Boundary check
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+    
+    currentSlideIndex = index;
+    updateCarousel();
   };
 
   // Tab click event
@@ -150,6 +168,11 @@ document.addEventListener('DOMContentLoaded', () => {
       showSlide(currentSlideIndex + 1);
     });
   }
+
+  // Initialize and listen to resize
+  window.addEventListener('resize', updateCarousel);
+  // Run on page load after a tiny delay to ensure correct width calculations
+  setTimeout(updateCarousel, 150);
 
   // ==========================================
   // 5. QUICK INQUIRY BAR LOGIC (Connected to 호실상세보기 Flow)
