@@ -1733,10 +1733,7 @@ footer {
   }
   
   .tabs-container {
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-bottom: 0.75rem;
-    white-space: nowrap;
+    display: none !important;
   }
 }
 
@@ -3430,12 +3427,8 @@ footer {
     margin-top: 1.5rem !important;
   }
 
-  /* Support horizontal scroll tabs on tablets to avoid wrapping */
   .tabs-container {
-    overflow-x: auto !important;
-    justify-content: flex-start !important;
-    padding-bottom: 0.75rem !important;
-    white-space: nowrap !important;
+    display: none !important;
   }
 
   /* Reduce padding on Unit Selector card to avoid squeezing controls */
