@@ -3451,6 +3451,7 @@ footer {
     gap: 2rem !important;
     margin-top: 3rem !important;
     padding-top: 2rem !important;
+    text-align: center !important;
   }
 }
 
