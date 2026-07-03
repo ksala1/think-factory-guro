@@ -1626,6 +1626,7 @@ footer {
   .hero {
     height: 100vh !important;
     min-height: 100vh !important;
+    overflow: visible !important;
   }
   
   .hero-video-container {
@@ -1667,6 +1668,7 @@ footer {
     border-radius: 16px 16px 0 0 !important;
     padding: 1.25rem 1.25rem 1.25rem 1.25rem !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(120px) !important;
   }
   
   .hero-booking-card h3 {
@@ -1688,6 +1690,10 @@ footer {
 
   .concept-mobile-video {
     display: block !important;
+  }
+
+  .concept {
+    margin-top: 120px !important;
   }
 
   .explorer-card {
