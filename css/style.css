@@ -374,6 +374,19 @@ header.scrolled .nav-cta {
   box-shadow: none;
 }
 
+.hero-mobile-image-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/facade.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
 .hero-video-container iframe {
   position: absolute;
   top: 50%;
@@ -1590,6 +1603,14 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+  .hero-video-container {
+    display: none !important;
+  }
+  
+  .hero-mobile-image-container {
+    display: block !important;
+  }
 
   header {
     padding: 1.5rem 2rem;
