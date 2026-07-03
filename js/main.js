@@ -1,3 +1,26 @@
+// Expose modal functions at top level to prevent race conditions during DOMContentLoaded
+function openFloorPlanModal(imgSrc, titleText) {
+  const floorPlanModal = document.getElementById('floorPlanModalBackdrop');
+  const floorPlanImg = document.getElementById('floorPlanModalImg');
+  const floorPlanTitle = document.getElementById('floorPlanModalTitle');
+  if (floorPlanModal && floorPlanImg && floorPlanTitle) {
+    floorPlanImg.src = imgSrc;
+    floorPlanTitle.textContent = `${titleText} 평면 도면`;
+    floorPlanModal.style.cssText = 'display: flex !important; opacity: 1 !important; pointer-events: auto !important; visibility: visible !important;';
+    document.body.style.overflow = 'hidden';
+  }
+}
+window.openFloorPlanModal = openFloorPlanModal;
+
+function closeFloorPlanModal() {
+  const floorPlanModal = document.getElementById('floorPlanModalBackdrop');
+  if (floorPlanModal) {
+    floorPlanModal.style.cssText = '';
+    document.body.style.overflow = '';
+  }
+}
+window.closeFloorPlanModal = closeFloorPlanModal;
+
 document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 1. SCROLL EFFECT ON HEADER
@@ -174,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       feature: '최상층 랜드마크 오피스 및 스카이브릿지 연결층. 안양천 파노라마 조망권이 가장 극대화되는 럭셔리 업무 공간입니다.',
       east: 'E1801 ~ E1806',
       west: 'W1801 ~ W1806',
-      tags: ['최상층 조망', '스카이브릿지 연계', '섹션 오피스'],
+      tags: ['최상층 조망', '섹션 오피스'],
       img: 'assets/extracted_pages/floor_18.png'
     },
     '17': {
@@ -187,18 +210,18 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     '16': {
       title: '지상 16층 (고층부 오피스)',
-      feature: '공용 라운지와 연계된 명품 오피스 구역으로 비즈니스 네트워킹과 쾌적한 휴식을 제공합니다.',
+      feature: '소음에서 벗어나 조용하고 집중도 높은 비즈니스가 가능한 고품격 고층 오피스 층입니다.',
       east: 'E1601 ~ E1615',
       west: 'W1601 ~ W1613',
-      tags: ['공유 라운지 인접', '스카이 오피스', '친환경 설계'],
+      tags: ['vip공유 라운지 인접', '스카이 오피스', '친환경 설계'],
       img: 'assets/extracted_pages/floor_16.png'
     },
     '15': {
       title: '지상 15층 (고층부 오피스)',
-      feature: '소음에서 벗어나 조용하고 집중도 높은 비즈니스가 가능한 고품격 고층 오피스 층입니다.',
+      feature: 'vip 공용 라운지와 연계된 명품 오피스 구역으로 비즈니스 네트워킹과 쾌적한 휴식을 제공합니다.',
       east: 'E1501 ~ E1515',
       west: 'W1501 ~ W1513',
-      tags: ['독립 오피스', '고층부 뷰', '섹션 오피스'],
+      tags: ['vip공유 라운지 인접', '스카이브릿지 연계', '고층부 뷰',],
       img: 'assets/extracted_pages/floor_15.png'
     },
     '14': {
@@ -406,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           
           <div class="floor-info-map">
-            <a href="#" class="floor-map-link" data-img="${data.img}" data-title="${data.title}" title="클릭하여 크게 보기">
+            <a href="#" class="floor-map-link" data-img="${data.img}" data-title="${data.title}" title="클릭하여 크게 보기" onclick="if(window.openFloorPlanModal){ window.openFloorPlanModal(this.getAttribute('data-img'), this.getAttribute('data-title')); return false; }">
               <img src="${data.img}" alt="${data.title} 평면 도면">
             </a>
             <span class="map-caption">💡 이미지를 클릭하시면 원본 도면을 보실 수 있습니다.</span>
@@ -1027,7 +1050,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update company status header info
       const companyStatus = document.getElementById('companyStatus');
       if (companyStatus) {
-        companyStatus.innerText = `🏢 ${companyName} (${email} / ${phone}) 님 진단 완료`;
+        companyStatus.innerText = `${companyName} (${email} / ${phone}) 님 추천 호실`;
         companyStatus.style.display = 'block';
       }
       
@@ -1223,6 +1246,216 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeGalleryBtn = document.getElementById('closeGalleryBtn');
   const galleryPrevBtn = document.getElementById('galleryPrevBtn');
   const galleryNextBtn = document.getElementById('galleryNextBtn');
+  
+  // W1101 Comments references
+  const galleryCommentsColumn = document.getElementById('galleryCommentsColumn');
+  const commentsList = document.getElementById('commentsList');
+  const commentsForm = document.getElementById('commentsForm');
+  const commentTypeSelect = document.getElementById('commentType');
+  const commentAdminPwInput = document.getElementById('commentAdminPw');
+  const commentAuthorInput = document.getElementById('commentAuthor');
+  const commentPwInput = document.getElementById('commentPw');
+  const commentPrivateCheckbox = document.getElementById('commentPrivate');
+  const commentTextInput = document.getElementById('commentText');
+
+  // Track unlocked private comment IDs for current session
+  const unlockedPrivateComments = new Set();
+
+  // Toggle admin password field visibility
+  if (commentTypeSelect && commentAdminPwInput) {
+    commentTypeSelect.addEventListener('change', () => {
+      if (commentTypeSelect.value === 'admin') {
+        commentAdminPwInput.style.display = 'block';
+        commentAdminPwInput.required = true;
+        if (commentAuthorInput) {
+          commentAuthorInput.value = '관리자';
+        }
+      } else {
+        commentAdminPwInput.style.display = 'none';
+        commentAdminPwInput.required = false;
+        if (commentAuthorInput) {
+          commentAuthorInput.value = '';
+        }
+      }
+    });
+  }
+
+  // ponytail: Sweden standard Swedish locale sv Sweden format outputs exactly YYYY-MM-DD HH:mm:ss
+  const getFormattedDateTime = () => new Date().toLocaleString('sv').slice(0, 16);
+
+  // ponytail: 1-line browser native character replacer for HTML safety
+  const escapeHTML = str => (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+  function renderW1101Comments() {
+    if (!commentsList) return;
+    
+    let comments = [];
+    try {
+      const stored = localStorage.getItem('comments_W1101');
+      if (stored) {
+        comments = JSON.parse(stored);
+      } else {
+        comments = [
+          { id: 1, author: "분양상담실", text: "W1101호는 코너 자리에 위치하여 채광과 안양천 뷰가 극대화된 최고 평형 오피스입니다.", date: "2026-06-25 14:00", type: "admin", isPrivate: false, password: "1234" },
+          { id: 2, author: "임대관리부", text: "현재 대기업 IT 개발팀에서 입주 협의 중인 호실입니다. 사전 예약 후 방문 안내 요망.", date: "2026-06-28 10:30", type: "admin", isPrivate: false, password: "1234" }
+        ];
+        localStorage.setItem('comments_W1101', JSON.stringify(comments));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+
+    commentsList.innerHTML = '';
+    
+    if (comments.length === 0) {
+      commentsList.innerHTML = `<div style="text-align: center; color: #666; font-size: 0.8rem; padding: 2rem 0; font-weight: 300;">등록된 메모가 없습니다.</div>`;
+      return;
+    }
+
+    comments.forEach(comment => {
+      const item = document.createElement('div');
+      item.className = `comment-item type-${comment.type || 'customer'}`;
+      
+      let textHTML = '';
+      const isPrivate = !!comment.isPrivate;
+      const isUnlocked = unlockedPrivateComments.has(comment.id);
+      
+      if (isPrivate && !isUnlocked) {
+        textHTML = `<div class="comment-text private-locked" data-id="${comment.id}">🔒 비밀댓글입니다. (클릭하여 비번 입력)</div>`;
+      } else {
+        const privateLabel = isPrivate ? '<span style="color:#00ff55; font-size:0.75rem; margin-right:0.3rem; font-weight:600;">[비밀글]</span>' : '';
+        const textClass = isPrivate ? 'comment-text private-unlocked' : 'comment-text';
+        textHTML = `<div class="${textClass}">${privateLabel}${escapeHTML(comment.text)}</div>`;
+      }
+
+      const badgeClass = comment.type === 'admin' ? 'admin' : 'customer';
+      const badgeText = comment.type === 'admin' ? '공지/답변' : '고객질문';
+
+      item.innerHTML = `
+        <div class="comment-item-header">
+          <div class="comment-author-wrapper">
+            <span class="comment-badge ${badgeClass}">${badgeText}</span>
+            <span class="comment-author">${escapeHTML(comment.author)}</span>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="comment-date">${comment.date}</span>
+            <button class="comment-delete-btn" data-id="${comment.id}" title="삭제">&times;</button>
+          </div>
+        </div>
+        ${textHTML}
+      `;
+
+      const deleteBtn = item.querySelector('.comment-delete-btn');
+      if (deleteBtn) {
+        deleteBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          deleteW1101Comment(comment.id, comment.password);
+        });
+      }
+
+      const lockedText = item.querySelector('.comment-text.private-locked');
+      if (lockedText) {
+        lockedText.addEventListener('click', (e) => {
+          e.stopPropagation();
+          unlockPrivateComment(comment.id, comment.password);
+        });
+      }
+
+      commentsList.appendChild(item);
+    });
+
+    commentsList.scrollTop = commentsList.scrollHeight;
+  }
+
+  function unlockPrivateComment(id, correctPassword) {
+    const input = prompt("비밀댓글 확인을 위해 비밀번호 4자리를 입력하세요\n(관리자는 관리자 암호 '1234' 입력 가능):");
+    if (input === null) return;
+    
+    if (input === String(correctPassword) || input === '1234') {
+      unlockedPrivateComments.add(id);
+      renderW1101Comments();
+    } else {
+      alert("비밀번호가 일치하지 않습니다.");
+    }
+  }
+
+  function addW1101Comment(author, text, type, isPrivate, password) {
+    let comments = [];
+    try {
+      const stored = localStorage.getItem('comments_W1101');
+      if (stored) {
+        comments = JSON.parse(stored);
+      }
+    } catch(e) {}
+
+    const newComment = {
+      id: Date.now(),
+      author: author || (type === 'admin' ? '관리자' : '고객'),
+      text: text,
+      date: getFormattedDateTime(),
+      type: type || 'customer',
+      isPrivate: !!isPrivate,
+      password: password || '0000'
+    };
+
+    comments.push(newComment);
+    localStorage.setItem('comments_W1101', JSON.stringify(comments));
+    
+    if (isPrivate) {
+      unlockedPrivateComments.add(newComment.id);
+    }
+    
+    renderW1101Comments();
+  }
+
+  function deleteW1101Comment(id, correctPassword) {
+    const input = prompt("삭제 확인을 위해 비밀번호를 입력하세요\n(관리자는 관리자 암호 '1234' 입력 가능):");
+    if (input === null) return;
+
+    if (input === String(correctPassword) || input === '1234') {
+      let comments = [];
+      try {
+        const stored = localStorage.getItem('comments_W1101');
+        if (stored) {
+          comments = JSON.parse(stored);
+        }
+      } catch(e) {}
+
+      comments = comments.filter(c => c.id !== id);
+      localStorage.setItem('comments_W1101', JSON.stringify(comments));
+      renderW1101Comments();
+    } else {
+      alert("비밀번호가 일치하지 않아 삭제할 수 없습니다.");
+    }
+  }
+
+  if (commentsForm) {
+    commentsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!commentTextInput) return;
+      
+      const type = commentTypeSelect ? commentTypeSelect.value : 'customer';
+      if (type === 'admin' && commentAdminPwInput) {
+        if (commentAdminPwInput.value !== '1234') {
+          alert("관리자 비밀번호(1234)가 올바르지 않습니다.");
+          return;
+        }
+      }
+      
+      const author = commentAuthorInput ? commentAuthorInput.value.trim() : '';
+      const text = commentTextInput.value.trim();
+      const isPrivate = commentPrivateCheckbox ? commentPrivateCheckbox.checked : false;
+      const password = commentPwInput ? commentPwInput.value.trim() : '0000';
+      
+      if (text) {
+        addW1101Comment(author, text, type, isPrivate, password);
+        commentTextInput.value = '';
+        if (commentPwInput) commentPwInput.value = '';
+        if (commentPrivateCheckbox) commentPrivateCheckbox.checked = false;
+        if (commentAdminPwInput) commentAdminPwInput.value = '';
+      }
+    });
+  }
 
   // Dynamic cards have their own event listeners bound inside renderPropertyCards.
 
@@ -1234,6 +1467,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (galleryModalSpecs) galleryModalSpecs.innerText = data.specs;
     
     updateGalleryView();
+    
+    // Reset private comments unlock status for new session
+    unlockedPrivateComments.clear();
+    
+    // Check if W1101 to activate comments
+    const isW1101 = data.title.includes('W1101') || data.specs.includes('W1101');
+    const container = document.querySelector('.gallery-modal-container');
+    if (isW1101) {
+      if (galleryCommentsColumn) galleryCommentsColumn.style.display = 'flex';
+      if (container) container.classList.add('with-comments');
+      renderW1101Comments();
+    } else {
+      if (galleryCommentsColumn) galleryCommentsColumn.style.display = 'none';
+      if (container) container.classList.remove('with-comments');
+    }
     
     if (galleryModalBackdrop) {
       galleryModalBackdrop.classList.add('open');
@@ -1724,21 +1972,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const floorPlanTitle = document.getElementById('floorPlanModalTitle');
   const closeFloorPlanBtn = document.getElementById('closeFloorPlanBtn');
 
-  function openFloorPlanModal(imgSrc, titleText) {
-    if (floorPlanModal && floorPlanImg && floorPlanTitle) {
-      floorPlanImg.src = imgSrc;
-      floorPlanTitle.textContent = `${titleText} 평면 도면`;
-      floorPlanModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeFloorPlanModal() {
-    if (floorPlanModal) {
-      floorPlanModal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  }
+  // Functions relocated globally to top of file
 
   if (closeFloorPlanBtn) {
     closeFloorPlanBtn.addEventListener('click', closeFloorPlanModal);

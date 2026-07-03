@@ -316,6 +316,14 @@ footer .logo img {
 
 .nav-cta {
   display: inline-flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+header.scrolled .nav-cta {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Hamburger mobile menu button */
@@ -2124,13 +2132,13 @@ footer {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-backdrop.open {
   opacity: 1;
-  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal-window {
@@ -2143,12 +2151,6 @@ footer {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transform: translateY(40px) scale(0.95);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.modal-backdrop.open .modal-window {
-  transform: translateY(0) scale(1);
 }
 
 .modal-close-btn {
@@ -2654,16 +2656,10 @@ footer {
   border-radius: 16px;
   padding: 2.5rem;
   position: relative;
-  transform: scale(0.95);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-.gallery-modal-backdrop.open .gallery-modal-container {
-  transform: scale(1);
 }
 
 .gallery-close-btn {
@@ -2909,14 +2905,14 @@ footer {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 1.5rem;
 }
 
 .promo-popup-backdrop.show {
   opacity: 1;
-  visibility: visible;
+  pointer-events: auto;
 }
 
 .promo-popup-container {
@@ -2929,13 +2925,7 @@ footer {
   position: relative;
   overflow: hidden;
   padding: 2.2rem 2rem 1.2rem;
-  transform: translateY(20px) scale(0.95);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   box-sizing: border-box;
-}
-
-.promo-popup-backdrop.show .promo-popup-container {
-  transform: translateY(0) scale(1);
 }
 
 .promo-popup-close-btn {
@@ -3346,6 +3336,268 @@ footer {
   margin: 0;
   font-weight: 300;
   word-break: keep-all;
+}
+
+/* ==========================================
+   MOBILE UX/UI LAYOUT RESPONSIVE OPTIMIZATIONS
+   ========================================== */
+
+/* 1. Desktop default hidden styling for mobile cta */
+.mobile-menu-cta {
+  display: none;
+}
+
+/* 2. Global responsive overrides for max-width 768px */
+@media (max-width: 768px) {
+  /* Mobile menu CTA style when active */
+  .mobile-menu-cta {
+    display: block !important;
+    background-color: var(--accent-gold) !important;
+    color: #111 !important;
+    padding: 0.8rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    margin-top: 1.5rem !important;
+    text-align: center !important;
+    border-radius: 4px !important;
+    width: 80% !important;
+    max-width: 250px !important;
+    transition: var(--transition-fast) !important;
+  }
+  .mobile-menu-cta:hover {
+    background-color: var(--accent-gold-hover) !important;
+  }
+
+  /* Center Space Explorer navigation arrows below card */
+  .explorer-controls {
+    justify-content: center !important;
+    margin-top: 1.5rem !important;
+  }
+
+  /* Support horizontal scroll tabs on tablets to avoid wrapping */
+  .tabs-container {
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding-bottom: 0.75rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Reduce padding on Unit Selector card to avoid squeezing controls */
+  .unit-selector-card {
+    padding: 2rem 1.5rem !important;
+  }
+
+  /* Prevent long title text from overlapping with close button inside floor modal */
+  .modal-header-modal {
+    padding-right: 3.5rem !important;
+  }
+}
+
+/* 3. Global responsive overrides for max-width 480px (Mobile portrait) */
+@media (max-width: 480px) {
+  /* Stack Brand Concept stats vertically to prevent squeezing numbers */
+  .concept-stat-box {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    margin-top: 3rem !important;
+    padding-top: 2rem !important;
+  }
+}
+
+/* ==========================================
+   GALLERY MODAL COMMENTS SECTION STYLES
+   ========================================== */
+.gallery-modal-container.with-comments {
+  max-width: 1200px !important;
+  transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-content-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+}
+
+.gallery-main-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.gallery-comments-column {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  max-height: 600px;
+}
+
+/* Scrollbar styling for comments list */
+.comments-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-right: 0.25rem;
+  margin-bottom: 1rem;
+}
+.comments-list::-webkit-scrollbar {
+  width: 4px;
+}
+.comments-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.comments-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+.comments-list::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
+
+.comment-item {
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  position: relative;
+  animation: fadeInCard 0.3s ease forwards;
+  box-sizing: border-box;
+}
+
+/* 1. Admin style comments */
+.comment-item.type-admin {
+  background: rgba(197, 160, 105, 0.06);
+  border: 1px solid rgba(197, 160, 105, 0.25);
+}
+
+/* 2. Customer style comments */
+.comment-item.type-customer {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comment-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-author-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.comment-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.comment-item.type-admin .comment-author {
+  color: var(--accent-gold);
+}
+
+.comment-item.type-customer .comment-author {
+  color: #fff;
+}
+
+.comment-badge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.comment-badge.admin {
+  background: rgba(197, 160, 105, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(197, 160, 105, 0.3);
+}
+
+.comment-badge.customer {
+  background: rgba(255, 255, 255, 0.06);
+  color: #aaa;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comment-date {
+  font-size: 0.7rem;
+  color: #666;
+  font-weight: 300;
+}
+
+.comment-text {
+  font-size: 0.8rem;
+  color: #ddd;
+  line-height: 1.45;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.comment-text.private-locked {
+  color: #888;
+  font-style: italic;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px dashed rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+.comment-text.private-locked:hover {
+  color: #bbb;
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.comment-text.private-unlocked {
+  border-left: 2px solid hsl(140, 45%, 45%);
+  padding-left: 0.5rem;
+}
+
+.comment-delete-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-delete-btn:hover {
+  color: #ff4a4a;
+}
+
+@media (max-width: 992px) {
+  .gallery-content-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .gallery-comments-column {
+    width: 100%;
+    max-height: 400px;
+  }
 }
 
 
