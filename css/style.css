@@ -1623,12 +1623,69 @@ footer {
 
 @media (max-width: 768px) {
 
+  .hero {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+  
   .hero-video-container {
-    display: none !important;
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
   }
   
   .hero-mobile-image-container {
-    display: block !important;
+    display: none !important;
+  }
+  
+  .hero-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: stretch !important;
+    padding: 5rem 1.5rem 1.5rem 1.5rem !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    box-sizing: border-box !important;
+    gap: 1.5rem !important;
+  }
+  
+  .hero-content {
+    margin-bottom: auto !important;
+    padding-top: 1rem !important;
+  }
+  
+  .hero-title-large {
+    margin-bottom: 1rem !important;
+  }
+  
+  .hero-info-text {
+    margin-bottom: 1rem !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .hero-booking-card {
+    align-self: stretch !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  .hero-booking-card h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .booking-field {
+    margin-bottom: 1rem !important;
   }
 
   .concept-desktop-image {
