@@ -1684,6 +1684,10 @@ footer {
     margin-top: 0.75rem !important;
   }
 
+  .video-mute-btn {
+    display: none !important;
+  }
+
   .concept-desktop-image {
     display: none !important;
   }
