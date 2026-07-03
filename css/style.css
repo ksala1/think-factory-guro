@@ -1688,6 +1688,10 @@ footer {
     display: none !important;
   }
 
+  .scroll-indicator {
+    display: none !important;
+  }
+
   .concept-desktop-image {
     display: none !important;
   }
