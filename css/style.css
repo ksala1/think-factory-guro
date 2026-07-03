@@ -1704,6 +1704,16 @@ footer {
     margin-top: 120px !important;
   }
 
+  .explorer-view {
+    width: 100vw !important;
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    overflow: hidden !important;
+  }
+
   .explorer-card {
     width: 270px !important;
     margin-right: 15px !important;
