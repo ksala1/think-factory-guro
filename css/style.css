@@ -396,7 +396,6 @@ header.scrolled .nav-cta {
   object-fit: cover; /* 풀스크린으로 채움 */
   background-color: #000;
   pointer-events: none;
-  filter: contrast(1.08) saturate(1.1) brightness(1.02);
 }
 
 .hero-overlay {
