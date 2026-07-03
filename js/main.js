@@ -112,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!track || slides.length === 0) return;
     const card = slides[0];
     const cardStyle = window.getComputedStyle(card);
-    const cardWidth = card.getBoundingClientRect().width;
+    const cardWidth = card.offsetWidth;
     const cardMargin = parseFloat(cardStyle.marginRight) || 0;
     const step = cardWidth + cardMargin;
     
     // Centering calculation: center the active card in the track container
-    const containerWidth = track.parentElement.getBoundingClientRect().width;
+    const containerWidth = track.parentElement.offsetWidth;
     const offset = (containerWidth / 2) - (cardWidth / 2) - (currentSlideIndex * step);
     
     // Apply translate offset
