@@ -126,6 +126,7 @@ h3, h4, h5, h6 {
   margin-bottom: 1.25rem;
   display: inline-block;
   position: relative;
+  width: fit-content;
 }
 
 .section-tag::after {
@@ -1722,6 +1723,11 @@ footer {
   
   .card-body h3 {
     font-size: 1.2rem !important;
+  }
+
+  .unit-select-input {
+    font-size: 0.85rem !important;
+    padding: 0.9rem 2.2rem 0.9rem 1rem !important;
   }
 
   header {
