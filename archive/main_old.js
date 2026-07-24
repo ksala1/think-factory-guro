@@ -183,9 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       
       // Smooth scroll to 호실상세보기 section
-      const showroomSection = document.getElementById('showroom');
+      const 호실상세보기Section = document.getElementById('호실상세보기');
       if (호실상세보기Section) {
-        showroomSection.scrollIntoView({ behavior: 'smooth' });
+        호실상세보기Section.scrollIntoView({ behavior: 'smooth' });
         
         // Automatically open the 호실상세보기 modal after scroll completes
         setTimeout(() => {
@@ -2050,59 +2050,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-// ==========================================
-// SHOWROOM SLIDER LOGIC
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-  const showroomTrack = document.getElementById('showroomTrack');
-  const prevShowroomBtn = document.getElementById('prevShowroomBtn');
-  const nextShowroomBtn = document.getElementById('nextShowroomBtn');
-  const showroomDotsContainer = document.getElementById('showroomDots');
-  
-  if (showroomTrack && prevShowroomBtn && nextShowroomBtn) {
-    const slides = document.querySelectorAll('.showroom-slide');
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    
-    // Create dots
-    for(let i=0; i<totalSlides; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'showroom-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => {
-        goToSlide(i);
-      });
-      showroomDotsContainer.appendChild(dot);
-    }
-    const dots = document.querySelectorAll('.showroom-dot');
-    
-    function goToSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
-      
-      currentSlide = index;
-      const offset = currentSlide * -100;
-      showroomTrack.style.transform = `translateX(${offset}%)`;
-      
-      slides.forEach(s => s.classList.remove('active'));
-      if(dots.length > 0) dots.forEach(d => d.classList.remove('active'));
-      
-      slides[currentSlide].classList.add('active');
-      if(dots.length > 0) dots[currentSlide].classList.add('active');
-    }
-    
-    prevShowroomBtn.addEventListener('click', () => {
-      goToSlide(currentSlide - 1);
-    });
-    
-    nextShowroomBtn.addEventListener('click', () => {
-      goToSlide(currentSlide + 1);
-    });
-    
-    // Auto play showroom
-    setInterval(() => {
-      goToSlide(currentSlide + 1);
-    }, 5000);
-  }
-});
