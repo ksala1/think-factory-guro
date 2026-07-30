@@ -3913,3 +3913,17 @@ footer {
     width: 280px;
   }
 }
+
+.hero-main-logo-text {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #000 !important;
+  letter-spacing: -0.05em;
+  margin-bottom: 2rem;
+  font-family: var(--font-sans-kr);
+}
+@media (max-width: 768px) {
+  .hero-main-logo-text {
+    font-size: 2.2rem;
+  }
+}
