@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Smooth scroll to 호실상세보기 section
       const showroomSection = document.getElementById('showroom');
-      if (호실상세보기Section) {
+      if (showroomSection) {
         showroomSection.scrollIntoView({ behavior: 'smooth' });
         
         // Automatically open the 호실상세보기 modal after scroll completes
@@ -2056,34 +2056,46 @@ document.addEventListener('DOMContentLoaded', () => {
 // SHOWROOM SLIDER LOGIC
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-  const showroomTrack = document.getElementById('showroomTrack');
-  const prevShowroomBtn = document.getElementById('prevShowroomBtn');
-  const nextShowroomBtn = document.getElementById('nextShowroomBtn');
-  const showroomDotsContainer = document.getElementById('showroomDots');
-  
-  if (showroomTrack && prevShowroomBtn && nextShowroomBtn) {
-    const slides = document.querySelectorAll('.showroom-slide');
+
+  function initShowroomSlider(trackId, prevBtnId, nextBtnId, dotsId, autoPlayDelay) {
+    const track = document.getElementById(trackId);
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+    const dotsContainer = document.getElementById(dotsId);
+    
+    if (!track || !prevBtn || !nextBtn) return;
+    
+    // In the new layout, we might have multiple track items. 
+    // We should only select slides inside THIS track's parent slider.
+    const sliderParent = track.closest('.showroom-slider');
+    const slides = sliderParent.querySelectorAll('.showroom-slide');
     let currentSlide = 0;
     const totalSlides = slides.length;
     
+    if (totalSlides === 0) return;
+
     // Create dots
-    for(let i=0; i<totalSlides; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'showroom-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => {
-        goToSlide(i);
-      });
-      showroomDotsContainer.appendChild(dot);
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      for(let i=0; i<totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'showroom-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+        });
+        dotsContainer.appendChild(dot);
+      }
     }
-    const dots = document.querySelectorAll('.showroom-dot');
+    const dots = dotsContainer ? dotsContainer.querySelectorAll('.showroom-dot') : [];
     
     function goToSlide(index) {
       if (index < 0) index = totalSlides - 1;
       if (index >= totalSlides) index = 0;
       
       currentSlide = index;
-      const offset = currentSlide * -100;
-      showroomTrack.style.transform = `translateX(${offset}%)`;
+      
+      // In the dual slider layout, each slider shows exactly 1 slide (100% width)
+      track.style.transform = `translateX(${currentSlide * -100}%)`;
       
       slides.forEach(s => s.classList.remove('active'));
       if(dots.length > 0) dots.forEach(d => d.classList.remove('active'));
@@ -2092,17 +2104,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if(dots.length > 0) dots[currentSlide].classList.add('active');
     }
     
-    prevShowroomBtn.addEventListener('click', () => {
+    prevBtn.addEventListener('click', () => {
       goToSlide(currentSlide - 1);
     });
     
-    nextShowroomBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', () => {
       goToSlide(currentSlide + 1);
     });
     
     // Auto play showroom
     setInterval(() => {
       goToSlide(currentSlide + 1);
-    }, 5000);
+    }, autoPlayDelay);
   }
+
+  // Initialize both sliders with slightly different auto-play delays so they don't sync perfectly
+  initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
+  initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
+
 });
