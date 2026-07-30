@@ -3953,4 +3953,4 @@ footer {
   .logo-text-location { font-size: 2.8rem; }
 }
 
-.hero-main-logo-text { text-shadow: 0 0 25px rgba(255,255,255,0.8), 0 0 10px rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: flex-start; }
+.hero-main-logo-text { display: flex; align-items: center; justify-content: flex-start; text-shadow: none; }
