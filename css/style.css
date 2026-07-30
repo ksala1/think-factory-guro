@@ -3754,15 +3754,10 @@ footer {
   margin: 0 auto;
 }
 
-.showroom-split-container .showroom-slider {
-  flex: 1;
-  min-width: 0;
-}
-
 .showroom-slider {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   border-radius: 12px;
   overflow: hidden;
@@ -3775,8 +3770,8 @@ footer {
 }
 
 .showroom-slide {
-  flex: 0 0 100%;
-  width: 100%;
+  flex: 0 0 50%;
+  width: 50%;
   position: relative;
 }
 
@@ -3888,6 +3883,10 @@ footer {
     flex-direction: column;
     gap: 30px;
   }
+  .showroom-slide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
   .showroom-img-wrap {
     height: 45vh;
     min-height: 300px;
@@ -3927,3 +3926,31 @@ footer {
     font-size: 2.2rem;
   }
 }
+
+.logo-text-brand {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #000;
+  letter-spacing: -0.05em;
+}
+.logo-text-divider {
+  font-size: 4rem;
+  font-weight: 300;
+  color: #000;
+  margin: 0 1rem;
+  transform: translateY(-4px);
+  display: inline-block;
+}
+.logo-text-location {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.03em;
+}
+@media (max-width: 768px) {
+  .logo-text-brand { font-size: 3rem; }
+  .logo-text-divider { font-size: 2.5rem; margin: 0 0.5rem; }
+  .logo-text-location { font-size: 2.8rem; }
+}
+
+.hero-main-logo-text { text-shadow: 0 0 25px rgba(255,255,255,0.8), 0 0 10px rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: flex-start; }

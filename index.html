@@ -67,7 +67,11 @@
     <div class="hero-container">
       <!-- Left side: Hero Text -->
       <div class="hero-content">
-        <h1 class="hero-main-logo-text">생각공장 <span style="font-weight: 300; margin: 0 5px; color: #000;">|</span> 구로</h1>
+        <h1 class="hero-main-logo-text">
+          <span class="logo-text-brand">생각공장</span>
+          <span class="logo-text-divider">|</span>
+          <span class="logo-text-location">구로</span>
+        </h1>
         <div class="hero-action-links">
           <a href="#호실상세보기" class="hero-action-link">호실 상세보기</a>
           <a href="#unitplan" class="hero-action-link">층별 안내</a>
@@ -433,105 +437,81 @@
   <section class="showroom-section id-section" id="showroom">
     <div class="container">
       <div style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;">
-        <span class="section-tag">프리미엄 쇼룸</span>
+        <span class="section-tag">쇼룸</span>
         <h2 class="section-title">비즈니스의 격을 높이는 <span>고품격 오피스 공간</span></h2>
         <p class="section-desc">생각공장 구로만의 독보적인 퀄리티와 디테일을 비교해보세요.</p>
       </div>
 
-      <div class="showroom-split-container animate-on-scroll">
-
-        <!-- Slider 1: Room Photos Group A -->
-        <div class="showroom-slider">
-          <div class="showroom-track" id="showroomTrack1">
-            <div class="showroom-slide active">
-              <div class="showroom-img-wrap">
-                <img src="assets/showroom/1-1.jpeg" alt="프리미엄 비즈니스 공간 1">
-                <div class="showroom-info">
-                  <h3>프리미엄 비즈니스 공간</h3>
-                  <p>업무 효율을 극대화하는 최적의 레이아웃</p>
-                </div>
-              </div>
-            </div>
-            <div class="showroom-slide">
-              <div class="showroom-img-wrap">
-                <img src="assets/showroom/2-1.jpeg" alt="프리미엄 비즈니스 공간 2">
-                <div class="showroom-info">
-                  <h3>채광이 뛰어난 쾌적한 오피스</h3>
-                  <p>탁 트인 개방감과 넉넉한 층고</p>
-                </div>
-              </div>
-            </div>
-            <div class="showroom-slide">
-              <div class="showroom-img-wrap">
-                <img src="assets/showroom/3-1.jpeg" alt="프리미엄 비즈니스 공간 3">
-                <div class="showroom-info">
-                  <h3>혁신적인 업무 환경</h3>
-                  <p>스마트한 비즈니스를 위한 완벽한 공간</p>
-                </div>
+      <div class="showroom-slider animate-on-scroll">
+        <div class="showroom-track" id="showroomTrack1">
+          <div class="showroom-slide active">
+            <div class="showroom-img-wrap">
+              <img src="assets/showroom/1-1.jpeg" alt="프리미엄 비즈니스 공간 1">
+              <div class="showroom-info">
+                <h3>프리미엄 비즈니스 공간</h3>
+                <p>업무 효율을 극대화하는 최적의 레이아웃</p>
               </div>
             </div>
           </div>
-          <div class="showroom-controls">
-            <button class="control-btn" id="prevShowroomBtn1" aria-label="이전 쇼룸 보기">
-              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <button class="control-btn" id="nextShowroomBtn1" aria-label="다음 쇼룸 보기">
-              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
+          <div class="showroom-slide">
+            <div class="showroom-img-wrap">
+              <img src="assets/showroom/1-2.jpeg" alt="스마트 섹션 오피스 1">
+              <div class="showroom-info">
+                <h3>맞춤형 섹션 오피스</h3>
+                <p>기업 규모에 맞게 활용 가능한 유연한 구조</p>
+              </div>
+            </div>
           </div>
-          <div class="showroom-dots" id="showroomDots1"></div>
+          <div class="showroom-slide">
+            <div class="showroom-img-wrap">
+              <img src="assets/showroom/2-1.jpeg" alt="프리미엄 비즈니스 공간 2">
+              <div class="showroom-info">
+                <h3>채광이 뛰어난 쾌적한 오피스</h3>
+                <p>탁 트인 개방감과 넉넉한 층고</p>
+              </div>
+            </div>
+          </div>
+          <div class="showroom-slide">
+            <div class="showroom-img-wrap">
+              <img src="assets/showroom/2-2.jpeg" alt="스마트 섹션 오피스 2">
+              <div class="showroom-info">
+                <h3>모던하고 세련된 인테리어</h3>
+                <p>성공을 부르는 품격 있는 공간 디자인</p>
+              </div>
+            </div>
+          </div>
+          <div class="showroom-slide">
+            <div class="showroom-img-wrap">
+              <img src="assets/showroom/3-1.jpeg" alt="프리미엄 비즈니스 공간 3">
+              <div class="showroom-info">
+                <h3>혁신적인 업무 환경</h3>
+                <p>스마트한 비즈니스를 위한 완벽한 공간</p>
+              </div>
+            </div>
+          </div>
+          <div class="showroom-slide">
+            <div class="showroom-img-wrap">
+              <img src="assets/showroom/3-2.jpeg" alt="스마트 섹션 오피스 3">
+              <div class="showroom-info">
+                <h3>업무와 휴식의 조화</h3>
+                <p>영감을 불어넣는 트렌디한 공간 구성</p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- Slider 2: Room Photos Group B -->
-        <div class="showroom-slider delay-100">
-          <div class="showroom-track" id="showroomTrack2">
-            <div class="showroom-slide active">
-              <div class="showroom-img-wrap">
-                <img src="assets/showroom/1-2.jpeg" alt="스마트 섹션 오피스 1">
-                <div class="showroom-info">
-                  <h3>맞춤형 섹션 오피스</h3>
-                  <p>기업 규모에 맞게 활용 가능한 유연한 구조</p>
-                </div>
-              </div>
-            </div>
-            <div class="showroom-slide">
-              <div class="showroom-img-wrap">
-                <img src="assets/showroom/2-2.jpeg" alt="스마트 섹션 소피스 2">
-                <div class="showroom-info">
-                  <h3>모던하고 세련된 인테리어</h3>
-                  <p>성공을 부르는 품격 있는 공간 디자인</p>
-                </div>
-              </div>
-            </div>
-            <div class="showroom-slide">
-              <div class="showroom-img-wrap">
-                <img src="assets/showroom/3-2.jpeg" alt="스마트 섹션 오피스 3">
-                <div class="showroom-info">
-                  <h3>업무와 휴식의 조화</h3>
-                  <p>영감을 불어넣는 트렌디한 공간 구성</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="showroom-controls">
-            <button class="control-btn" id="prevShowroomBtn2" aria-label="이전 쇼룸 보기">
-              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <button class="control-btn" id="nextShowroomBtn2" aria-label="다음 쇼룸 보기">
-              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
-          <div class="showroom-dots" id="showroomDots2"></div>
+        <div class="showroom-controls">
+          <button class="control-btn" id="prevShowroomBtn1" aria-label="이전 쇼룸 보기">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="control-btn" id="nextShowroomBtn1" aria-label="다음 쇼룸 보기">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
-
+        <div class="showroom-dots" id="showroomDots1"></div>
       </div>
     </div>
   </section>

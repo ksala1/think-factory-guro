@@ -2089,19 +2089,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = dotsContainer ? dotsContainer.querySelectorAll('.showroom-dot') : [];
     
     function goToSlide(index) {
-      if (index < 0) index = totalSlides - 1;
-      if (index >= totalSlides) index = 0;
+      const isMobile = window.innerWidth <= 768;
+      const slideWidth = isMobile ? 100 : 50;
+      const maxIndex = isMobile ? totalSlides - 1 : totalSlides - 2;
+      
+      if (index < 0) index = maxIndex;
+      if (index > maxIndex) index = 0;
       
       currentSlide = index;
       
-      // In the dual slider layout, each slider shows exactly 1 slide (100% width)
-      track.style.transform = `translateX(${currentSlide * -100}%)`;
+      track.style.transform = `translateX(${currentSlide * -slideWidth}%)`;
       
       slides.forEach(s => s.classList.remove('active'));
       if(dots.length > 0) dots.forEach(d => d.classList.remove('active'));
       
       slides[currentSlide].classList.add('active');
-      if(dots.length > 0) dots[currentSlide].classList.add('active');
+      if(dots.length > 0 && dots[currentSlide]) dots[currentSlide].classList.add('active');
     }
     
     prevBtn.addEventListener('click', () => {
@@ -2116,10 +2119,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => {
       goToSlide(currentSlide + 1);
     }, autoPlayDelay);
+    
+    // Handle resize
+    window.addEventListener('resize', () => {
+      goToSlide(currentSlide);
+    });
   }
 
-  // Initialize both sliders with slightly different auto-play delays so they don't sync perfectly
+  // Initialize slider
   initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
-  initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
 
 });
