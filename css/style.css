@@ -3900,3 +3900,16 @@ footer {
     font-size: 0.95rem;
   }
 }
+
+.hero-main-logo {
+  max-width: 100%;
+  width: 450px;
+  height: auto;
+  margin-bottom: 2rem;
+  display: block;
+}
+@media (max-width: 768px) {
+  .hero-main-logo {
+    width: 280px;
+  }
+}
