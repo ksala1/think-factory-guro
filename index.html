@@ -33,7 +33,7 @@
       </nav>
 
       <div class="nav-cta">
-        <a href="tel:02-6745-6111" class="promo-cta-btn" id="promoCtaBtn"
+        <a href="tel:02-6745-6111" class="notice-cta-btn" id="noticeCtaBtn"
           style="text-decoration: none; box-sizing: border-box;">
           <span>전화문의</span>
         </a>
@@ -750,7 +750,7 @@
               <div style="display: flex; gap: 0.5rem; align-items: stretch;">
                 <textarea id="commentText" placeholder="댓글 내용을 남겨주세요..." required
                   style="flex: 1; height: 44px; min-height: 44px; max-height: 100px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border); color: #fff; font-size: 0.82rem; padding: 0.5rem 0.6rem; border-radius: 4px; box-sizing: border-box; font-family: var(--font-sans-kr); resize: none;"></textarea>
-                <button type="submit" class="promo-cta-btn"
+                <button type="submit" class="notice-cta-btn"
                   style="width: auto; padding: 0 1rem; font-size: 0.82rem; height: 44px; border-radius: 4px; cursor: pointer; flex-shrink: 0; box-shadow: none;">등록</button>
               </div>
             </form>
@@ -763,21 +763,21 @@
     <!-- ==========================================
        특별분양 프로모션 팝업창 (Promo Popup)
        ========================================== -->
-    <div class="promo-popup-backdrop" id="promoPopupBackdrop">
-      <div class="promo-popup-container">
-        <button class="promo-popup-close-btn" id="closePromoBtn" aria-label="팝업 닫기">
+    <div class="notice-modal-backdrop" id="noticeBackdrop">
+      <div class="notice-modal-container">
+        <button class="notice-modal-close-btn" id="closeNoticeBtn" aria-label="팝업 닫기">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-        <div class="promo-popup-header">
-          <span class="promo-badge">SPECIAL PROMOTION</span>
+        <div class="notice-modal-header">
+          <span class="notice-badge">SPECIAL PROMOTION</span>
           <h2 style="font-size: 1.8rem; margin-top: 0.5rem; color: var(--primary-color);">생각공장 구로 전매특가</h2>
         </div>
-        <div class="promo-popup-body">
-          <div class="promo-benefits-list">
-            <div class="promo-benefit-item" style="align-items: center; margin-bottom: 1rem;">
+        <div class="notice-modal-body">
+          <div class="notice-benefits-list">
+            <div class="notice-benefit-item" style="align-items: center; margin-bottom: 1rem;">
               <div class="benefit-icon"
                 style="background: rgba(212, 175, 55, 0.2); color: var(--primary-color); border: 1px solid var(--primary-color);">
                 특가</div>
@@ -785,7 +785,7 @@
                 <h4 style="font-size: 1.3rem; margin: 0;">생각공장 구로 전매특가</h4>
               </div>
             </div>
-            <div class="promo-benefit-item" style="align-items: center; margin-bottom: 1rem;">
+            <div class="notice-benefit-item" style="align-items: center; margin-bottom: 1rem;">
               <div class="benefit-icon"
                 style="background: rgba(212, 175, 55, 0.2); color: var(--primary-color); border: 1px solid var(--primary-color);">
                 가격</div>
@@ -793,7 +793,7 @@
                 <h4 style="font-size: 1.3rem; margin: 0;">평당 1300만원부터</h4>
               </div>
             </div>
-            <div class="promo-benefit-item" style="align-items: center;">
+            <div class="notice-benefit-item" style="align-items: center;">
               <div class="benefit-icon"
                 style="background: rgba(220, 53, 69, 0.2); color: #ff6b6b; border: 1px solid #ff6b6b;">한정</div>
               <div class="benefit-details">
@@ -802,7 +802,7 @@
             </div>
           </div>
 
-          <a href="tel:010-3329-1252" class="promo-cta-btn" id="promoCtaBtn"
+          <a href="tel:010-3329-1252" class="notice-cta-btn" id="noticeCtaBtn"
             style="text-decoration: none; box-sizing: border-box;">
             <span>즉시 문의 (전화 연결)</span>
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
@@ -811,13 +811,13 @@
             </svg>
           </a>
         </div>
-        <div class="promo-popup-footer">
+        <div class="notice-modal-footer">
           <label class="promo-checkbox-label">
-            <input type="checkbox" id="promoHideTodayCheckbox">
+            <input type="checkbox" id="noticeHideTodayCheckbox">
             <span class="checkbox-custom"></span>
             <span>오늘 하루 보지 않기</span>
           </label>
-          <button class="promo-text-close-btn" id="closePromoTextBtn">닫기</button>
+          <button class="promo-text-close-btn" id="closeNoticeTextBtn">닫기</button>
         </div>
       </div>
     </div>
