@@ -3745,6 +3745,20 @@ footer {
   overflow: hidden;
 }
 
+
+.showroom-split-container {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.showroom-split-container .showroom-slider {
+  flex: 1;
+  min-width: 0;
+}
+
 .showroom-slider {
   position: relative;
   width: 100%;
@@ -3870,8 +3884,14 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .showroom-split-container {
+    flex-direction: column;
+    gap: 30px;
+  }
   .showroom-img-wrap {
-    height: 50vh;
+    height: 45vh;
+    min-height: 300px;
+    max-height: 450px;
   }
   .showroom-info h3 {
     font-size: 1.5rem;

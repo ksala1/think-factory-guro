@@ -28,7 +28,7 @@
         <a href="#concept">브랜드 소개</a>
         <a href="#explorer">공간 탐색</a>
         <a href="#unitplan">층별 안내</a>
-        <a href="#호실상세보기">호실 상세보기</a>
+        <!-- <a href="#호실상세보기">호실 상세보기</a> -->
         <a href="tel:010-3329-1252" class="mobile-menu-cta">전화문의</a>
       </nav>
 
@@ -55,9 +55,7 @@
     <div class="hero-video-container">
       <!-- Premium Local Drone Video Background -->
       <video autoplay muted loop playsinline id="heroVideo">
-        <source
-          src="https://www.dropbox.com/scl/fi/dia1kjgmpsj6xr7mpzufy/.mp4?rlkey=0sb7un93izav881ib4bfnn36q&st=er8q2jl4&raw=1&v=5.4"
-          type="video/mp4">
+        <source src="assets/main-hero.mp4" type="video/mp4">
       </video>
     </div>
 
@@ -113,7 +111,7 @@
 
           <div class="booking-actions">
             <button type="submit" class="booking-btn-primary">상담 예약</button>
-            <a href="#호실상세보기" class="booking-btn-secondary">호실 상세보기</a>
+            <a href="#showroom" class="booking-btn-secondary">프리미엄 쇼룸</a>
           </div>
         </form>
       </div>
@@ -149,7 +147,7 @@
       <div class="concept-grid">
         <div class="concept-media animate-on-scroll">
           <!-- Desktop Static Image -->
-          <img src="assets/facade.png" alt="생각공장 구로 건물 외관" class="concept-desktop-image">
+          <img src="assets/showroom/facade.png" alt="생각공장 구로 건물 외관" class="concept-desktop-image">
 
           <!-- Mobile Autoplay Video (Method 1) -->
           <video autoplay muted loop playsinline class="concept-mobile-video"
@@ -244,7 +242,7 @@
           <!-- Card 1: Lobby -->
           <div class="explorer-card">
             <div class="card-media">
-              <img src="assets/lobby.png" alt="그랜드 로비">
+              <img src="assets/showroom/lobby.png" alt="그랜드 로비">
             </div>
             <div class="card-body">
               <h3>호텔식 서비스가 시작되는 그랜드 로비</h3>
@@ -435,134 +433,110 @@
 
 
   <!-- ==========================================
-       8. 호실 상세보기 SECTION (임대 매칭 확인)
+       8. 프리미엄 쇼룸 갤러리 (SHOWROOM GALLERY)
        ========================================== -->
-  <section class="호실상세보기-section id-section" id="호실상세보기">
+  <section class="showroom-section id-section" id="showroom">
     <div class="container">
-      <div style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 4rem;">
-        <span class="section-tag">호실 상세보기</span>
-        <h2 class="section-title">내 조건에 맞는 <span>실시간 호실 상세보기</span></h2>
-        <p class="section-desc">알맞은 호실을 찾기 위해 정보를 분석하여 실물 사진과 면적 정보를 매칭합니다.</p>
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;">
+        <span class="section-tag">프리미엄 쇼룸</span>
+        <h2 class="section-title">비즈니스의 격을 높이는 <span>고품격 오피스 공간</span></h2>
+        <p class="section-desc">생각공장 구로만의 독보적인 퀄리티와 디테일을 비교해보세요.</p>
       </div>
 
-      <div class="호실상세보기-widget-grid">
-        <!-- Left Column: 생각공장 공식 임대 분석 Status Card -->
-        <div class="status-card-container animate-on-scroll">
-          <div class="status-card">
-            <div class="status-header">
-              <div class="brand-logo">
-                <span><strong>생각공장</strong> 임대 조건 분석</span>
-              </div>
-              <div id="companyStatus"
-                style="font-size: 0.82rem; margin-top: 0.6rem; color: hsl(36, 43%, 56%); font-weight: 600; display: none;">
-              </div>
-            </div>
-
-            <div class="metrics-grid">
-              <div class="metric-item">
-                <span class="metric-label">희망 월 임대료</span>
-                <span class="metric-value" id="valTargetRent">₩ --</span>
-              </div>
-
-              <div class="metric-item">
-                <span class="metric-label">권장 보증금 한도</span>
-                <span class="metric-value" id="valDepositLimit">₩ --</span>
-              </div>
-
-              <div class="metric-item full-width-divider"></div>
-
-              <div class="metric-item">
-                <span class="metric-label">추천 평형 규모</span>
-                <span class="metric-value" id="valRecArea">-- <span class="sub-unit">평</span></span>
-              </div>
-
-              <div class="metric-item">
-                <span class="metric-label">매칭 호실 수</span>
-                <span class="metric-value" id="valRecMatchCount">-- <span class="sub-unit">개호실</span></span>
+      <div class="showroom-split-container animate-on-scroll">
+        
+        <!-- Slider 1: Room Photos Group A -->
+        <div class="showroom-slider">
+          <div class="showroom-track" id="showroomTrack1">
+            <div class="showroom-slide active">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/1-1.jpeg" alt="프리미엄 비즈니스 공간 1">
+                <div class="showroom-info">
+                  <h3>프리미엄 비즈니스 공간</h3>
+                  <p>업무 효율을 극대화하는 최적의 레이아웃</p>
+                </div>
               </div>
             </div>
-
-            <button class="btn-primary-호실상세보기" id="openModalBtn">
-              <span>내 입주 조건 확인하기</span>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/2-1.jpeg" alt="프리미엄 비즈니스 공간 2">
+                <div class="showroom-info">
+                  <h3>채광이 뛰어난 쾌적한 오피스</h3>
+                  <p>탁 트인 개방감과 넉넉한 층고</p>
+                </div>
+              </div>
+            </div>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/3-1.jpeg" alt="프리미엄 비즈니스 공간 3">
+                <div class="showroom-info">
+                  <h3>혁신적인 업무 환경</h3>
+                  <p>스마트한 비즈니스를 위한 완벽한 공간</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="showroom-controls">
+            <button class="control-btn" id="prevShowroomBtn1" aria-label="이전 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="control-btn" id="nextShowroomBtn1" aria-label="다음 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
             </button>
           </div>
+          <div class="showroom-dots" id="showroomDots1"></div>
         </div>
 
-        <!-- Right Column: 5 Property Cards using assets/호실사진 -->
-        <div class="listings-wrapper animate-on-scroll delay-100">
-          <button class="nav-arrow prev" id="listingsPrevBtn" aria-label="이전 추천 호실">
-            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-
-          <div class="listings-container" id="listingsContainer">
-            <!-- Dynamically populated via js/main.js -->
-            <div class="property-card locked">
-              <div class="image-wrapper" style="background:#222; height:200px;"></div>
-              <div class="property-details">
-                <div class="skeleton-group">
-                  <div class="skeleton skeleton-title"></div>
-                  <div class="skeleton skeleton-text-short"></div>
-                  <div class="skeleton skeleton-text-long"></div>
-                  <div class="skeleton skeleton-text-pill"></div>
+        <!-- Slider 2: Room Photos Group B -->
+        <div class="showroom-slider delay-100">
+          <div class="showroom-track" id="showroomTrack2">
+            <div class="showroom-slide active">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/1-2.jpeg" alt="스마트 섹션 오피스 1">
+                <div class="showroom-info">
+                  <h3>맞춤형 섹션 오피스</h3>
+                  <p>기업 규모에 맞게 활용 가능한 유연한 구조</p>
                 </div>
               </div>
             </div>
-            <div class="property-card locked">
-              <div class="image-wrapper" style="background:#222; height:200px;"></div>
-              <div class="property-details">
-                <div class="skeleton-group">
-                  <div class="skeleton skeleton-title"></div>
-                  <div class="skeleton skeleton-text-short"></div>
-                  <div class="skeleton skeleton-text-long"></div>
-                  <div class="skeleton skeleton-text-pill"></div>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/2-2.jpeg" alt="스마트 섹션 소피스 2">
+                <div class="showroom-info">
+                  <h3>모던하고 세련된 인테리어</h3>
+                  <p>성공을 부르는 품격 있는 공간 디자인</p>
                 </div>
               </div>
             </div>
-            <div class="property-card locked">
-              <div class="image-wrapper" style="background:#222; height:200px;"></div>
-              <div class="property-details">
-                <div class="skeleton-group">
-                  <div class="skeleton skeleton-title"></div>
-                  <div class="skeleton skeleton-text-short"></div>
-                  <div class="skeleton skeleton-text-long"></div>
-                  <div class="skeleton skeleton-text-pill"></div>
-                </div>
-              </div>
-            </div>
-            <div class="property-card locked">
-              <div class="image-wrapper" style="background:#222; height:200px;"></div>
-              <div class="property-details">
-                <div class="skeleton-group">
-                  <div class="skeleton skeleton-title"></div>
-                  <div class="skeleton skeleton-text-short"></div>
-                  <div class="skeleton skeleton-text-long"></div>
-                  <div class="skeleton skeleton-text-pill"></div>
-                </div>
-              </div>
-            </div>
-            <div class="property-card locked">
-              <div class="image-wrapper" style="background:#222; height:200px;"></div>
-              <div class="property-details">
-                <div class="skeleton-group">
-                  <div class="skeleton skeleton-title"></div>
-                  <div class="skeleton skeleton-text-short"></div>
-                  <div class="skeleton skeleton-text-long"></div>
-                  <div class="skeleton skeleton-text-pill"></div>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/3-2.jpeg" alt="스마트 섹션 오피스 3">
+                <div class="showroom-info">
+                  <h3>업무와 휴식의 조화</h3>
+                  <p>영감을 불어넣는 트렌디한 공간 구성</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <button class="nav-arrow next" id="listingsNextBtn" aria-label="다음 추천 호실">
-            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
+          <div class="showroom-controls">
+            <button class="control-btn" id="prevShowroomBtn2" aria-label="이전 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="control-btn" id="nextShowroomBtn2" aria-label="다음 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+          <div class="showroom-dots" id="showroomDots2"></div>
         </div>
+
       </div>
     </div>
   </section>
@@ -587,7 +561,7 @@
               <li><a href="#concept">브랜드 철학</a></li>
               <li><a href="#explorer">공간 갤러리</a></li>
               <li><a href="#unitplan">층별 유닛 배치</a></li>
-              <li><a href="#호실상세보기">호실 상세보기</a></li>
+              <li><!-- <a href="#호실상세보기">호실 상세보기</a> --></li>
             </ul>
           </div>
 
@@ -609,7 +583,7 @@
     </div>
   </footer>
 
-  <!-- ==========================================
+\n<div id="archived-room-details" style="display: none;">\n  <!-- ==========================================
        9. 호실 상세보기 MODAL
        ========================================== -->
   <div class="modal-backdrop" id="modalBackdrop">
@@ -824,23 +798,26 @@
       </button>
       <div class="promo-popup-header">
         <span class="promo-badge">SPECIAL PROMOTION</span>
-        <h2>생각공장 구로 특별전매</h2>
-        <p class="promo-subtitle">구일역 초역세권 프리미엄 비즈니스의 시작</p>
+        <h2 style="font-size: 1.8rem; margin-top: 0.5rem; color: var(--primary-color);">생각공장 구로 전매특가</h2>
       </div>
       <div class="promo-popup-body">
         <div class="promo-benefits-list">
-          <div class="promo-benefit-item">
-            <div class="benefit-icon">10%</div>
+          <div class="promo-benefit-item" style="align-items: center; margin-bottom: 1rem;">
+            <div class="benefit-icon" style="background: rgba(212, 175, 55, 0.2); color: var(--primary-color); border: 1px solid var(--primary-color);">특가</div>
             <div class="benefit-details">
-              <h4>기존 분양가2400 에서 1500만원까지 파격 조건 </h4>
-              <p>초기 자금 부담을 최소화한 합리적 계약 조건</p>
+              <h4 style="font-size: 1.3rem; margin: 0;">생각공장 구로 전매특가</h4>
             </div>
           </div>
-          <div class="promo-benefit-item">
-            <div class="benefit-icon">무이자</div>
+          <div class="promo-benefit-item" style="align-items: center; margin-bottom: 1rem;">
+            <div class="benefit-icon" style="background: rgba(212, 175, 55, 0.2); color: var(--primary-color); border: 1px solid var(--primary-color);">가격</div>
             <div class="benefit-details">
-              <h4>한시적 급매물!</h4>
-              <p>14억 -> 10억 가격인하!</p>
+              <h4 style="font-size: 1.3rem; margin: 0;">평당 1300만원부터</h4>
+            </div>
+          </div>
+          <div class="promo-benefit-item" style="align-items: center;">
+            <div class="benefit-icon" style="background: rgba(220, 53, 69, 0.2); color: #ff6b6b; border: 1px solid #ff6b6b;">한정</div>
+            <div class="benefit-details">
+              <h4 style="font-size: 1.3rem; margin: 0; color: #ff6b6b;">선착순 한정호실</h4>
             </div>
           </div>
         </div>
@@ -957,7 +934,7 @@
       </div>
     </div>
   </div>
-  <script>
+\n</div>\n\n  <script>
     // Floor Plan Modal functions defined directly in index.html to guarantee execution
     function openFloorPlanModal(imgSrc, titleText) {
       const floorPlanModal = document.getElementById('floorPlanModalBackdrop');
