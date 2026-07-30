@@ -1872,18 +1872,26 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Helper to set cookie expiring at midnight (KST/Local time midnight)
   function setPromoCookieAtMidnight(name, value) {
-    const date = new Date();
-    date.setHours(24, 0, 0, 0); // Local midnight
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+    try {
+      const date = new Date();
+      date.setHours(24, 0, 0, 0); // Local midnight
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+    } catch(e) {
+      console.warn("Cookies are not available");
+    }
   }
 
   // Helper to get cookie
   function getPromoCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
+    try {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    } catch(e) {
+      return null;
+    }
   }
 
   // Helper to set localStorage with expiration
@@ -1918,50 +1926,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const promoBackdrop = document.getElementById('promoPopupBackdrop');
-  const closePromoBtn = document.getElementById('closePromoBtn');
-  const closePromoTextBtn = document.getElementById('closePromoTextBtn');
-  const promoCtaBtn = document.getElementById('promoCtaBtn');
-  const promoCheckbox = document.getElementById('promoHideTodayCheckbox');
+  const noticeBackdrop = document.getElementById('noticeBackdrop');
+  const closeNoticeBtn = document.getElementById('closeNoticeBtn');
+  const closeNoticeTextBtn = document.getElementById('closeNoticeTextBtn');
+  const noticeCtaBtn = document.getElementById('noticeCtaBtn');
+  const promoCheckbox = document.getElementById('noticeHideTodayCheckbox');
 
-  if (promoBackdrop) {
-    const hideCookie = getPromoCookie('hidePromoPopup');
-    const hideLocal = getPromoLocalStorage('hidePromoPopup');
+  if (noticeBackdrop) {
+    const hideCookie = getPromoCookie('hideNoticeModal');
+    const hideLocal = getPromoLocalStorage('hideNoticeModal');
 
     // Show popup only if user did not opt out today
     if (!hideCookie && !hideLocal) {
       setTimeout(() => {
-        promoBackdrop.classList.add('show');
+        noticeBackdrop.classList.add('show');
         document.body.style.overflow = 'hidden';
       }, 1200);
     }
 
     const closePopup = () => {
       if (promoCheckbox && promoCheckbox.checked) {
-        setPromoCookieAtMidnight('hidePromoPopup', 'true');
-        setPromoLocalStorageAtMidnight('hidePromoPopup', 'true');
+        setPromoCookieAtMidnight('hideNoticeModal', 'true');
+        setPromoLocalStorageAtMidnight('hideNoticeModal', 'true');
       }
-      promoBackdrop.classList.remove('show');
+      noticeBackdrop.classList.remove('show');
       document.body.style.overflow = '';
     };
 
-    if (closePromoBtn) {
-      closePromoBtn.addEventListener('click', closePopup);
+    if (closeNoticeBtn) {
+      closeNoticeBtn.addEventListener('click', closePopup);
     }
-    if (closePromoTextBtn) {
-      closePromoTextBtn.addEventListener('click', closePopup);
+    if (closeNoticeTextBtn) {
+      closeNoticeTextBtn.addEventListener('click', closePopup);
     }
 
     // Close when clicking the outer backdrop
-    promoBackdrop.addEventListener('click', (e) => {
-      if (e.target === promoBackdrop) {
+    noticeBackdrop.addEventListener('click', (e) => {
+      if (e.target === noticeBackdrop) {
         closePopup();
       }
     });
 
     // CTA: close popup on click
-    if (promoCtaBtn) {
-      promoCtaBtn.addEventListener('click', () => {
+    if (noticeCtaBtn) {
+      noticeCtaBtn.addEventListener('click', () => {
         closePopup();
       });
     }

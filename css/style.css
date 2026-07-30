@@ -3026,7 +3026,7 @@ footer {
 /* ==========================================
    특별분양 프로모션 팝업창 (Promo Popup) Styles
    ========================================== */
-.promo-popup-backdrop {
+.notice-modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -3045,12 +3045,12 @@ footer {
   padding: 1.5rem;
 }
 
-.promo-popup-backdrop.show {
+.notice-modal-backdrop.show {
   opacity: 1;
   pointer-events: auto;
 }
 
-.promo-popup-container {
+.notice-modal-container {
   background: linear-gradient(135deg, #141414 0%, #202020 100%);
   border: 1.5px solid hsl(36, 43%, 45%);
   border-radius: 8px;
@@ -3063,7 +3063,7 @@ footer {
   box-sizing: border-box;
 }
 
-.promo-popup-close-btn {
+.notice-modal-close-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -3079,17 +3079,17 @@ footer {
   z-index: 11;
 }
 
-.promo-popup-close-btn:hover {
+.notice-modal-close-btn:hover {
   color: hsl(36, 43%, 56%);
   transform: rotate(90deg);
 }
 
-.promo-popup-header {
+.notice-modal-header {
   text-align: center;
   margin-bottom: 1.8rem;
 }
 
-.promo-badge {
+.notice-badge {
   font-family: var(--font-sans-en);
   font-size: 0.75rem;
   font-weight: 600;
@@ -3101,7 +3101,7 @@ footer {
   padding-bottom: 0.2rem;
 }
 
-.promo-popup-header h2 {
+.notice-modal-header h2 {
   font-family: var(--font-serif-kr);
   font-size: 1.6rem;
   font-weight: 500;
@@ -3118,14 +3118,14 @@ footer {
   font-weight: 300;
 }
 
-.promo-benefits-list {
+.notice-benefits-list {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
   margin-bottom: 1.8rem;
 }
 
-.promo-benefit-item {
+.notice-benefit-item {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -3136,7 +3136,7 @@ footer {
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.promo-benefit-item:hover {
+.notice-benefit-item:hover {
   background: rgba(197, 160, 105, 0.03);
   border-color: rgba(197, 160, 105, 0.2);
 }
@@ -3180,7 +3180,7 @@ footer {
   line-height: 1.4;
 }
 
-.promo-cta-btn {
+.notice-cta-btn {
   width: 100%;
   background: hsl(36, 43%, 56%);
   color: #111;
@@ -3199,21 +3199,21 @@ footer {
   box-shadow: 0 4px 15px rgba(197, 160, 105, 0.2);
 }
 
-.promo-cta-btn:hover {
+.notice-cta-btn:hover {
   background: hsl(36, 43%, 62%);
   box-shadow: 0 6px 20px rgba(197, 160, 105, 0.35);
   transform: translateY(-1px);
 }
 
-.promo-cta-btn svg {
+.notice-cta-btn svg {
   transition: transform 0.2s ease;
 }
 
-.promo-cta-btn:hover svg {
+.notice-cta-btn:hover svg {
   transform: translateX(4px);
 }
 
-.promo-popup-footer {
+.notice-modal-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3289,10 +3289,10 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .promo-popup-container {
+  .notice-modal-container {
     padding: 1.8rem 1.3rem 1.1rem;
   }
-  .promo-popup-header h2 {
+  .notice-modal-header h2 {
     font-size: 1.4rem;
   }
   .benefit-icon {
@@ -3306,7 +3306,7 @@ footer {
   .benefit-details p {
     font-size: 0.72rem;
   }
-  .promo-cta-btn {
+  .notice-cta-btn {
     padding: 0.9rem;
     font-size: 0.88rem;
   }
