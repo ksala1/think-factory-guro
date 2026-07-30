@@ -1938,10 +1938,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show popup only if user did not opt out today
     if (!hideCookie && !hideLocal) {
-      setTimeout(() => {
-        noticeBackdrop.classList.add('show');
-        document.body.style.overflow = 'hidden';
-      }, 1200);
+      noticeBackdrop.classList.add('show');
+      document.body.style.overflow = 'hidden';
     }
 
     const closePopup = () => {
