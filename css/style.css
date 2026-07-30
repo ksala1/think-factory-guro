@@ -3754,6 +3754,11 @@ footer {
   margin: 0 auto;
 }
 
+.showroom-split-container .showroom-slider {
+  flex: 1;
+  min-width: 0;
+}
+
 .showroom-slider {
   position: relative;
   width: 100%;
@@ -3770,8 +3775,8 @@ footer {
 }
 
 .showroom-slide {
-  flex: 0 0 50%;
-  width: 50%;
+  flex: 0 0 100%;
+  width: 100%;
   position: relative;
 }
 

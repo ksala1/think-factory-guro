@@ -442,52 +442,76 @@
         <p class="section-desc">생각공장 구로만의 독보적인 퀄리티와 디테일을 비교해보세요.</p>
       </div>
 
-      <div class="showroom-slider animate-on-scroll">
-        <div class="showroom-track" id="showroomTrack1">
-          <div class="showroom-slide active">
-            <div class="showroom-img-wrap">
-              <img src="assets/showroom/1-1.jpeg" alt="프리미엄 비즈니스 공간 1">
+      <div class="showroom-split-container animate-on-scroll">
+
+        <!-- Slider 1: Room Photos Group A -->
+        <div class="showroom-slider">
+          <div class="showroom-track" id="showroomTrack1">
+            <div class="showroom-slide active">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/1-1.jpeg" alt="프리미엄 비즈니스 공간 1">
+              </div>
+            </div>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/2-1.jpeg" alt="프리미엄 비즈니스 공간 2">
+              </div>
+            </div>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/3-1.jpeg" alt="프리미엄 비즈니스 공간 3">
+              </div>
             </div>
           </div>
-          <div class="showroom-slide">
-            <div class="showroom-img-wrap">
-              <img src="assets/showroom/1-2.jpeg" alt="스마트 섹션 오피스 1">
-            </div>
+          <div class="showroom-controls">
+            <button class="control-btn" id="prevShowroomBtn1" aria-label="이전 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="control-btn" id="nextShowroomBtn1" aria-label="다음 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
-          <div class="showroom-slide">
-            <div class="showroom-img-wrap">
-              <img src="assets/showroom/2-1.jpeg" alt="프리미엄 비즈니스 공간 2">
-            </div>
-          </div>
-          <div class="showroom-slide">
-            <div class="showroom-img-wrap">
-              <img src="assets/showroom/2-2.jpeg" alt="스마트 섹션 오피스 2">
-            </div>
-          </div>
-          <div class="showroom-slide">
-            <div class="showroom-img-wrap">
-              <img src="assets/showroom/3-1.jpeg" alt="프리미엄 비즈니스 공간 3">
-            </div>
-          </div>
-          <div class="showroom-slide">
-            <div class="showroom-img-wrap">
-              <img src="assets/showroom/3-2.jpeg" alt="스마트 섹션 오피스 3">
-            </div>
-          </div>
+          <div class="showroom-dots" id="showroomDots1"></div>
         </div>
-        <div class="showroom-controls">
-          <button class="control-btn" id="prevShowroomBtn1" aria-label="이전 쇼룸 보기">
-            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          <button class="control-btn" id="nextShowroomBtn1" aria-label="다음 쇼룸 보기">
-            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
+
+        <!-- Slider 2: Room Photos Group B -->
+        <div class="showroom-slider delay-100">
+          <div class="showroom-track" id="showroomTrack2">
+            <div class="showroom-slide active">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/1-2.jpeg" alt="스마트 섹션 오피스 1">
+              </div>
+            </div>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/2-2.jpeg" alt="스마트 섹션 오피스 2">
+              </div>
+            </div>
+            <div class="showroom-slide">
+              <div class="showroom-img-wrap">
+                <img src="assets/showroom/3-2.jpeg" alt="스마트 섹션 오피스 3">
+              </div>
+            </div>
+          </div>
+          <div class="showroom-controls">
+            <button class="control-btn" id="prevShowroomBtn2" aria-label="이전 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button class="control-btn" id="nextShowroomBtn2" aria-label="다음 쇼룸 보기">
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+          <div class="showroom-dots" id="showroomDots2"></div>
         </div>
-        <div class="showroom-dots" id="showroomDots1"></div>
+
       </div>
     </div>
   </section>
