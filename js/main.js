@@ -2089,16 +2089,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = dotsContainer ? dotsContainer.querySelectorAll('.showroom-dot') : [];
     
     function goToSlide(index) {
-      const isMobile = window.innerWidth <= 768;
-      const slideWidth = isMobile ? 100 : 50;
-      const maxIndex = isMobile ? totalSlides - 1 : totalSlides - 2;
-      
-      if (index < 0) index = maxIndex;
-      if (index > maxIndex) index = 0;
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
       
       currentSlide = index;
       
-      track.style.transform = `translateX(${currentSlide * -slideWidth}%)`;
+      track.style.transform = `translateX(${currentSlide * -100}%)`;
       
       slides.forEach(s => s.classList.remove('active'));
       if(dots.length > 0) dots.forEach(d => d.classList.remove('active'));
@@ -2119,14 +2115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => {
       goToSlide(currentSlide + 1);
     }, autoPlayDelay);
-    
-    // Handle resize
-    window.addEventListener('resize', () => {
-      goToSlide(currentSlide);
-    });
   }
 
-  // Initialize slider
+  // Initialize both sliders with slightly different auto-play delays so they don't sync perfectly
   initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
+  initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
 
 });
