@@ -1888,20 +1888,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Helper to set localStorage with expiration
   function setPromoLocalStorageAtMidnight(key, value) {
-    const date = new Date();
-    date.setHours(24, 0, 0, 0);
-    const item = {
-      value: value,
-      expiry: date.getTime()
-    };
-    localStorage.setItem(key, JSON.stringify(item));
+    try {
+      const date = new Date();
+      date.setHours(24, 0, 0, 0);
+      const item = {
+        value: value,
+        expiry: date.getTime()
+      };
+      localStorage.setItem(key, JSON.stringify(item));
+    } catch(e) {
+      console.warn("localStorage is not available");
+    }
   }
 
   // Helper to get localStorage with expiration check
   function getPromoLocalStorage(key) {
-    const itemStr = localStorage.getItem(key);
-    if (!itemStr) return null;
     try {
+      const itemStr = localStorage.getItem(key);
+      if (!itemStr) return null;
       const item = JSON.parse(itemStr);
       const now = new Date();
       if (now.getTime() > item.expiry) {
