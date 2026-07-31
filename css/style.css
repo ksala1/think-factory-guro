@@ -1784,29 +1784,11 @@ footer {
     grid-column: span 1;
   }
   
-  .footer-top {
-    flex-direction: column;
-    gap: 3rem;
-  }
-  
-  .footer-menu {
-    width: 100%;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
-  }
+
 }
 
 @media (max-width: 480px) {
-  .footer-menu {
-    flex-direction: column;
-    gap: 2.5rem;
-  }
+
   
   .slide-actions {
     flex-direction: column;
