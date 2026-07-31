@@ -181,12 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quickForm) {
     quickForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      // Smooth scroll to 호실상세보기 section
-      const showroomSection = document.getElementById('showroom');
-      if (showroomSection) {
-        showroomSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      // Show success popup and reset form
+      alert('예약이 완료되었습니다. 감사합니다.');
+      quickForm.reset();
     });
   }
 
