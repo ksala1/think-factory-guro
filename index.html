@@ -29,6 +29,7 @@
         <a href="#explorer">공간 탐색</a>
         <a href="#unitplan">층별 안내</a>
         <a href="#showroom">쇼룸</a>
+        <!-- <a href="#호실상세보기">호실 상세보기</a> -->
         <a href="tel:02-6745-6111" class="mobile-menu-cta">전화 문의</a>
       </nav>
 
@@ -539,6 +540,7 @@
               <li><a href="#explorer">공간 갤러리</a></li>
               <li><a href="#unitplan">층별 유닛 배치</a></li>
               <li><a href="#showroom">쇼룸</a></li>
+              <li><!-- <a href="#호실상세보기">호실 상세보기</a> --></li>
             </ul>
           </div>
 
@@ -560,6 +562,165 @@
     </div>
   </footer>
 
+  \n<div id="archived-room-details" style="display: none;">\n <!-- ==========================================
+       ========================================== -->
+    <div class="notice-modal-backdrop" id="noticeBackdrop">
+      <div class="notice-modal-container">
+        <button class="notice-modal-close-btn" id="closeNoticeBtn" aria-label="팝업 닫기">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="notice-modal-header">
+          <span class="notice-badge">SPECIAL PROMOTION</span>
+          <h2 style="font-size: 1.8rem; margin-top: 0.5rem; color: var(--primary-color);">생각공장 구로 전매특가</h2>
+        </div>
+        <div class="notice-modal-body">
+          <div class="notice-benefits-list">
+            <div class="notice-benefit-item" style="align-items: center; margin-bottom: 1rem;">
+              <div class="benefit-icon"
+                style="background: rgba(212, 175, 55, 0.2); color: var(--primary-color); border: 1px solid var(--primary-color);">
+                특가</div>
+              <div class="benefit-details">
+                <h4 style="font-size: 1.3rem; margin: 0;">생각공장 구로 전매특가</h4>
+              </div>
+            </div>
+            <div class="notice-benefit-item" style="align-items: center; margin-bottom: 1rem;">
+              <div class="benefit-icon"
+                style="background: rgba(212, 175, 55, 0.2); color: var(--primary-color); border: 1px solid var(--primary-color);">
+                가격</div>
+              <div class="benefit-details">
+                <h4 style="font-size: 1.3rem; margin: 0;">평당 1300만원부터</h4>
+              </div>
+            </div>
+            <div class="notice-benefit-item" style="align-items: center;">
+              <div class="benefit-icon"
+                style="background: rgba(220, 53, 69, 0.2); color: #ff6b6b; border: 1px solid #ff6b6b;">한정</div>
+              <div class="benefit-details">
+                <h4 style="font-size: 1.3rem; margin: 0; color: #ff6b6b;">선착순 한정호실</h4>
+              </div>
+            </div>
+          </div>
+
+          <a href="tel:010-3329-1252" class="notice-cta-btn" id="noticeCtaBtn"
+            style="text-decoration: none; box-sizing: border-box;">
+            <span>즉시 문의 (전화 연결)</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="notice-modal-footer">
+          <label class="promo-checkbox-label">
+            <input type="checkbox" id="noticeHideTodayCheckbox">
+            <span class="checkbox-custom"></span>
+            <span>오늘 하루 보지 않기</span>
+          </label>
+          <button class="promo-text-close-btn" id="closeNoticeTextBtn">닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+       개인정보처리방침 모달 (Privacy Policy Modal)
+       ========================================== -->
+    <div class="modal-backdrop" id="privacyPolicyModalBackdrop">
+      <div class="modal-window" style="max-width: 600px; background: #1a1a1a; border: 1px solid hsl(36, 43%, 45%);">
+        <button class="modal-close-btn" id="closePrivacyPolicyBtn" aria-label="닫기">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="modal-header-modal"
+          style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 1rem;">
+          <h2 style="font-family: var(--font-serif-kr); font-weight: 500; font-size: 1.6rem;">개인정보처리방침</h2>
+        </div>
+        <div class="modal-body-modal"
+          style="text-align: left; padding: 1.5rem 1rem 0.5rem; max-height: 400px; overflow-y: auto; font-family: var(--font-sans-kr); box-sizing: border-box; line-height: 1.6;">
+          <p style="font-size: 0.88rem; color: #fff; margin-top: 0; margin-bottom: 1.2rem;"><strong>생각공장 구로 특별분양
+              홍보관</strong>(이하 '회사'라 함)은 고객님의 개인정보를 중요시하며, "개인정보 보호법"을 준수하고 있습니다.</p>
+
+          <h4
+            style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">
+            1. 개인정보의 수집 및 이용 목적</h4>
+          <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">회사는 수집한 개인정보를 다음의 목적을 위해
+            활용합니다.<br>
+            - 생각공장 구로 지식산업센터 분양/임대 관련 상담 신청 및 최적 호실 추천 매칭 서비스 제공</p>
+
+          <h4
+            style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">
+            2. 수집하는 개인정보 항목</h4>
+          <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">회사는 최초 상담 신청 및 호실 매칭 조회 시
+            아래와
+            같은 필수 개인정보를 수집하고 있습니다.<br>
+            - 수집항목: 회사명, 전화번호, 이메일 주소, 희망 월 임대료</p>
+
+          <h4
+            style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">
+            3. 개인정보의 보유 및 이용기간</h4>
+          <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">원칙적으로, 개인정보 수집 및 이용목적이 달성된
+            후에는
+            해당 정보를 지체 없이 파기합니다.<br>
+            - <strong>보유 기간: 상담 신청 및 호실 매칭 완료 후 1년</strong> (또는 정보 주체의 파기 요청 시 즉시 파기)</p>
+
+          <h4
+            style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">
+            4. 동의를 거부할 권리 및 불이익</h4>
+          <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">고객님은 개인정보 수집 및 이용 동의를 거부할
+            권리가
+            있습니다. 단, 거부 시 본 홈페이지의 실시간 입주 역량 조건 분석 및 맞춤 호실 매칭 서비스를 이용하실 수 없습니다.</p>
+
+          <h4
+            style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">
+            5. 개인정보의 파기절차 및 방법</h4>
+          <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 1rem 0; font-weight: 300;">회사는 원칙적으로 보유 기간이 경과한 개인정보는
+            복구
+            및 재생할 수 없는 기술적 방법을 사용하여 영구 파기합니다.</p>
+
+          <h4
+            style="color: hsl(36, 43%, 56%); font-size: 0.95rem; font-weight: 600; margin-top: 1.2rem; margin-bottom: 0.4rem;">
+            6. 개인정보 보호책임자 지정</h4>
+          <p style="color: #bbb; font-size: 0.82rem; margin: 0 0 0.5rem 0; font-weight: 300;">회사는 고객의 개인정보를 보호하고 개인정보와
+            관련한
+            불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보보호책임자를 지정하고 있습니다.<br>
+            - 개인정보 담당 부서: 생각공장 구로 분양 사업부<br>
+            - 문의처: 공식 분양 홍보관 데스크 (이메일: privacy@asd.co.kr)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+       도면 크게 보기 모달 (Floor Plan Detail Modal)
+       ========================================== -->
+    <div class="modal-backdrop" id="floorPlanModalBackdrop"
+      onclick="if(event.target === this && window.closeFloorPlanModal){ window.closeFloorPlanModal(); }">
+      <div class="modal-window"
+        style="max-width: 900px; background: #1a1a1a; border: 1px solid hsl(36, 43%, 45%); padding: 1rem;">
+        <button class="modal-close-btn" id="closeFloorPlanBtn" aria-label="닫기"
+          onclick="if(window.closeFloorPlanModal){ window.closeFloorPlanModal(); return false; }">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="modal-header-modal"
+          style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+          <h2 id="floorPlanModalTitle"
+            style="font-family: var(--font-serif-kr); font-weight: 500; font-size: 1.4rem; color: #fff; margin-top: 0; margin-bottom: 0;">
+            층 평면 도면</h2>
+        </div>
+        <div class="modal-body-modal"
+          style="text-align: center; overflow: auto; max-height: 75vh; background: #000; border-radius: 4px; padding: 1rem; box-sizing: border-box;">
+          <img id="floorPlanModalImg" src="" alt="평면 도면"
+            style="max-width: 100%; max-height: 70vh; height: auto; object-fit: contain; margin: 0 auto; display: block;">
+        </div>
+      </div>
+    </div>
   <script>
     // Floor Plan Modal functions defined directly in index.html to guarantee execution
     function openFloorPlanModal(imgSrc, titleText) {
