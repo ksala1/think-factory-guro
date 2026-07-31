@@ -286,9 +286,10 @@ footer .logo img {
 }
 
 .nav-links a {
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.08em;
   position: relative;
   padding: 0.25rem 0;
