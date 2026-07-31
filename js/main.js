@@ -724,6 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Privacy Policy Modal Control
   const privacyPolicyModal = document.getElementById('privacyPolicyModalBackdrop');
   const openPrivacyPolicyBtn = document.getElementById('openPrivacyPolicyBtn');
+  const heroOpenPrivacyPolicyBtn = document.getElementById('heroOpenPrivacyPolicyBtn');
   const closePrivacyPolicyBtn = document.getElementById('closePrivacyPolicyBtn');
 
   if (privacyPolicyModal && openPrivacyPolicyBtn && closePrivacyPolicyBtn) {
@@ -732,6 +733,14 @@ document.addEventListener('DOMContentLoaded', () => {
       privacyPolicyModal.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
+    
+    if (heroOpenPrivacyPolicyBtn) {
+      heroOpenPrivacyPolicyBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        privacyPolicyModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    }
 
     const closePolicy = () => {
       privacyPolicyModal.classList.remove('open');
