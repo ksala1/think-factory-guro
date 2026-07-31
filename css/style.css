@@ -1687,7 +1687,10 @@ footer {
   }
 
   .video-mute-btn {
-    display: none !important;
+    bottom: 1rem;
+    left: 1rem;
+    width: 36px;
+    height: 36px;
   }
 
   .scroll-indicator {
