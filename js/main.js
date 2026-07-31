@@ -802,14 +802,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     videoMuteBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      heroVideo.muted = !heroVideo.muted;
-      if (heroVideo.muted) {
-        muteIcon.style.display = 'block';
-        unmuteIcon.style.display = 'none';
-      } else {
+      
+      // If currently muted, we want to unmute it
+      if (heroVideo.muted || heroVideo.volume === 0) {
+        heroVideo.muted = false;
         heroVideo.volume = 1;
         muteIcon.style.display = 'none';
         unmuteIcon.style.display = 'block';
+        
+        // Force play to ensure audio context is active
+        const playPromise = heroVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => console.log("Audio play failed:", error));
+        }
+      } else {
+        // Mute it
+        heroVideo.muted = true;
+        muteIcon.style.display = 'block';
+        unmuteIcon.style.display = 'none';
       }
     });
   }
