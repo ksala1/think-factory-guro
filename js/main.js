@@ -181,9 +181,33 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quickForm) {
     quickForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      // Show success popup and reset form
-      alert('예약이 완료되었습니다. 감사합니다.');
-      quickForm.reset();
+      
+      // Change submit button text to show loading state
+      const submitBtn = quickForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = '예약 접수 중...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(quickForm);
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyxcwlKL-aPTf_oNWjJzRafKCvsK71cGWcyKiJxQUfARyVboHgouKAjzwN0JJM9ABiU/exec';
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // Avoid CORS issues with Google Apps Script
+        body: formData
+      })
+      .then(() => {
+        alert('예약이 완료되었습니다. 감사합니다.');
+        quickForm.reset();
+      })
+      .catch((error) => {
+        console.error('Error!', error.message);
+        alert('예약 처리 중 문제가 발생했습니다. 관리자에게 문의해주세요.');
+      })
+      .finally(() => {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      });
     });
   }
 
