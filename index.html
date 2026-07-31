@@ -93,7 +93,7 @@
         <form id="heroQuickForm">
           <div class="booking-field">
             <label for="heroTimeline">입주 예정 시기</label>
-            <select id="heroTimeline" required>
+            <select id="heroTimeline" name="timeline" required>
               <option value="" disabled selected>선택해 주세요</option>
               <option value="now">즉시 입주 희망</option>
               <option value="6m">6개월 이내</option>
@@ -103,7 +103,7 @@
 
           <div class="booking-field">
             <label for="heroArea">희망 면적(전용) 규모</label>
-            <select id="heroArea" required>
+            <select id="heroArea" name="area" required>
               <option value="" disabled selected>선택해 주세요</option>
               <option value="under50">50평 미만 (소형)</option>
               <option value="50to100">50평 ~ 100평 (중형)</option>
@@ -112,13 +112,13 @@
           </div>
 
           <div class="booking-field">
-            <label for="heroEmail">이메일 주소</label>
-            <input type="email" id="heroEmail" placeholder="이메일을 입력하세요" required>
+            <label for="heroName">성함 (또는 상호명)</label>
+            <input type="text" id="heroName" name="name" placeholder="성함 또는 상호명을 입력하세요" required>
           </div>
 
           <div class="booking-field">
             <label for="heroPhone">전화번호</label>
-            <input type="tel" id="heroPhone" placeholder="전화번호를 입력하세요" required>
+            <input type="tel" id="heroPhone" name="phone" placeholder="전화번호를 입력하세요" required>
           </div>
 
           <div class="booking-field"
