@@ -186,22 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const showroomSection = document.getElementById('showroom');
       if (showroomSection) {
         showroomSection.scrollIntoView({ behavior: 'smooth' });
-        
-        // Automatically open the 호실상세보기 modal after scroll completes
-        setTimeout(() => {
-          const modalBackdrop = document.getElementById('modalBackdrop');
-          if (modalBackdrop) {
-            modalBackdrop.classList.add('open');
-            document.body.style.overflow = 'hidden';
-            
-            // Prefill email if entered in quick form
-            const heroEmail = document.getElementById('heroEmail');
-            const inputEmail = document.getElementById('inputEmail');
-            if (heroEmail && inputEmail && heroEmail.value) {
-              inputEmail.value = heroEmail.value;
-            }
-          }
-        }, 800);
       }
     });
   }
