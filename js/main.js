@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const noticeBackdrop = document.getElementById('noticeBackdrop');
   const closeNoticeBtn = document.getElementById('closeNoticeBtn');
   const closeNoticeTextBtn = document.getElementById('closeNoticeTextBtn');
-  const noticeCtaBtn = document.getElementById('noticeCtaBtn');
+  const promoNoticeCtaBtn = document.getElementById('promoNoticeCtaBtn');
   const promoCheckbox = document.getElementById('noticeHideTodayCheckbox');
 
   if (noticeBackdrop) {
@@ -714,8 +714,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // CTA: close popup on click
-    if (noticeCtaBtn) {
-      noticeCtaBtn.addEventListener('click', () => {
+    if (promoNoticeCtaBtn) {
+      promoNoticeCtaBtn.addEventListener('click', () => {
         closePopup();
       });
     }
