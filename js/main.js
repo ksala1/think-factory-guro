@@ -800,12 +800,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const muteIcon = videoMuteBtn.querySelector('.mute-icon');
     const unmuteIcon = videoMuteBtn.querySelector('.unmute-icon');
     
-    videoMuteBtn.addEventListener('click', () => {
+    videoMuteBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       heroVideo.muted = !heroVideo.muted;
       if (heroVideo.muted) {
         muteIcon.style.display = 'block';
         unmuteIcon.style.display = 'none';
       } else {
+        heroVideo.volume = 1;
         muteIcon.style.display = 'none';
         unmuteIcon.style.display = 'block';
       }
