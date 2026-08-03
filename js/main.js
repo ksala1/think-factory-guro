@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       const formData = new FormData(quickForm);
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwLw1KrOK0L4y5lfZLZWOGGIDmEv1lk8QVdCT54gprPxJXQIajDU7LpiQ_MrbqEa5w3eQ/exec';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzOYD_sJru0b3xWXL6M7DFgXRR3Dz68Y_5dnsABEkNltRC6AErf8xqIj9WqNQdT9z8o/exec';
 
       fetch(scriptURL, {
         method: 'POST',
