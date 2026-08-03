@@ -3313,6 +3313,21 @@ footer {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: blur(10px) brightness(0.6);
+}
+
+.showroom-img-wrap::after {
+  content: "준비 중";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  z-index: 10;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
 }
 
 .showroom-info {
