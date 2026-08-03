@@ -1,5 +1,0 @@
-.git
-.git/*
-**/.git/**
-.wrangler
-node_modules
