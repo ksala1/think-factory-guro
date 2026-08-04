@@ -935,7 +935,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const slider1Images = data.slider1 || [];
       const slider2Images = data.slider2 || [];
-      alert(`[디버깅 메시지]\n쇼룸 1 수신된 사진: ${slider1Images.length}장\n쇼룸 2 수신된 사진: ${slider2Images.length}장`);
       
       if (slider1Images.length === 0 && slider2Images.length === 0) {
         throw new Error('No images found in Google Drive');
