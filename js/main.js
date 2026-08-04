@@ -209,6 +209,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 5. QUICK INQUIRY BAR LOGIC (Connected to 호실상세보기 Flow)
   // ==========================================
+  
+  // Mobile accordion logic
+  const bookingCard = document.getElementById('heroBookingCard');
+  const bookingHeader = document.getElementById('bookingMobileHeader');
+  
+  if (bookingCard && bookingHeader) {
+    // Toggle on click
+    bookingHeader.addEventListener('click', () => {
+      bookingCard.classList.toggle('expanded');
+    });
+
+    // Auto open on scroll down
+    let hasOpenedOnScroll = false;
+    window.addEventListener('scroll', () => {
+      if (window.innerWidth <= 768 && !hasOpenedOnScroll) {
+        if (window.scrollY > 50) {
+          bookingCard.classList.add('expanded');
+          hasOpenedOnScroll = true;
+        }
+      }
+    }, { passive: true });
+  }
+
   const quickForm = document.getElementById('heroQuickForm');
   if (quickForm) {
     quickForm.addEventListener('submit', (e) => {

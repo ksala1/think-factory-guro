@@ -572,12 +572,20 @@ header.scrolled .nav-cta {
   }
 }
 
-.hero-booking-card h3 {
+.hero-booking-card h3, .booking-desktop-title {
   font-family: var(--font-serif-kr);
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.35;
   color: #101217;
+}
+
+.booking-mobile-header {
+  display: none;
+}
+.booking-form-wrapper {
+  max-height: none;
+  opacity: 1;
 }
 
 .video-mute-btn {
@@ -1703,14 +1711,48 @@ footer {
     border: none !important;
     border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
     border-radius: 16px 16px 0 0 !important;
-    padding: 1.5rem 1.25rem 2rem 1.25rem !important;
+    padding: 0 !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15) !important;
     transform: none !important;
     z-index: 12 !important;
   }
   
-  .hero-booking-card h3 {
+  .hero-booking-card h3, .booking-desktop-title {
     display: none !important;
+  }
+  
+  .booking-mobile-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    background: transparent;
+  }
+  
+  .booking-mobile-header .chevron-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .hero-booking-card.expanded .booking-mobile-header .chevron-icon {
+    transform: rotate(180deg);
+  }
+  
+  .booking-form-wrapper {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    padding: 0 1.25rem;
+  }
+  
+  .hero-booking-card.expanded .booking-form-wrapper {
+    max-height: 600px;
+    opacity: 1;
+    padding: 0 1.25rem 2rem 1.25rem;
   }
   
   .booking-field {
