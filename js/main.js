@@ -951,14 +951,55 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
       }
       
+      function handleOverlay(trackElement, imageCount) {
+        if (!trackElement) return;
+        const sliderParent = trackElement.closest('.showroom-slider');
+        
+        // Remove existing overlay if any
+        const existingOverlay = sliderParent.querySelector('.showroom-blind-overlay');
+        if (existingOverlay) existingOverlay.remove();
+
+        if (imageCount < 3) {
+          const overlay = document.createElement('div');
+          overlay.className = 'showroom-blind-overlay';
+          overlay.innerHTML = '<div class="blind-text">준비 중</div>';
+          // Add some inline styles for the overlay so we don't strictly need css file modifications
+          overlay.style.position = 'absolute';
+          overlay.style.top = '0';
+          overlay.style.left = '0';
+          overlay.style.width = '100%';
+          overlay.style.height = '100%';
+          overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+          overlay.style.zIndex = '10';
+          overlay.style.display = 'flex';
+          overlay.style.alignItems = 'center';
+          overlay.style.justifyContent = 'center';
+          overlay.style.color = '#fff';
+          overlay.style.fontSize = '2rem';
+          overlay.style.fontWeight = 'bold';
+          overlay.style.letterSpacing = '0.1em';
+          overlay.style.borderRadius = '12px'; // Match typical slider radius
+          
+          sliderParent.style.position = 'relative'; // Ensure parent is relative
+          sliderParent.appendChild(overlay);
+        }
+      }
+      
       const track1 = document.getElementById('showroomTrack1');
       const track2 = document.getElementById('showroomTrack2');
       
       if (track1 && slider1Images.length > 0) {
         track1.innerHTML = buildSlidesHTML(slider1Images, '프리미엄 비즈니스 공간');
+        handleOverlay(track1, slider1Images.length);
+      } else if (track1) {
+        handleOverlay(track1, 0);
       }
+      
       if (track2 && slider2Images.length > 0) {
         track2.innerHTML = buildSlidesHTML(slider2Images, '스마트 섹션 오피스');
+        handleOverlay(track2, slider2Images.length);
+      } else if (track2) {
+        handleOverlay(track2, 0);
       }
 
     } catch (e) {
