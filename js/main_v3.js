@@ -197,12 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
         body: formData
       })
       .then(() => {
-        alert('예약이 완료되었습니다. 감사합니다.');
         quickForm.reset();
       })
       .catch((error) => {
         console.error('Error!', error.message);
-        alert('예약 처리 중 문제가 발생했습니다. 관리자에게 문의해주세요.');
       })
       .finally(() => {
         submitBtn.textContent = originalBtnText;
@@ -934,10 +932,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!res.ok) throw new Error('Failed to fetch dynamic images');
       const data = await res.json();
       console.log("API Response:", data);
-      alert(`[디버깅 메시지]\n쇼룸 1 수신된 사진: ${slider1Images.length}장\n쇼룸 2 수신된 사진: ${slider2Images.length}장`);
       
       const slider1Images = data.slider1 || [];
       const slider2Images = data.slider2 || [];
+      alert(`[디버깅 메시지]\n쇼룸 1 수신된 사진: ${slider1Images.length}장\n쇼룸 2 수신된 사진: ${slider2Images.length}장`);
       
       if (slider1Images.length === 0 && slider2Images.length === 0) {
         throw new Error('No images found in Google Drive');
