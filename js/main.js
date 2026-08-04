@@ -972,22 +972,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (imageCount < 3) {
           const overlay = document.createElement('div');
           overlay.className = 'showroom-blind-overlay';
-          overlay.innerHTML = '<div class="blind-text">준비 중</div>';
+          overlay.innerHTML = '<img src="assets/placeholder.png" alt="준비 중" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;">';
           // Add some inline styles for the overlay so we don't strictly need css file modifications
           overlay.style.position = 'absolute';
           overlay.style.top = '0';
           overlay.style.left = '0';
           overlay.style.width = '100%';
           overlay.style.height = '100%';
-          overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
           overlay.style.zIndex = '10';
-          overlay.style.display = 'flex';
-          overlay.style.alignItems = 'center';
-          overlay.style.justifyContent = 'center';
-          overlay.style.color = '#fff';
-          overlay.style.fontSize = '2rem';
-          overlay.style.fontWeight = 'bold';
-          overlay.style.letterSpacing = '0.1em';
+          overlay.style.backgroundColor = '#fff';
           overlay.style.borderRadius = '12px'; // Match typical slider radius
           
           sliderParent.style.position = 'relative'; // Ensure parent is relative
