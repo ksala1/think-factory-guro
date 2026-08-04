@@ -536,21 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
   }
 
-  // ==========================================
-  // 11b. FACADE / SKYBRIDGE IMAGE ROTATION (Alternating main1 and main2 every 5s)
-  // ==========================================
-  const facadeImg = document.getElementById('facadeImg');
-  if (facadeImg) {
-    let currentFacadeIndex = 1;
-    setInterval(() => {
-      currentFacadeIndex = currentFacadeIndex === 1 ? 2 : 1;
-      facadeImg.style.opacity = 0;
-      setTimeout(() => {
-        facadeImg.src = `assets/main${currentFacadeIndex}.png`;
-        facadeImg.style.opacity = 1;
-      }, 300);
-    }, 5000);
-  }
+  // (Facade image rotation removed because there's only one image now)
 
   // ==========================================
   // 12. VIP ROOM IMAGE ROTATION (Alternating vip1 and vip2 every 5s)
