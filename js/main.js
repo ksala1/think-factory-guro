@@ -972,7 +972,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (imageCount < 3) {
           const overlay = document.createElement('div');
           overlay.className = 'showroom-blind-overlay';
-          overlay.innerHTML = '<img src="assets/placeholder.png" alt="준비 중" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;">';
+          overlay.innerHTML = '<img src="assets/placeholder.png?v=2" alt="준비 중" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;">';
           // Add some inline styles for the overlay so we don't strictly need css file modifications
           overlay.style.position = 'absolute';
           overlay.style.top = '0';
