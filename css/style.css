@@ -1729,12 +1729,13 @@ footer {
     display: none !important;
   }
 
-  .concept-desktop-image {
-    display: none !important;
-  }
-
-  .concept-mobile-video {
-    display: block !important;
+  .concept-media {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    width: calc(100% + 3rem);
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
   }
 
   .concept {
