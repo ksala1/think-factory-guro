@@ -1687,7 +1687,8 @@ footer {
   }
 
   .video-mute-btn {
-    bottom: 1rem;
+    top: 5.5rem;
+    bottom: auto;
     left: 1rem;
     width: 36px;
     height: 36px;
