@@ -260,6 +260,36 @@ header.scrolled {
   margin: 0 auto;
 }
 
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  white-space: nowrap;
+}
+
+.nav-phone {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-sans-kr);
+  white-space: nowrap;
+}
+
+.nav-phone-label {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  margin-right: 0.3rem;
+  white-space: nowrap;
+}
+
+.nav-cta-btn {
+  text-decoration: none;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: #fff;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -1743,8 +1773,28 @@ footer {
     padding: 1rem 2rem;
   }
   
-  .nav-links, .nav-cta {
+  .nav-links {
     display: none;
+  }
+  
+  .nav-cta {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .nav-phone {
+    font-size: 0.95rem;
+  }
+  
+  .nav-phone-label {
+    display: none; /* Hide '문의전화' on mobile to save space */
+  }
+  
+  .nav-cta-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
   }
   
   .menu-toggle {
