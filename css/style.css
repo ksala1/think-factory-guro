@@ -1659,6 +1659,7 @@ footer {
 @media (max-width: 768px) {
 
   .hero {
+    display: block !important;
     height: auto !important;
     min-height: auto !important;
     overflow: visible !important;
