@@ -18,7 +18,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/tab-logo.png">
 
-  <link rel="stylesheet" href="css/style.css?v=23.0">
+  <link rel="stylesheet" href="css/style.css?v=24.0">
 </head>
 
 <body>
@@ -95,9 +95,19 @@
       </div>
 
       <!-- Right side: Quick Booking/Inquiry Card (benchmarked from Four Seasons welcome card) -->
-      <div class="hero-booking-card animate-on-scroll delay-150">
-        <h3>성공적인 비즈니스를<br>계획해 보세요.</h3>
-        <form id="heroQuickForm">
+      <div class="hero-booking-card animate-on-scroll delay-150" id="heroBookingCard">
+        <h3 class="booking-desktop-title">성공적인 비즈니스를<br>계획해 보세요.</h3>
+        
+        <!-- Mobile Header (Visible only on mobile) -->
+        <div class="booking-mobile-header" id="bookingMobileHeader">
+          <span>상담 예약하기</span>
+          <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+
+        <div class="booking-form-wrapper" id="bookingFormWrapper">
+          <form id="heroQuickForm">
 
 
           <div class="booking-field">
@@ -132,6 +142,7 @@
             <button type="submit" class="booking-btn-primary" style="flex: 1; width: 100%;">상담 예약</button>
           </div>
         </form>
+        </div>
       </div>
     </div>
 
@@ -723,7 +734,7 @@
     }
   </script>
 
-  <script src="js/main.js?v=21.0"></script>
+  <script src="js/main.js?v=24.0"></script>
 </body>
 
 </html>
