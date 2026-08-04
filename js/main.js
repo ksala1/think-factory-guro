@@ -198,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(() => {
         quickForm.reset();
+        alert('상담 예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다.');
       })
       .catch((error) => {
         console.error('Error!', error.message);
