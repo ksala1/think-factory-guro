@@ -929,7 +929,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const res = await fetch(GOOGLE_SCRIPT_URL);
+      // Add a cache buster to prevent browser from caching the Apps Script response
+      const res = await fetch(GOOGLE_SCRIPT_URL + '?t=' + new Date().getTime());
       if (!res.ok) throw new Error('Failed to fetch dynamic images');
       const data = await res.json();
       
@@ -942,13 +943,22 @@ document.addEventListener('DOMContentLoaded', () => {
       
       function buildSlidesHTML(imgUrls, altPrefix) {
         if (imgUrls.length === 0) return null;
-        return imgUrls.map((url, index) => `
-          <div class="showroom-slide ${index === 0 ? 'active' : ''}">
-            <div class="showroom-img-wrap">
-              <img src="${url}" alt="${altPrefix} ${index + 1}">
+        return imgUrls.map((url, index) => {
+          // Convert the legacy uc?export=view Google Drive URL to the thumbnail API
+          // which avoids the Google CORS/hotlink block that causes broken white images
+          let safeUrl = url;
+          if (url.includes('uc?export=view&id=')) {
+            const fileId = url.split('id=')[1];
+            safeUrl = `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+          }
+          return `
+            <div class="showroom-slide ${index === 0 ? 'active' : ''}">
+              <div class="showroom-img-wrap">
+                <img src="${safeUrl}" alt="${altPrefix} ${index + 1}">
+              </div>
             </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
       }
       
       function handleOverlay(trackElement, imageCount) {
