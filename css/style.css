@@ -1783,7 +1783,18 @@ footer {
   }
   
   .nav-phone {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    background: var(--accent-gold);
+    color: #111;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-phone-icon {
+    display: inline-block !important;
   }
   
   .nav-phone-label {
