@@ -123,12 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply translate offset
     track.style.transform = `translateX(${offset}px)`;
 
-    // Update active class on slides/cards
+    // Update active class on slides/cards and play/pause videos
     slides.forEach((slide, idx) => {
+      const vid = slide.querySelector('video');
       if (idx === currentSlideIndex) {
         slide.classList.add('active');
+        if (vid) vid.play().catch(e => console.log('Video autoplay blocked:', e));
       } else {
         slide.classList.remove('active');
+        if (vid) {
+          vid.pause();
+          vid.currentTime = 0; // 초기화
+        }
       }
     });
 
