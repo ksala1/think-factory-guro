@@ -917,8 +917,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }, autoPlayDelay);
   }
 
-  // Initialize both sliders with slightly different auto-play delays so they don't sync perfectly
-  initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
-  initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
+  async function loadDynamicShowroomImages() {
+    // 대표님께서 설정하신 Google Apps Script 웹앱 URL
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYV2lBrw-boW0QKOTMLv4O_hHTW2jLPuBPVWZHGCwPeilbeI8kDBlt_lkaMdy5pZw9/exec'; 
+    
+    if (GOOGLE_SCRIPT_URL === 'YOUR_SCRIPT_URL_HERE') {
+      // URL이 아직 없으면 기존 고정 이미지(Fallback) 사용
+      initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
+      initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
+      return;
+    }
+
+    try {
+      const res = await fetch(GOOGLE_SCRIPT_URL);
+      if (!res.ok) throw new Error('Failed to fetch dynamic images');
+      const data = await res.json();
+      
+      const slider1Images = data.slider1 || [];
+      const slider2Images = data.slider2 || [];
+      
+      if (slider1Images.length === 0 && slider2Images.length === 0) {
+        throw new Error('No images found in Google Drive');
+      }
+      
+      function buildSlidesHTML(imgUrls, altPrefix) {
+        if (imgUrls.length === 0) return null;
+        return imgUrls.map((url, index) => `
+          <div class="showroom-slide ${index === 0 ? 'active' : ''}">
+            <div class="showroom-img-wrap">
+              <img src="${url}" alt="${altPrefix} ${index + 1}">
+            </div>
+          </div>
+        `).join('');
+      }
+      
+      const track1 = document.getElementById('showroomTrack1');
+      const track2 = document.getElementById('showroomTrack2');
+      
+      if (track1 && slider1Images.length > 0) {
+        track1.innerHTML = buildSlidesHTML(slider1Images, '프리미엄 비즈니스 공간');
+      }
+      if (track2 && slider2Images.length > 0) {
+        track2.innerHTML = buildSlidesHTML(slider2Images, '스마트 섹션 오피스');
+      }
+
+    } catch (e) {
+      console.log('Using static showroom images due to API error:', e);
+    } finally {
+      // Re-initialize slider functionality with either new or fallback images
+      initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
+      initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
+    }
+  }
+
+  loadDynamicShowroomImages();
 
 });
