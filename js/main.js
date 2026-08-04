@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
   };
-  
+
   window.addEventListener('scroll', handleScroll);
   handleScroll(); // Initial check on load
 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      
+
       const spans = menuToggle.querySelectorAll('span');
       if (navLinks.classList.contains('active')) {
         spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. ON-SCROLL ANIMATIONS (INTERSECTION OBSERVER)
   // ==========================================
   const animatedElements = document.querySelectorAll('.animate-on-scroll');
-  
+
   if (animatedElements.length > 0) {
     const observerOptions = {
       root: null,
@@ -115,11 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardWidth = card.offsetWidth;
     const cardMargin = parseFloat(cardStyle.marginRight) || 0;
     const step = cardWidth + cardMargin;
-    
+
     // Centering calculation: center the active card in the track container
     const containerWidth = track.parentElement.offsetWidth;
     const offset = (containerWidth / 2) - (cardWidth / 2) - (currentSlideIndex * step);
-    
+
     // Apply translate offset
     track.style.transform = `translateX(${offset}px)`;
 
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Boundary check
     if (index >= slides.length) index = 0;
     if (index < 0) index = slides.length - 1;
-    
+
     currentSlideIndex = index;
     updateCarousel();
   };
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quickForm) {
     quickForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       // Change submit button text to show loading state
       const submitBtn = quickForm.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn.textContent;
@@ -196,17 +196,17 @@ document.addEventListener('DOMContentLoaded', () => {
         mode: 'no-cors', // Avoid CORS issues with Google Apps Script
         body: formData
       })
-      .then(() => {
-        quickForm.reset();
-        alert('상담 예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다.');
-      })
-      .catch((error) => {
-        console.error('Error!', error.message);
-      })
-      .finally(() => {
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
-      });
+        .then(() => {
+          quickForm.reset();
+          alert('상담 예약이 성공적으로 접수되었습니다. 곧 연락드리겠습니다.');
+        })
+        .catch((error) => {
+          console.error('Error!', error.message);
+        })
+        .finally(() => {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+        });
     });
   }
 
@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Apply animate class smoothly
       unitFloorInfo.classList.remove('animated');
       void unitFloorInfo.offsetWidth; // Trigger reflow for animation restart
-      
+
       unitFloorInfo.innerHTML = `
         <div class="floor-info-layout">
           <div class="floor-info-content">
@@ -471,13 +471,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!subFloorTabs) return;
     const zone = floorZones[zoneKey];
     if (!zone) return;
-    
+
     subFloorTabs.innerHTML = zone.floors.map(fl => {
       const isActive = fl === activeFloorKey;
       const displayLabel = fl.startsWith('b') ? `B${fl.substring(1)}F` : `${fl}F`;
       return `<button class="sub-floor-btn ${isActive ? 'active' : ''}" data-floor="${fl}">${displayLabel}</button>`;
     }).join('');
-    
+
     const buttons = subFloorTabs.querySelectorAll('.sub-floor-btn');
     buttons.forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateFloor(defaultFloor);
       }
     });
-    
+
     // Initial load for default zone (high, floor 18)
     const initialZone = floorSelect.value || 'high';
     renderSubFloorButtons(initialZone, '18');
@@ -573,21 +573,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const listingsContainer = document.querySelector('.listings-container');
   const listingsPrevBtn = document.getElementById('listingsPrevBtn');
   const listingsNextBtn = document.getElementById('listingsNextBtn');
-  
+
   if (listingsContainer && listingsPrevBtn && listingsNextBtn) {
     listingsPrevBtn.addEventListener('click', () => {
       listingsContainer.scrollBy({ left: -200, behavior: 'smooth' });
     });
-    
+
     listingsNextBtn.addEventListener('click', () => {
       listingsContainer.scrollBy({ left: 200, behavior: 'smooth' });
     });
-    
+
     const toggleListingArrows = () => {
       const scrollLeft = listingsContainer.scrollLeft;
       const maxScrollLeft = listingsContainer.scrollWidth - listingsContainer.clientWidth;
       const isScrollable = listingsContainer.scrollWidth > listingsContainer.clientWidth;
-      
+
       // Prev button: hide if we are at start
       if (scrollLeft <= 5) {
         listingsPrevBtn.style.opacity = '0';
@@ -598,7 +598,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listingsPrevBtn.style.visibility = 'visible';
         listingsPrevBtn.style.pointerEvents = 'auto';
       }
-      
+
       // Next button: hide if we are at the end and we have scrollable content
       if (isScrollable && scrollLeft >= maxScrollLeft - 5) {
         listingsNextBtn.style.opacity = '0';
@@ -616,17 +616,17 @@ document.addEventListener('DOMContentLoaded', () => {
         listingsNextBtn.style.pointerEvents = 'auto';
       }
     };
-    
+
     // Bind all necessary listeners for layout changes
     listingsContainer.addEventListener('scroll', toggleListingArrows);
     window.addEventListener('resize', toggleListingArrows);
     window.addEventListener('load', toggleListingArrows);
-    
+
     // Recalculate when any image in the listings container loads
     listingsContainer.querySelectorAll('img').forEach(img => {
       img.addEventListener('load', toggleListingArrows);
     });
-    
+
     // Run multiple times during startup to ensure layout dimensions are fully calculated
     setTimeout(toggleListingArrows, 100);
     setTimeout(toggleListingArrows, 500);
@@ -637,7 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 15. SPECIAL PROMOTION POPUP CONTROL
   // ==========================================
-  
+
   // Helper to set cookie expiring at midnight (KST/Local time midnight)
   function setPromoCookieAtMidnight(name, value) {
     try {
@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
       date.setHours(24, 0, 0, 0); // Local midnight
       const expires = "expires=" + date.toUTCString();
       document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
-    } catch(e) {
+    } catch (e) {
       console.warn("Cookies are not available");
     }
   }
@@ -657,7 +657,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const parts = value.split(`; ${name}=`);
       if (parts.length === 2) return parts.pop().split(';').shift();
       return null;
-    } catch(e) {
+    } catch (e) {
       return null;
     }
   }
@@ -672,7 +672,7 @@ document.addEventListener('DOMContentLoaded', () => {
         expiry: date.getTime()
       };
       localStorage.setItem(key, JSON.stringify(item));
-    } catch(e) {
+    } catch (e) {
       console.warn("localStorage is not available");
     }
   }
@@ -689,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
       }
       return item.value;
-    } catch(e) {
+    } catch (e) {
       return null;
     }
   }
@@ -753,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
       privacyPolicyModal.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
-    
+
     if (heroOpenPrivacyPolicyBtn) {
       heroOpenPrivacyPolicyBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -822,17 +822,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroVideo && videoMuteBtn) {
     const muteIcon = videoMuteBtn.querySelector('.mute-icon');
     const unmuteIcon = videoMuteBtn.querySelector('.unmute-icon');
-    
+
     videoMuteBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      
+
       // If currently muted, we want to unmute it
       if (heroVideo.muted || heroVideo.volume === 0) {
         heroVideo.muted = false;
         heroVideo.volume = 1;
         muteIcon.style.display = 'none';
         unmuteIcon.style.display = 'block';
-        
+
         // Force play to ensure audio context is active
         const playPromise = heroVideo.play();
         if (playPromise !== undefined) {
@@ -861,22 +861,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById(prevBtnId);
     const nextBtn = document.getElementById(nextBtnId);
     const dotsContainer = document.getElementById(dotsId);
-    
+
     if (!track || !prevBtn || !nextBtn) return;
-    
+
     // In the new layout, we might have multiple track items. 
     // We should only select slides inside THIS track's parent slider.
     const sliderParent = track.closest('.showroom-slider');
     const slides = sliderParent.querySelectorAll('.showroom-slide');
     let currentSlide = 0;
     const totalSlides = slides.length;
-    
+
     if (totalSlides === 0) return;
 
     // Create dots
     if (dotsContainer) {
       dotsContainer.innerHTML = '';
-      for(let i=0; i<totalSlides; i++) {
+      for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('div');
         dot.className = 'showroom-dot' + (i === 0 ? ' active' : '');
         dot.addEventListener('click', () => {
@@ -886,30 +886,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     const dots = dotsContainer ? dotsContainer.querySelectorAll('.showroom-dot') : [];
-    
+
     function goToSlide(index) {
       if (index < 0) index = totalSlides - 1;
       if (index >= totalSlides) index = 0;
-      
+
       currentSlide = index;
-      
+
       track.style.transform = `translateX(${currentSlide * -100}%)`;
-      
+
       slides.forEach(s => s.classList.remove('active'));
-      if(dots.length > 0) dots.forEach(d => d.classList.remove('active'));
-      
+      if (dots.length > 0) dots.forEach(d => d.classList.remove('active'));
+
       slides[currentSlide].classList.add('active');
-      if(dots.length > 0 && dots[currentSlide]) dots[currentSlide].classList.add('active');
+      if (dots.length > 0 && dots[currentSlide]) dots[currentSlide].classList.add('active');
     }
-    
+
     prevBtn.addEventListener('click', () => {
       goToSlide(currentSlide - 1);
     });
-    
+
     nextBtn.addEventListener('click', () => {
       goToSlide(currentSlide + 1);
     });
-    
+
     // Auto play showroom
     setInterval(() => {
       goToSlide(currentSlide + 1);
@@ -918,8 +918,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadDynamicShowroomImages() {
     // 대표님께서 설정하신 Google Apps Script 웹앱 URL
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYV2lBrw-boW0QKOTMLv4O_hHTW2jLPuBPVWZHGCwPeilbeI8kDBlt_lkaMdy5pZw9/exec'; 
-    
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYV2lBrw-boW0QKOTMLv4O_hHTW2jLPuBPVWZHGCwPeilbeI8kDBlt_lkaMdy5pZw9/exec';
+
     if (GOOGLE_SCRIPT_URL === 'YOUR_SCRIPT_URL_HERE') {
       // URL이 아직 없으면 기존 고정 이미지(Fallback) 사용
       initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
@@ -933,14 +933,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!res.ok) throw new Error('Failed to fetch dynamic images');
       const data = await res.json();
       console.log("API Response:", data);
-      
+
       const slider1Images = data.slider1 || [];
       const slider2Images = data.slider2 || [];
-      
+
       if (slider1Images.length === 0 && slider2Images.length === 0) {
         throw new Error('No images found in Google Drive');
       }
-      
+
       function buildSlidesHTML(imgUrls, altPrefix) {
         if (imgUrls.length === 0) return null;
         return imgUrls.map((url, index) => {
@@ -960,11 +960,11 @@ document.addEventListener('DOMContentLoaded', () => {
           `;
         }).join('');
       }
-      
+
       function handleOverlay(trackElement, imageCount) {
         if (!trackElement) return;
         const sliderParent = trackElement.closest('.showroom-slider');
-        
+
         // Remove existing overlay if any
         const existingOverlay = sliderParent.querySelector('.showroom-blind-overlay');
         if (existingOverlay) existingOverlay.remove();
@@ -972,7 +972,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (imageCount < 3) {
           const overlay = document.createElement('div');
           overlay.className = 'showroom-blind-overlay';
-          overlay.innerHTML = '<img src="assets/placeholder.png?v=2" alt="준비 중" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;">';
+          overlay.innerHTML = '<img src="assets/placeholder1.png?v=2" alt="준비 중" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;">';
           // Add some inline styles for the overlay so we don't strictly need css file modifications
           overlay.style.position = 'absolute';
           overlay.style.top = '0';
@@ -982,22 +982,22 @@ document.addEventListener('DOMContentLoaded', () => {
           overlay.style.zIndex = '10';
           overlay.style.backgroundColor = '#fff';
           overlay.style.borderRadius = '12px'; // Match typical slider radius
-          
+
           sliderParent.style.position = 'relative'; // Ensure parent is relative
           sliderParent.appendChild(overlay);
         }
       }
-      
+
       const track1 = document.getElementById('showroomTrack1');
       const track2 = document.getElementById('showroomTrack2');
-      
+
       if (track1 && slider1Images.length > 0) {
         track1.innerHTML = buildSlidesHTML(slider1Images, '프리미엄 비즈니스 공간');
         handleOverlay(track1, slider1Images.length);
       } else if (track1) {
         handleOverlay(track1, 0);
       }
-      
+
       if (track2 && slider2Images.length > 0) {
         track2.innerHTML = buildSlidesHTML(slider2Images, '스마트 섹션 오피스');
         handleOverlay(track2, slider2Images.length);
