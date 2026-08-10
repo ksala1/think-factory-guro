@@ -1731,6 +1731,7 @@ footer {
   .hero-booking-card {
     position: relative !important;
     align-self: stretch !important;
+    width: auto !important;
     max-width: 100% !important;
     margin: 0 1.25rem 2rem 1.25rem !important; 
     background-color: rgba(255, 255, 255, 0.82) !important;
