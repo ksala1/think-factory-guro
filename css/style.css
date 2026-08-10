@@ -253,6 +253,12 @@ header.scrolled {
   border-bottom: 1px solid var(--glass-border);
 }
 
+header.menu-open {
+  background-color: var(--bg-primary) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -1632,6 +1638,8 @@ footer {
     height: auto;
     min-height: auto;
     transform: none;
+    position: relative;
+    z-index: 10;
   }
   
   .hero-content {
@@ -1667,19 +1675,21 @@ footer {
 @media (max-width: 768px) {
 
   .hero {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     height: auto !important;
-    min-height: auto !important;
-    overflow: visible !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    justify-content: flex-start !important;
   }
   
   .hero-video-container {
     display: block !important;
-    position: relative;
+    position: absolute !important;
     top: 0;
     left: 0;
     width: 100%;
-    height: 56.25vw; /* 16:9 aspect ratio */
+    height: 100% !important; /* Fill entire hero section */
     z-index: 1;
   }
   
@@ -1693,9 +1703,13 @@ footer {
     justify-content: flex-start !important;
     align-items: stretch !important;
     padding: 0 !important;
+    padding-top: 60vh !important; /* Slightly lower to show more video */
+    margin-top: 0 !important; 
     height: auto !important;
-    min-height: auto !important;
+    min-height: 100vh !important;
     box-sizing: border-box !important;
+    position: relative;
+    z-index: 12 !important;
   }
   
   .hero-content {
@@ -1706,13 +1720,15 @@ footer {
     position: relative !important;
     align-self: stretch !important;
     max-width: 100% !important;
-    margin: -1.5rem 0 0 0 !important; /* Slight overlap with video */
-    background-color: #ffffff !important;
+    margin: 0 !important; 
+    background-color: rgba(255, 255, 255, 0.82) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
     border: none !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
-    border-radius: 16px 16px 0 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 20px 20px 0 0 !important;
     padding: 0 !important;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08) !important;
     transform: none !important;
     z-index: 12 !important;
   }
@@ -1827,34 +1843,7 @@ footer {
   }
   
   .nav-cta {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .nav-phone {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.6rem;
-    background: var(--accent-gold);
-    color: #111;
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .mobile-phone-icon {
-    display: inline-block !important;
-  }
-  
-  .nav-phone-label {
-    display: none; /* Hide '문의전화' on mobile to save space */
-  }
-  
-  .nav-cta-btn {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.6rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+    display: none !important; /* Hide on mobile to declutter header */
   }
   
   .menu-toggle {
@@ -1875,11 +1864,28 @@ footer {
     gap: 2.5rem;
     z-index: 999;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Start from top instead of center */
+    padding-top: 8rem;
   }
   
   .nav-links.active a {
     font-size: 1.3rem;
+  }
+
+  .mobile-menu-cta {
+    display: block;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background-color: var(--accent-gold);
+    color: #fff !important;
+    border-radius: 30px;
+    font-weight: 700;
+    text-shadow: none !important;
+    box-shadow: 0 4px 15px rgba(197, 160, 105, 0.3);
+  }
+  
+  .mobile-menu-cta::after {
+    display: none;
   }
   
   .hero-btns {
