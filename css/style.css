@@ -1678,7 +1678,7 @@ footer {
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
-    min-height: 100vh !important;
+    min-height: auto !important; /* Removed 100vh to clean up empty space */
     overflow: hidden !important;
     justify-content: flex-start !important;
   }
@@ -1702,11 +1702,10 @@ footer {
     flex-direction: column !important;
     justify-content: flex-start !important;
     align-items: stretch !important;
-    padding: 0 !important;
-    padding-top: 60vh !important; /* Slightly lower to show more video */
+    padding: 6rem 0 2rem 0 !important; /* Adjusted padding since video is omitted */
     margin-top: 0 !important; 
     height: auto !important;
-    min-height: 100vh !important;
+    min-height: auto !important; /* Removed 100dvh to clean up empty space */
     box-sizing: border-box !important;
     position: relative;
     z-index: 12 !important;
@@ -1720,13 +1719,12 @@ footer {
     position: relative !important;
     align-self: stretch !important;
     max-width: 100% !important;
-    margin: 0 !important; 
+    margin: 0 1.25rem 2rem 1.25rem !important; 
     background-color: rgba(255, 255, 255, 0.82) !important;
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
-    border: none !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
-    border-radius: 20px 20px 0 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 20px !important;
     padding: 0 !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08) !important;
     transform: none !important;
