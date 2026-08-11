@@ -1742,6 +1742,7 @@ footer {
     padding: 0 !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08) !important;
     transform: none !important;
+    opacity: 1 !important;
     z-index: 12 !important;
   }
   
