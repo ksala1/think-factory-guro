@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 2. MOBILE MENU TOGGLE
   // ==========================================
-  const header = document.querySelector('header');
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   const links = document.querySelectorAll('.nav-links a');
@@ -48,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
-      header.classList.toggle('menu-open');
 
       const spans = menuToggle.querySelectorAll('span');
       if (navLinks.classList.contains('active')) {
@@ -65,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     links.forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
-        header.classList.remove('menu-open');
         const spans = menuToggle.querySelectorAll('span');
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
