@@ -1814,7 +1814,8 @@ footer {
   }
 
   .concept {
-    margin-top: 120px !important;
+    margin-top: 0 !important;
+    padding-top: 2rem !important;
   }
 
   .explorer-view {
