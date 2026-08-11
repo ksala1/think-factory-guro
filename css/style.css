@@ -1678,8 +1678,8 @@ footer {
     position: relative;
     top: 0;
     left: 0;
-    width: 100vw !important;
-    margin-left: calc(-50vw + 50%) !important;
+    width: 100% !important;
+    margin-left: 0 !important;
     margin-top: 0 !important;
     height: 56.25vw; /* 16:9 aspect ratio */
     z-index: 1;
