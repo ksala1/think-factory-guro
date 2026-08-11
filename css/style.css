@@ -1696,6 +1696,7 @@ footer {
     height: auto !important;
     min-height: auto !important;
     box-sizing: border-box !important;
+    background-color: #fafafa !important;
   }
   
   .hero-content {
@@ -1706,13 +1707,12 @@ footer {
     position: relative !important;
     align-self: stretch !important;
     max-width: 100% !important;
-    margin: -1.5rem 0 0 0 !important; /* Slight overlap with video */
+    margin: 1.5rem 1.25rem 2rem 1.25rem !important; /* Separate from video, with side margins */
     background-color: #ffffff !important;
-    border: none !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
-    border-radius: 16px 16px 0 0 !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    border-radius: 20px !important;
     padding: 0 !important;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
     transform: none !important;
     z-index: 12 !important;
   }
