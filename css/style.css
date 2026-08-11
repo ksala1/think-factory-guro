@@ -1678,7 +1678,9 @@ footer {
     position: relative;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-top: 0 !important;
     height: 56.25vw; /* 16:9 aspect ratio */
     z-index: 1;
   }
@@ -1706,6 +1708,7 @@ footer {
   .hero-booking-card {
     position: relative !important;
     align-self: stretch !important;
+    width: auto !important;
     max-width: 100% !important;
     margin: 1.5rem 1.25rem 2rem 1.25rem !important; /* Separate from video, with side margins */
     background-color: #ffffff !important;
