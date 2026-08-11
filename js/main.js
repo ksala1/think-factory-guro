@@ -107,6 +107,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('explorerTrack');
 
   let currentSlideIndex = 0;
+  let autoSlideTimer;
+
+  const startAutoSlide = () => {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => {
+      // Auto-slide only on mobile view (width <= 768)
+      if (window.innerWidth <= 768) {
+        showSlide(currentSlideIndex + 1);
+      }
+    }, 5000); // 5 seconds
+  };
 
   const updateCarousel = () => {
     if (!track || slides.length === 0) return;
@@ -155,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentSlideIndex = index;
     updateCarousel();
+    startAutoSlide(); // Reset timer on manual/auto interaction
   };
 
   // Tab click event
@@ -204,7 +216,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize and listen to resize
   window.addEventListener('resize', updateCarousel);
   // Run on page load after a tiny delay to ensure correct width calculations
-  setTimeout(updateCarousel, 150);
+  setTimeout(() => {
+    updateCarousel();
+    startAutoSlide();
+  }, 150);
 
   // ==========================================
   // 5. QUICK INQUIRY BAR LOGIC (Connected to 호실상세보기 Flow)
