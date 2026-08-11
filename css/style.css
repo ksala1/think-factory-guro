@@ -1679,21 +1679,21 @@ footer {
 @media (max-width: 768px) {
 
   .hero {
-    display: flex !important;
-    height: 100vh !important;
-    min-height: 100vh !important;
-    overflow: hidden !important;
+    display: block !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
   }
   
   .hero-video-container {
     display: block !important;
-    position: absolute !important;
+    position: relative;
     top: 0;
     left: 0;
     width: 100% !important;
     margin-left: 0 !important;
     margin-top: 0 !important;
-    height: 100% !important;
+    height: 56.25vw; /* 16:9 aspect ratio */
     z-index: 1;
   }
   
@@ -1704,13 +1704,13 @@ footer {
   .hero-container {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 0 1.25rem !important;
-    height: 100vh !important;
-    min-height: 100vh !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
     box-sizing: border-box !important;
-    background-color: transparent !important;
+    background-color: #fafafa !important;
   }
   
   .hero-content {
@@ -1719,19 +1719,17 @@ footer {
   
   .hero-booking-card {
     position: relative !important;
-    align-self: center !important;
-    width: 100% !important;
-    max-width: 400px !important;
-    margin: 0 auto !important;
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    align-self: stretch !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 1.5rem 1.25rem 2rem 1.25rem !important; /* Separate from video, with side margins */
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
     border-radius: 20px !important;
     padding: 0 !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
     transform: none !important;
     z-index: 12 !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
   }
   
   .hero-booking-card h3, .booking-desktop-title {
@@ -1740,8 +1738,9 @@ footer {
   
   .booking-mobile-header {
     display: flex !important;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
     padding: 1.25rem 1.25rem;
     font-size: 1.1rem;
     font-weight: 700;
@@ -1751,6 +1750,8 @@ footer {
   }
   
   .booking-mobile-header .chevron-icon {
+    position: absolute;
+    right: 1.25rem;
     transition: transform 0.3s ease;
   }
   
