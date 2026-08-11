@@ -741,9 +741,11 @@ header.scrolled .nav-cta {
 
 .concept-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 6rem;
+  grid-template-columns: 1fr;
+  gap: 3rem;
   align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .concept-media {
@@ -772,6 +774,12 @@ header.scrolled .nav-cta {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.concept-info p {
+  max-width: 700px;
 }
 
 .concept-stat-box {
@@ -781,6 +789,7 @@ header.scrolled .nav-cta {
   margin-top: 4rem;
   padding-top: 3rem;
   border-top: 1px solid var(--glass-border);
+  width: 100%;
 }
 
 .stat-item h4 {
