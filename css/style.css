@@ -3608,3 +3608,15 @@ footer {
 
 .hero-main-logo-text { display: flex; align-items: center; justify-content: flex-start; text-shadow: none !important; }
 .hero-main-logo-text * { text-shadow: none !important; }
+
+@media (max-width: 768px) {
+  .unit-selector-card,
+  .unit-info-board {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
