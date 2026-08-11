@@ -108,13 +108,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentSlideIndex = 0;
   let autoSlideTimer;
+  let isAutoSlideStopped = false;
 
   const startAutoSlide = () => {
+    if (isAutoSlideStopped) return;
     clearInterval(autoSlideTimer);
     autoSlideTimer = setInterval(() => {
       // Auto-slide only on mobile view (width <= 768)
       if (window.innerWidth <= 768) {
-        showSlide(currentSlideIndex + 1);
+        showSlide(currentSlideIndex + 1, false);
       }
     }, 5000); // 5 seconds
   };
@@ -159,14 +161,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const showSlide = (index) => {
+  const showSlide = (index, isManual = true) => {
     // Boundary check
     if (index >= slides.length) index = 0;
     if (index < 0) index = slides.length - 1;
 
     currentSlideIndex = index;
     updateCarousel();
-    startAutoSlide(); // Reset timer on manual/auto interaction
+    
+    if (isManual) {
+      isAutoSlideStopped = true;
+      clearInterval(autoSlideTimer);
+    } else {
+      startAutoSlide(); // Reset timer on auto interaction
+    }
   };
 
   // Tab click event
