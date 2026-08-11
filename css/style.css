@@ -3622,5 +3622,13 @@ footer {
   .floor-tags {
     display: none !important;
   }
+  
+  .floor-info-header h3 {
+    font-size: 1.35rem;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
