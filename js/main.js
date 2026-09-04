@@ -769,10 +769,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const hideLocal = getPromoLocalStorage('hideNoticeModal');
 
     // Show popup only if user did not opt out today
+    // (일시적으로 안 뜨게 처리)
+    /*
     if (!hideCookie && !hideLocal) {
       noticeBackdrop.classList.add('show');
       document.body.style.overflow = 'hidden';
     }
+    */
 
     const closePopup = () => {
       if (promoCheckbox && promoCheckbox.checked) {
@@ -980,71 +983,177 @@ document.addEventListener('DOMContentLoaded', () => {
     }, autoPlayDelay);
   }
 
-  async function loadDynamicShowroomImages() {
-    // 대표님께서 설정하신 Google Apps Script 웹앱 URL
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxYV2lBrw-boW0QKOTMLv4O_hHTW2jLPuBPVWZHGCwPeilbeI8kDBlt_lkaMdy5pZw9/exec';
-
-    if (GOOGLE_SCRIPT_URL === 'YOUR_SCRIPT_URL_HERE') {
-      // URL이 아직 없으면 기존 고정 이미지(Fallback) 사용
-      initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
-      initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
-      return;
-    }
-
-    try {
-      // Add a cache buster to prevent browser from caching the Apps Script response
-      const res = await fetch(GOOGLE_SCRIPT_URL + '?t=' + new Date().getTime());
-      if (!res.ok) throw new Error('Failed to fetch dynamic images');
-      const data = await res.json();
-      console.log("API Response:", data);
-
-      const slider1Images = data.slider1 || [];
-      const slider2Images = data.slider2 || [];
-
-      if (slider1Images.length === 0 && slider2Images.length === 0) {
-        throw new Error('No images found in Google Drive');
-      }
-
-      function buildSlidesHTML(imgUrls, altPrefix) {
-        if (imgUrls.length === 0) return null;
-        return imgUrls.map((url, index) => {
-          // Convert the legacy uc?export=view Google Drive URL to the thumbnail API
-          // which avoids the Google CORS/hotlink block that causes broken white images
-          let safeUrl = url;
-          if (url.includes('uc?export=view&id=')) {
-            const fileId = url.split('id=')[1];
-            safeUrl = `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
-          }
-          return `
-            <div class="showroom-slide ${index === 0 ? 'active' : ''}">
-              <div class="showroom-img-wrap">
-                <img src="${safeUrl}" alt="${altPrefix} ${index + 1}">
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-
-      const track1 = document.getElementById('showroomTrack1');
-      const track2 = document.getElementById('showroomTrack2');
-
-      if (track1 && slider1Images.length > 0) {
-        track1.innerHTML = buildSlidesHTML(slider1Images, '프리미엄 비즈니스 공간');
-      }
-
-      if (track2 && slider2Images.length > 0) {
-        track2.innerHTML = buildSlidesHTML(slider2Images, '스마트 섹션 오피스');
-      }
-
-    } catch (e) {
-      console.log('Using static showroom images due to API error:', e);
-    } finally {
-      // Re-initialize slider functionality with either new or fallback images
-      initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
-      initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
-    }
+  function loadDynamicShowroomImages() {
+    // 로컬 amenity 폴더의 이미지를 그대로 사용하기 위해 API 호출을 주석 처리/삭제하고
+    // HTML에 하드코딩된 이미지들을 기반으로 슬라이더만 바로 초기화합니다.
+    initShowroomSlider('showroomTrack1', 'prevShowroomBtn1', 'nextShowroomBtn1', 'showroomDots1', 5000);
+    initShowroomSlider('showroomTrack2', 'prevShowroomBtn2', 'nextShowroomBtn2', 'showroomDots2', 5500);
+    initShowroomSlider('showroomTrack3', 'prevShowroomBtn3', 'nextShowroomBtn3', 'showroomDots3', 6000);
   }
 
   loadDynamicShowroomImages();
 
 });
+
+// ==========================================
+// 프로모션 플로팅 버튼 & 팝업 제어 로직
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const promoFloatingBtn = document.getElementById('promoFloatingBtn');
+  const modal = document.getElementById('promoModalBackdrop');
+  
+  // 팝업 열기 함수
+  const openPromoModal = () => {
+    if (modal) {
+      modal.style.display = 'flex';
+      // 애니메이션 효과를 위해 약간 지연 후 클래스 추가
+      setTimeout(() => {
+        modal.classList.add('open');
+        modal.style.opacity = '1';
+        modal.style.pointerEvents = 'auto';
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  // 플로팅 버튼 클릭 시 팝업 열기
+  if (promoFloatingBtn) {
+    promoFloatingBtn.addEventListener('click', openPromoModal);
+  }
+
+  // (한시적) 페이지 방문 시 자동으로 팝업 열기 (약간의 딜레이 추가하여 자연스럽게)
+  setTimeout(() => {
+    openPromoModal();
+  }, 500);
+});
+
+function closePromoModal() {
+  const modal = document.getElementById('promoModalBackdrop');
+  if (modal) {
+    modal.classList.remove('open');
+    modal.style.opacity = '0';
+    modal.style.pointerEvents = 'none';
+    setTimeout(() => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      // 비디오 정지 (iframe 또는 video 태그)
+      const iframe = modal.querySelector('iframe');
+      if (iframe) {
+        const src = iframe.src;
+        iframe.src = src;
+      }
+      
+      const video = modal.querySelector('video');
+      if (video) {
+        video.pause();
+      }
+    }, 300);
+  }
+}
+
+// 숫자 3자리 콤마 포맷팅
+function formatNumber(input) {
+  let value = input.value.replace(/[^0-9]/g, '');
+  if (value) {
+    input.value = parseInt(value, 10).toLocaleString('ko-KR');
+  } else {
+    input.value = '';
+  }
+}
+
+// 이자 계산 모드 상태
+let isDetailedCalcMode = false;
+
+function toggleDetailedCalc() {
+  const detailedArea = document.getElementById('detailedCalcArea');
+  const toggleBtn = document.getElementById('toggleDetailedBtn');
+  
+  isDetailedCalcMode = !isDetailedCalcMode;
+  
+  if (isDetailedCalcMode) {
+    detailedArea.style.display = 'flex';
+    toggleBtn.textContent = '간단하게 계산하기 ▲';
+  } else {
+    detailedArea.style.display = 'none';
+    toggleBtn.textContent = '자세하게 계산하기 ▼';
+  }
+  
+  // 상태 변경 시 재계산
+  calculateInterest();
+}
+
+// 분양가 및 이자 계산 로직
+function calculateInterest() {
+  const pyeongStr = document.getElementById('calcPyeong').value;
+  const exclusivePyeong = parseFloat(pyeongStr) || 0;
+  
+  // 입력 필드 참조
+  const loanRatioInput = document.getElementById('calcLoanRatio');
+  const equityRatioInput = document.getElementById('calcEquityRatio');
+  const rateInput = document.getElementById('calcRateDetailed');
+  
+  // UI 라벨 참조
+  const loanLabel = document.getElementById('calcResultLoanLabel');
+  const equityLabel = document.getElementById('calcResultEquityLabel');
+  const interestLabel = document.getElementById('calcResultInterestLabel');
+  
+  if (exclusivePyeong > 0) {
+    // 고정 변수
+    const exclusiveRatio = 0.46; // 전용률 46%
+    const pricePerContractPyeong = 14000000; // 평당 1400만원
+    
+    // 모드에 따른 변수 할당
+    let loanRatio = 0.40; // 기본 40%
+    let equityRatio = 0.10; // 기본 10%
+    let annualInterestRate = 0.04; // 기본 4%
+    
+    if (isDetailedCalcMode) {
+      loanRatio = (parseFloat(loanRatioInput.value) || 0) / 100;
+      equityRatio = (parseFloat(equityRatioInput.value) || 0) / 100;
+      annualInterestRate = (parseFloat(rateInput.value) || 0) / 100;
+    }
+
+    // 라벨 업데이트
+    loanLabel.textContent = `대출 가능액 (${Math.round(loanRatio * 100)}%)`;
+    equityLabel.textContent = `자기자본금 (${Math.round(equityRatio * 100)}%)`;
+    interestLabel.textContent = `월 납입 이자 (연 ${(annualInterestRate * 100).toFixed(1).replace('.0', '')}%)`;
+
+    // 1. 계약 평수 (전용 평수 / 전용률)
+    const contractPyeong = exclusivePyeong / exclusiveRatio;
+    
+    // 2. 총 분양가 (계약 평수 * 평당 단가)
+    const totalPrice = contractPyeong * pricePerContractPyeong;
+    
+    // 3. 자기자본금 및 대출 가능액
+    const equityAmount = totalPrice * equityRatio;
+    const loanAmount = totalPrice * loanRatio;
+    
+    // 4. 연 이자 및 월 이자 (대출금액 * 이율)
+    const annualInterest = loanAmount * annualInterestRate;
+    const monthlyInterest = annualInterest / 12;
+    
+    // UI 업데이트 (결괏값 포맷팅)
+    document.getElementById('calcResultContractPyeong').textContent = '약 ' + contractPyeong.toFixed(1) + ' 평';
+    document.getElementById('calcResultTotalPrice').textContent = '약 ' + Math.round(totalPrice).toLocaleString('ko-KR') + ' 원';
+    document.getElementById('calcResultEquity').textContent = '약 ' + Math.round(equityAmount).toLocaleString('ko-KR') + ' 원';
+    document.getElementById('calcResultLoan').textContent = '약 ' + Math.round(loanAmount).toLocaleString('ko-KR') + ' 원';
+    document.getElementById('calcResultMonthlyInterest').textContent = '약 ' + Math.round(monthlyInterest).toLocaleString('ko-KR') + ' 원';
+  } else {
+    // 입력값이 없거나 0일 때 초기화
+    document.getElementById('calcResultContractPyeong').textContent = '0 평';
+    document.getElementById('calcResultTotalPrice').textContent = '0 원';
+    document.getElementById('calcResultEquity').textContent = '0 원';
+    document.getElementById('calcResultLoan').textContent = '0 원';
+    document.getElementById('calcResultMonthlyInterest').textContent = '0 원';
+    
+    // 라벨 초기화
+    loanLabel.textContent = isDetailedCalcMode ? `대출 가능액 (${parseFloat(loanRatioInput.value) || 0}%)` : '대출 가능액 (40%)';
+    equityLabel.textContent = isDetailedCalcMode ? `자기자본금 (${parseFloat(equityRatioInput.value) || 0}%)` : '자기자본금 (10%)';
+    interestLabel.textContent = isDetailedCalcMode ? `월 납입 이자 (연 ${parseFloat(rateInput.value) || 0}%)` : '월 납입 이자 (연 4%)';
+  }
+}
+
+window.closePromoModal = closePromoModal;
+window.calculateInterest = calculateInterest;
+window.formatNumber = formatNumber;
+window.toggleDetailedCalc = toggleDetailedCalc;
