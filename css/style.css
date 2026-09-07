@@ -3955,5 +3955,15 @@ footer {
   .calc-title-one-line {
     white-space: nowrap;
     font-size: clamp(2rem, 3vw, 3rem);
-  }
+}
+
+/* 숫자 입력 필드 스핀 버튼(화살표) 숨기기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
