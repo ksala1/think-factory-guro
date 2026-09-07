@@ -36,6 +36,8 @@
         <a href="#concept">브랜드 소개</a>
         <a href="#explorer">공간 탐색</a>
         <a href="#unitplan">층별 안내</a>
+        <a href="#calculator">견적</a>
+        <a href="#policy">정책자금</a>
         <a href="#showroom">쇼룸</a>
         <!-- <a href="#호실상세보기">호실 상세보기</a> -->
         <a href="tel:02-6745-6111" class="mobile-menu-cta">전화 문의 (02-6745-6111)</a>
@@ -89,6 +91,8 @@
         </h1>
         <div class="hero-action-links">
           <a href="#unitplan" class="hero-action-link">층별 안내</a>
+          <a href="#calculator" class="hero-action-link">견적</a>
+          <a href="#policy" class="hero-action-link">정책자금</a>
           <a href="#showroom" class="hero-action-link">쇼룸</a>
           <a href="#explorer" class="hero-action-link">공간 투어</a>
         </div>
@@ -97,12 +101,13 @@
       <!-- Right side: Quick Booking/Inquiry Card (benchmarked from Four Seasons welcome card) -->
       <div class="hero-booking-card animate-on-scroll delay-150" id="heroBookingCard">
         <h3 class="booking-desktop-title">성공적인 비즈니스를<br>계획해 보세요.</h3>
-        
+
         <!-- Mobile Header (Visible only on mobile) -->
         <div class="booking-mobile-header" id="bookingMobileHeader">
           <span>상담 예약하기</span>
-          <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9l6 6 6-6"/>
+          <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6" />
           </svg>
         </div>
 
@@ -110,38 +115,38 @@
           <form id="heroQuickForm">
 
 
-          <div class="booking-field">
-            <label for="heroArea">희망 면적(전용) 규모</label>
-            <select id="heroArea" name="area" required>
-              <option value="" disabled selected>선택해 주세요</option>
-              <option value="50평 미만">전용 50평 미만 </option>
-              <option value="50~100평">전용 50평 ~ 100평</option>
-              <option value="100평 이상">전용 100평 이상</option>
-            </select>
-          </div>
+            <div class="booking-field">
+              <label for="heroArea">희망 면적(전용) 규모</label>
+              <select id="heroArea" name="area" required>
+                <option value="" disabled selected>선택해 주세요</option>
+                <option value="50평 미만">전용 50평 미만 </option>
+                <option value="50~100평">전용 50평 ~ 100평</option>
+                <option value="100평 이상">전용 100평 이상</option>
+              </select>
+            </div>
 
 
 
-          <div class="booking-field">
-            <label for="heroPhone">전화번호</label>
-            <input type="tel" id="heroPhone" name="phone" placeholder="전화번호를 입력하세요" required>
-          </div>
+            <div class="booking-field">
+              <label for="heroPhone">전화번호</label>
+              <input type="tel" id="heroPhone" name="phone" placeholder="전화번호를 입력하세요" required>
+            </div>
 
-          <div class="booking-field"
-            style="flex-direction: row; align-items: center; justify-content: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-            <input type="checkbox" id="heroPrivacyConsent" required style="width: auto; margin: 0; cursor: pointer;">
-            <label for="heroPrivacyConsent"
-              style="font-size: 0.85rem; color: #cbd5e0; font-weight: 400; cursor: pointer; display: inline; margin-bottom: 0; line-height: 1.4;">
-              [필수] 개인정보 수집 및 이용 동의
-            </label>
-            <button type="button" id="heroOpenPrivacyPolicyBtn"
-              style="background: none; border: none; color: var(--accent-gold); text-decoration: underline; font-size: 0.8rem; padding: 0; cursor: pointer; margin-left: auto;">보기</button>
-          </div>
+            <div class="booking-field"
+              style="flex-direction: row; align-items: center; justify-content: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <input type="checkbox" id="heroPrivacyConsent" required style="width: auto; margin: 0; cursor: pointer;">
+              <label for="heroPrivacyConsent"
+                style="font-size: 0.85rem; color: #cbd5e0; font-weight: 400; cursor: pointer; display: inline; margin-bottom: 0; line-height: 1.4;">
+                [필수] 개인정보 수집 및 이용 동의
+              </label>
+              <button type="button" id="heroOpenPrivacyPolicyBtn"
+                style="background: none; border: none; color: var(--accent-gold); text-decoration: underline; font-size: 0.8rem; padding: 0; cursor: pointer; margin-left: auto;">보기</button>
+            </div>
 
-          <div class="booking-actions">
-            <button type="submit" class="booking-btn-primary" style="flex: 1; width: 100%;">상담 예약</button>
-          </div>
-        </form>
+            <div class="booking-actions">
+              <button type="submit" class="booking-btn-primary" style="flex: 1; width: 100%;">상담 예약</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -262,8 +267,7 @@
           <!-- Card 1: Lobby -->
           <div class="explorer-card">
             <div class="card-media">
-              <video src="assets/concept_photos/main hall.mp4?v=1" muted loop playsinline
-                webkit-playsinline></video>
+              <video src="assets/concept_photos/main hall.mp4?v=1" muted loop playsinline webkit-playsinline></video>
             </div>
             <div class="card-body">
               <h3>호텔식 서비스가 시작되는 그랜드 로비</h3>
@@ -295,8 +299,7 @@
           <!-- Card 2: Lounge -->
           <div class="explorer-card">
             <div class="card-media">
-              <video src="assets/concept_photos/rest zone.mp4?v=1" muted loop playsinline
-                webkit-playsinline></video>
+              <video src="assets/concept_photos/rest zone.mp4?v=1" muted loop playsinline webkit-playsinline></video>
             </div>
             <div class="card-body">
               <h3>영감을 확장하는 코워킹 생각라운지</h3>
@@ -453,6 +456,163 @@
 
 
 
+
+  <!-- ==========================================
+       6. 분양가 및 이자 계산기 (CALCULATOR)
+       ========================================== -->
+  <section class="calculator-section id-section" id="calculator">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;">
+        <span class="section-tag">CALCULATOR</span>
+        <h2 class="section-title calc-title-one-line">성공적인 비지니스를 위한 <span>분양가 및 이자 계산 해보기</span></h2>
+        <p class="section-desc">필요한 전용 평수를 입력하시면 예상 분양가와 이자를 확인하실 수 있습니다.</p>
+      </div>
+
+      <div class="calc-container"
+        style="max-width: 1500px; margin: 0 auto; background: var(--accent-gold); padding: 5px; border-radius: 12px; border: 1px solid rgba(214, 163, 84, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <div class="promo-calc-section" style="border-radius: 10px;">
+          <p class="calc-desc" style="text-align: center; margin-bottom: 2rem;">필요한 <strong>전용 평수(실면적)</strong>를 입력하시면
+            분양가와 이자를 자동으로 계산해 드립니다.<br>
+            <span style="font-size:0.85rem; color:#888;">* 기준: 평당 1400만원 / 대출 50% / 자기자본금 10% / 연 4% / 전용률 46%</span>
+          </p>
+          <div class="calc-form">
+            <div class="input-group">
+              <label for="calcPyeong">필요 전용 평수 (평)</label>
+              <input type="number" id="calcPyeong" placeholder="예: 50" step="0.1" oninput="calculateInterest()">
+            </div>
+
+            <div id="detailedCalcArea" class="detailed-inputs"
+              style="display: none; margin-top: 10px; gap: 15px; flex-wrap: wrap;">
+              <div class="input-group" style="flex: 1 1 45%;">
+                <label for="calcLoanRatio">대출 비율 (%)</label>
+                <input type="number" id="calcLoanRatio" value="50" step="1" min="0" max="100"
+                  oninput="calculateInterest()">
+              </div>
+              <div class="input-group" style="flex: 1 1 45%;">
+                <label for="calcEquityRatio">자기자본금 (%)</label>
+                <input type="number" id="calcEquityRatio" value="10" step="1" min="0" max="100"
+                  oninput="calculateInterest()">
+              </div>
+              <div class="input-group" style="flex: 1 1 45%;">
+                <label for="calcRateDetailed">연 이자율 (%)</label>
+                <input type="number" id="calcRateDetailed" value="4.0" step="0.1" min="0" oninput="calculateInterest()">
+              </div>
+            </div>
+
+            <div style="text-align: right; margin-top: -5px;">
+              <button id="toggleDetailedBtn" type="button"
+                style="background: none; border: none; color: hsl(36, 43%, 56%); font-size: 0.85rem; cursor: pointer; text-decoration: underline; padding: 0;"
+                onclick="toggleDetailedCalc()">자세하게 계산하기 ▼</button>
+            </div>
+
+            <div class="calc-result-box" style="margin-top: 5px;">
+              <div class="result-row">
+                <span>계약 평수 (전용률 46%)</span>
+                <span id="calcResultContractPyeong" class="result-val highlight-sub">0 평</span>
+              </div>
+              <div class="result-row">
+                <span>총 분양가 (평당 1400만)</span>
+                <span id="calcResultTotalPrice" class="result-val highlight">0 원</span>
+              </div>
+              <div class="result-row">
+                <span id="calcResultEquityLabel">자기자본금 (10%)</span>
+                <span id="calcResultEquity" class="result-val highlight-sub">0 원</span>
+              </div>
+              <div class="result-row">
+                <span id="calcResultLoanLabel">대출 가능액 (50%)</span>
+                <span id="calcResultLoan" class="result-val highlight-sub">0 원</span>
+              </div>
+              <div class="result-row total-row"
+                style="margin-top:10px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
+                <span id="calcResultInterestLabel">월 납입 이자 (연 4%)</span>
+                <span id="calcResultMonthlyInterest" class="result-val"
+                  style="color: hsl(36, 43%, 56%); font-size:1.3rem;">0 원</span>
+              </div>
+            </div>
+            <p class="calc-notice" style="text-align: center;">* 본 계산 결과는 단순 참고용이며, 호실별 정확한 분양가 및 대출 조건에 따라 차이가 있을 수
+              있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       7. 정책자금 안내 (POLICY FUNDS)
+       ========================================== -->
+  <section class="policy-section id-section" id="policy">
+    <div class="container">
+      <div style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;">
+        <span class="section-tag">POLICY FUNDS</span>
+        <h2 class="section-title">
+          입주 조건과 공간<span style="font-size: 1.3em; font-weight: 900; vertical-align: -0.05em; margin: 0 0.1em;">·</span>자금진단<span style="font-size: 1.3em; font-weight: 900; vertical-align: -0.05em; margin: 0 0.1em;">·</span>지원사업을<br>
+          <span>한곳에서 안내합니다.</span>
+        </h2>
+        <p class="section-desc">현장 확인, 공급 조건 검토, 예상 자금구조와 지원사업 공고까지 기업 상황에 맞춰 단계별로 안내합니다.</p>
+      </div>
+
+      <div class="policy-grid animate-on-scroll">
+        <!-- Card 1 -->
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <h3>입주 조건 확인</h3>
+          <ul>
+            <li>현장 확인</li>
+            <li>공급 조건 검토</li>
+            <li>기업 적합성 확인</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21h18"></path>
+              <path d="M9 8h1"></path>
+              <path d="M9 12h1"></path>
+              <path d="M9 16h1"></path>
+              <path d="M14 8h1"></path>
+              <path d="M14 12h1"></path>
+              <path d="M14 16h1"></path>
+              <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+              <rect x="18" y="10" width="4" height="4" rx="1"></rect>
+            </svg>
+          </div>
+          <h3>공간<span style="font-size: 1.3em; font-weight: 900; vertical-align: -0.05em; margin: 0 0.05em;">·</span>자금진단<span style="font-size: 1.3em; font-weight: 900; vertical-align: -0.05em; margin: 0 0.05em;">·</span>지원사업 안내</h3>
+          <ul>
+            <li>기업 맞춤 공간 확인</li>
+            <li>금융기관 상담 연결</li>
+            <li>지원사업 공고 확인</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="policy-card">
+          <div class="policy-icon">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>추천 입주기업 유형</h3>
+          <ul>
+            <li>구로·가산 임차기업</li>
+            <li>제조·연구 기업</li>
+            <li>온라인 유통 기업</li>
+            <li>성장 법인</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ==========================================
        8. 프리미엄 쇼룸 갤러리 (SHOWROOM GALLERY)
@@ -678,6 +838,61 @@
   </div>
 
   <!-- ==========================================
+       특별분양 프로모션 팝업창 (Promo Popup)
+       ========================================== -->
+  <div class="notice-modal-backdrop" id="noticeBackdrop">
+    <div class="notice-modal-container">
+      <button class="notice-modal-close-btn" id="closeNoticeBtn" aria-label="팝업 닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="notice-modal-header">
+        <span class="notice-badge">SPECIAL PROMOTION</span>
+        <h2 style="font-size: 1.8rem; margin-top: 0.5rem; color: var(--primary-color);"></h2>
+      </div>
+      <div class="notice-modal-body">
+        <div class="notice-benefits-list">
+          <div class="notice-benefit-item" style="align-items: center; justify-content: center; margin-bottom: 1rem;">
+            <div class="benefit-details" style="text-align: center;">
+              <h4 style="font-size: 1.35rem; margin: 0;">실입주금 <span style="color: #ff6b6b;">0원</span>으로 입주가능</h4>
+            </div>
+          </div>
+          <div class="notice-benefit-item" style="align-items: center; justify-content: center; margin-bottom: 1rem;">
+            <div class="benefit-details" style="text-align: center;">
+              <h4 style="font-size: 1.35rem; margin: 0;">평당 <span style="color: #ff6b6b;">1400만원</span>부터</h4>
+            </div>
+          </div>
+          <div class="notice-benefit-item" style="align-items: center; justify-content: center;">
+            <div class="benefit-details" style="text-align: center;">
+              <h4 style="font-size: 1.35rem; margin: 0; color: #ff6b6b;">선착순 한정호실</h4>
+            </div>
+          </div>
+        </div>
+
+        <a href="tel:02-6745-6111" class="notice-cta-btn" id="promoNoticeCtaBtn"
+          style="text-decoration: none; box-sizing: border-box; padding: 0.6rem 1.2rem;">
+          <span style="text-align: center; line-height: 1.3;">즉시 문의 (전화 연결)<br><span
+              style="font-size: 1.1em; font-weight: 700;">02-6745-6111</span></span>
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="notice-modal-footer">
+        <label class="promo-checkbox-label">
+          <input type="checkbox" id="noticeHideTodayCheckbox">
+          <span class="checkbox-custom"></span>
+          <span>오늘 하루 보지 않기</span>
+        </label>
+        <button class="promo-text-close-btn" id="closeNoticeTextBtn">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
        개인정보처리방침 모달 (Privacy Policy Modal)
        ========================================== -->
   <div class="modal-backdrop" id="privacyPolicyModalBackdrop">
@@ -797,90 +1012,9 @@
     }
   </script>
 
-  <!-- ==========================================
-       프로모션 플로팅 버튼 & 대형 팝업 (Promo Floating Btn & Modal)
-       ========================================== -->
-  <button id="promoFloatingBtn" class="promo-floating-btn" aria-label="특별 혜택 및 어메니티 영상 보기">
-    <span class="floating-text">특별 혜택 & 어메니티</span>
-  </button>
 
-  <div class="modal-backdrop promo-modal-backdrop" id="promoModalBackdrop" onclick="if(event.target === this) { closePromoModal(); }">
-    <div class="modal-window promo-modal-window">
-      <button class="modal-close-btn promo-close-btn" id="closePromoBtn" aria-label="닫기" onclick="closePromoModal(); return false;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 6L6 18M6 6l12 12"></path>
-        </svg>
-      </button>
 
-      <div class="promo-modal-content">
-        <!-- 상단: 이자 계산기 섹션 -->
-        <div class="promo-calc-section">
-          <h3 class="promo-h3">분양가 및 이자 계산하기</h3>
-          <p class="calc-desc">필요한 <strong>전용 평수(실면적)</strong>를 입력하시면 분양가와 이자를 자동으로 계산해 드립니다.<br>
-            <span style="font-size:0.85rem; color:#888;">* 기준: 평당 1400만원 / 대출 40% / 자기자본금 10% / 연 4% / 전용률 46%</span></p>
-          <div class="calc-form">
-            <div class="input-group">
-              <label for="calcPyeong">필요 전용 평수 (평)</label>
-              <input type="number" id="calcPyeong" placeholder="예: 50" step="0.1" oninput="calculateInterest()">
-            </div>
 
-            <div id="detailedCalcArea" class="detailed-inputs" style="display: none; margin-top: 10px; gap: 15px; flex-wrap: wrap;">
-              <div class="input-group" style="flex: 1 1 45%;">
-                <label for="calcLoanRatio">대출 비율 (%)</label>
-                <input type="number" id="calcLoanRatio" value="40" step="1" min="0" max="100" oninput="calculateInterest()">
-              </div>
-              <div class="input-group" style="flex: 1 1 45%;">
-                <label for="calcEquityRatio">자기자본금 (%)</label>
-                <input type="number" id="calcEquityRatio" value="10" step="1" min="0" max="100" oninput="calculateInterest()">
-              </div>
-              <div class="input-group" style="flex: 1 1 45%;">
-                <label for="calcRateDetailed">연 이자율 (%)</label>
-                <input type="number" id="calcRateDetailed" value="4.0" step="0.1" min="0" oninput="calculateInterest()">
-              </div>
-            </div>
-            
-            <div style="text-align: right; margin-top: -5px;">
-              <button id="toggleDetailedBtn" type="button" style="background: none; border: none; color: hsl(36, 43%, 56%); font-size: 0.85rem; cursor: pointer; text-decoration: underline; padding: 0;" onclick="toggleDetailedCalc()">자세하게 계산하기 ▼</button>
-            </div>
-            
-            <div class="calc-result-box" style="margin-top: 5px;">
-              <div class="result-row">
-                <span>계약 평수 (전용률 46%)</span>
-                <span id="calcResultContractPyeong" class="result-val highlight-sub">0 평</span>
-              </div>
-              <div class="result-row">
-                <span>총 분양가 (평당 1400만)</span>
-                <span id="calcResultTotalPrice" class="result-val highlight">0 원</span>
-              </div>
-              <div class="result-row">
-                <span id="calcResultEquityLabel">자기자본금 (10%)</span>
-                <span id="calcResultEquity" class="result-val highlight-sub">0 원</span>
-              </div>
-              <div class="result-row">
-                <span id="calcResultLoanLabel">대출 가능액 (40%)</span>
-                <span id="calcResultLoan" class="result-val highlight-sub">0 원</span>
-              </div>
-              <div class="result-row total-row" style="margin-top:10px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
-                <span id="calcResultInterestLabel">월 납입 이자 (연 4%)</span>
-                <span id="calcResultMonthlyInterest" class="result-val" style="color: hsl(36, 43%, 56%); font-size:1.3rem;">0 원</span>
-              </div>
-            </div>
-            <p class="calc-notice">* 본 계산 결과는 단순 참고용이며, 호실별 정확한 분양가 및 대출 조건에 따라 차이가 있을 수 있습니다.</p>
-          </div>
-        </div>
-
-        <!-- 하단: 비디오 섹션 -->
-        <div class="promo-video-section">
-          <div class="video-container">
-            <video width="100%" height="100%" style="position: absolute; top: 0; left: 0; object-fit: cover;" autoplay muted loop playsinline controls>
-              <source src="assets/concept_photos/rest zone.mp4" type="video/mp4">
-              브라우저가 동영상을 지원하지 않습니다.
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script src="js/main.js?v=27.3"></script>
 </body>
