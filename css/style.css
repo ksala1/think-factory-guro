@@ -3862,3 +3862,98 @@ footer {
     padding: 30px 20px;
   }
 }
+
+/* ==========================================
+   POLICY FUNDS SECTION (Luxe Theme)
+   ========================================== */
+.policy-section {
+  padding: var(--section-padding);
+  background-color: var(--bg-primary);
+}
+
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .policy-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.policy-card {
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--accent-gold-light);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: var(--transition-smooth);
+}
+
+.policy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-gold);
+}
+
+/* Elegant gold line inside each card */
+.policy-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-gold);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.policy-icon {
+  color: var(--accent-gold);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.policy-card h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-serif-kr);
+  letter-spacing: -0.02em;
+}
+
+.policy-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.policy-card ul li {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* 계산기 타이틀 한 줄 처리 */
+@media (min-width: 769px) {
+  .calc-title-one-line {
+    white-space: nowrap;
+    font-size: clamp(2rem, 3vw, 3rem);
+  }
+}

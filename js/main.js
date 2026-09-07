@@ -769,13 +769,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const hideLocal = getPromoLocalStorage('hideNoticeModal');
 
     // Show popup only if user did not opt out today
-    // (일시적으로 안 뜨게 처리)
-    /*
     if (!hideCookie && !hideLocal) {
-      noticeBackdrop.classList.add('show');
-      document.body.style.overflow = 'hidden';
+      // 애니메이션 효과를 위해 약간 지연
+      setTimeout(() => {
+        noticeBackdrop.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }, 100);
     }
-    */
 
     const closePopup = () => {
       if (promoCheckbox && promoCheckbox.checked) {
@@ -995,63 +995,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ==========================================
-// 프로모션 플로팅 버튼 & 팝업 제어 로직
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-  const promoFloatingBtn = document.getElementById('promoFloatingBtn');
-  const modal = document.getElementById('promoModalBackdrop');
-  
-  // 팝업 열기 함수
-  const openPromoModal = () => {
-    if (modal) {
-      modal.style.display = 'flex';
-      // 애니메이션 효과를 위해 약간 지연 후 클래스 추가
-      setTimeout(() => {
-        modal.classList.add('open');
-        modal.style.opacity = '1';
-        modal.style.pointerEvents = 'auto';
-      }, 10);
-      document.body.style.overflow = 'hidden';
-    }
-  };
 
-  // 플로팅 버튼 클릭 시 팝업 열기
-  if (promoFloatingBtn) {
-    promoFloatingBtn.addEventListener('click', openPromoModal);
-  }
-
-  // (한시적) 페이지 방문 시 자동으로 팝업 열기 (약간의 딜레이 추가하여 자연스럽게)
-  setTimeout(() => {
-    openPromoModal();
-  }, 500);
-});
-
-function closePromoModal() {
-  const modal = document.getElementById('promoModalBackdrop');
-  if (modal) {
-    modal.classList.remove('open');
-    modal.style.opacity = '0';
-    modal.style.pointerEvents = 'none';
-    setTimeout(() => {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-      // 비디오 정지 (iframe 또는 video 태그)
-      const iframe = modal.querySelector('iframe');
-      if (iframe) {
-        const src = iframe.src;
-        iframe.src = src;
-      }
-      
-      const video = modal.querySelector('video');
-      if (video) {
-        video.pause();
-      }
-    }, 300);
-  }
-}
-
-// 숫자 3자리 콤마 포맷팅
 function formatNumber(input) {
   let value = input.value.replace(/[^0-9]/g, '');
   if (value) {
@@ -1103,7 +1047,7 @@ function calculateInterest() {
     const pricePerContractPyeong = 14000000; // 평당 1400만원
     
     // 모드에 따른 변수 할당
-    let loanRatio = 0.40; // 기본 40%
+    let loanRatio = 0.50; // 기본 50%
     let equityRatio = 0.10; // 기본 10%
     let annualInterestRate = 0.04; // 기본 4%
     
@@ -1147,13 +1091,13 @@ function calculateInterest() {
     document.getElementById('calcResultMonthlyInterest').textContent = '0 원';
     
     // 라벨 초기화
-    loanLabel.textContent = isDetailedCalcMode ? `대출 가능액 (${parseFloat(loanRatioInput.value) || 0}%)` : '대출 가능액 (40%)';
+    loanLabel.textContent = isDetailedCalcMode ? `대출 가능액 (${parseFloat(loanRatioInput.value) || 0}%)` : '대출 가능액 (50%)';
     equityLabel.textContent = isDetailedCalcMode ? `자기자본금 (${parseFloat(equityRatioInput.value) || 0}%)` : '자기자본금 (10%)';
     interestLabel.textContent = isDetailedCalcMode ? `월 납입 이자 (연 ${parseFloat(rateInput.value) || 0}%)` : '월 납입 이자 (연 4%)';
   }
 }
 
-window.closePromoModal = closePromoModal;
 window.calculateInterest = calculateInterest;
 window.formatNumber = formatNumber;
 window.toggleDetailedCalc = toggleDetailedCalc;
+
