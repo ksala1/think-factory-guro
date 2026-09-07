@@ -3786,11 +3786,11 @@ footer {
 }
 
 .input-group input {
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   padding: 12px 15px;
-  color: #fff;
+  color: #333333;
   font-size: 1rem;
   font-family: inherit;
   transition: all 0.3s ease;
