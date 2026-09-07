@@ -58,7 +58,7 @@
         <a href="#concept">브랜드 소개</a>
         <a href="#explorer">공간 탐색</a>
         <a href="#unitplan">층별 안내</a>
-        <a href="#calculator">견적</a>
+        <a href="#calculator">견적내기</a>
         <a href="#policy">정책자금</a>
         <a href="#showroom">쇼룸</a>
         <!-- <a href="#호실상세보기">호실 상세보기</a> -->
@@ -113,7 +113,7 @@
         </h1>
         <div class="hero-action-links">
           <a href="#unitplan" class="hero-action-link">층별 안내</a>
-          <a href="#calculator" class="hero-action-link">견적</a>
+          <a href="#calculator" class="hero-action-link">견적내기</a>
           <a href="#policy" class="hero-action-link">정책자금</a>
           <a href="#showroom" class="hero-action-link">쇼룸</a>
           <a href="#explorer" class="hero-action-link">공간 투어</a>
@@ -495,7 +495,7 @@
         <div class="promo-calc-section" style="border-radius: 10px;">
           <p class="calc-desc" style="text-align: center; margin-bottom: 2rem;">필요한 <strong>전용 평수(실면적)</strong>를 입력하시면
             분양가와 이자를 자동으로 계산해 드립니다.<br>
-            <span style="font-size:0.85rem; color:#888;">* 기준: 평당 1400만원 / 대출 50% / 자기자본금 10% / 연 4% / 전용률 46%</span>
+            <span style="font-size:0.85rem; color:#888;">* 기준: 평당 1400만원 / 대출 50% / 자기자본금 10% / 연 4%</span>
           </p>
           <div class="calc-form">
             <div class="input-group">
@@ -529,7 +529,7 @@
 
             <div class="calc-result-box" style="margin-top: 5px;">
               <div class="result-row">
-                <span>계약 평수 (전용률 46%)</span>
+                <span>계약 평수</span>
                 <span id="calcResultContractPyeong" class="result-val highlight-sub">0 평</span>
               </div>
               <div class="result-row">
@@ -545,10 +545,23 @@
                 <span id="calcResultLoan" class="result-val highlight-sub">0 원</span>
               </div>
               <div class="result-row total-row"
-                style="margin-top:10px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
-                <span id="calcResultInterestLabel">월 납입 이자 (연 4%)</span>
-                <span id="calcResultMonthlyInterest" class="result-val"
-                  style="color: hsl(36, 43%, 56%); font-size:1.3rem;">0 원</span>
+                style="margin-top:20px; padding-top:20px; border-top:1px dashed rgba(214, 163, 84, 0.4); flex-direction: column; align-items: stretch; gap: 15px;">
+                
+                <!-- 타 지식산업센터 (평당 2400만) 비교 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; opacity: 0.85;">
+                  <span style="font-size: 1rem; text-decoration: line-through; color: #a8947b;">원분양가 (평당 2,400만) 월 이자</span>
+                  <span id="calcResultMonthlyInterestOld" style="font-size: 1.2rem; text-decoration: line-through; color: #ff6b6b;">0 원</span>
+                </div>
+
+                <!-- 생각공장 구로 (평당 1400만) 강조 -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
+                  <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <span style="background: var(--accent-gold); color: #000; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 900; width: fit-content; letter-spacing: -0.5px;">전매가 적용</span>
+                    <span id="calcResultInterestLabel" style="font-size: 1.15rem; color: var(--accent-gold); font-weight: bold; letter-spacing: -0.5px;">전매특가 적용시 월이자 (연 4%)</span>
+                  </div>
+                  <span id="calcResultMonthlyInterest" class="result-val"
+                    style="color: var(--accent-gold); font-size: 2.2rem; font-weight: 900; line-height: 1; letter-spacing: -1px;">0 원</span>
+                </div>
               </div>
             </div>
             <p class="calc-notice" style="text-align: center;">* 본 계산 결과는 단순 참고용이며, 호실별 정확한 분양가 및 대출 조건에 따라 차이가 있을 수
@@ -821,11 +834,11 @@
       </div>
       <div class="notice-modal-body">
         <div class="notice-benefits-list">
-          <div class="notice-benefit-item" style="align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <a href="#calculator" class="notice-benefit-item" style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; text-decoration: none; cursor: pointer; background: var(--accent-gold); border: none; border-radius: 8px; padding: 1rem; transition: transform 0.2s;" onclick="document.getElementById('noticeBackdrop').classList.remove('show');" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
             <div class="benefit-details" style="text-align: center;">
-              <h4 style="font-size: 1.8rem; margin: 0;">실입주금 <span style="color: #ff6b6b;">0원</span>으로 입주가능</h4>
+              <h4 style="font-size: 1.8rem; margin: 0; color: #1a1a1a; font-weight: 800;">우리회사 견적내기</h4>
             </div>
-          </div>
+          </a>
           <div class="notice-benefit-item" style="align-items: center; justify-content: center; margin-bottom: 1rem;">
             <div class="benefit-details" style="text-align: center;">
               <h4 style="font-size: 1.8rem; margin: 0;">평당 <span style="color: #ff6b6b;">1400만원</span>부터</h4>
@@ -859,60 +872,6 @@
     </div>
   </div>
 
-  <!-- ==========================================
-       특별분양 프로모션 팝업창 (Promo Popup)
-       ========================================== -->
-  <div class="notice-modal-backdrop" id="noticeBackdrop">
-    <div class="notice-modal-container">
-      <button class="notice-modal-close-btn" id="closeNoticeBtn" aria-label="팝업 닫기">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <div class="notice-modal-header">
-        <span class="notice-badge">SPECIAL PROMOTION</span>
-        <h2 style="font-size: 1.8rem; margin-top: 0.5rem; color: var(--primary-color);"></h2>
-      </div>
-      <div class="notice-modal-body">
-        <div class="notice-benefits-list">
-          <div class="notice-benefit-item" style="align-items: center; justify-content: center; margin-bottom: 1rem;">
-            <div class="benefit-details" style="text-align: center;">
-              <h4 style="font-size: 1.35rem; margin: 0;">실입주금 <span style="color: #ff6b6b;">0원</span>으로 입주가능</h4>
-            </div>
-          </div>
-          <div class="notice-benefit-item" style="align-items: center; justify-content: center; margin-bottom: 1rem;">
-            <div class="benefit-details" style="text-align: center;">
-              <h4 style="font-size: 1.35rem; margin: 0;">평당 <span style="color: #ff6b6b;">1400만원</span>부터</h4>
-            </div>
-          </div>
-          <div class="notice-benefit-item" style="align-items: center; justify-content: center;">
-            <div class="benefit-details" style="text-align: center;">
-              <h4 style="font-size: 1.35rem; margin: 0; color: #ff6b6b;">선착순 한정호실</h4>
-            </div>
-          </div>
-        </div>
-
-        <a href="tel:02-6745-6111" class="notice-cta-btn" id="promoNoticeCtaBtn"
-          style="text-decoration: none; box-sizing: border-box; padding: 0.6rem 1.2rem;">
-          <span style="text-align: center; line-height: 1.3;">즉시 문의 (전화 연결)<br><span
-              style="font-size: 1.1em; font-weight: 700;">02-6745-6111</span></span>
-          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
-      <div class="notice-modal-footer">
-        <label class="promo-checkbox-label">
-          <input type="checkbox" id="noticeHideTodayCheckbox">
-          <span class="checkbox-custom"></span>
-          <span>오늘 하루 보지 않기</span>
-        </label>
-        <button class="promo-text-close-btn" id="closeNoticeTextBtn">닫기</button>
-      </div>
-    </div>
-  </div>
 
   <!-- ==========================================
        개인정보처리방침 모달 (Privacy Policy Modal)
@@ -1038,7 +997,7 @@
 
 
 
-  <script src="js/main.js?v=28.0"></script>
+  <script src="js/main.js?v=28.2"></script>
 </body>
 
 </html>

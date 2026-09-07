@@ -1060,7 +1060,7 @@ function calculateInterest() {
     // 라벨 업데이트
     loanLabel.textContent = `대출 가능액 (${Math.round(loanRatio * 100)}%)`;
     equityLabel.textContent = `자기자본금 (${Math.round(equityRatio * 100)}%)`;
-    interestLabel.textContent = `월 납입 이자 (연 ${(annualInterestRate * 100).toFixed(1).replace('.0', '')}%)`;
+    interestLabel.textContent = `전매특가 적용시 월이자 (연 ${(annualInterestRate * 100).toFixed(1).replace('.0', '')}%)`;
 
     // 1. 계약 평수 (전용 평수 / 전용률)
     const contractPyeong = exclusivePyeong / exclusiveRatio;
@@ -1075,12 +1075,22 @@ function calculateInterest() {
     // 4. 연 이자 및 월 이자 (대출금액 * 이율)
     const annualInterest = loanAmount * annualInterestRate;
     const monthlyInterest = annualInterest / 12;
+
+    // 타 현장 비교 (평당 2400만)
+    const pricePerContractPyeongOld = 24000000;
+    const totalPriceOld = contractPyeong * pricePerContractPyeongOld;
+    const loanAmountOld = totalPriceOld * loanRatio;
+    const annualInterestOld = loanAmountOld * annualInterestRate;
+    const monthlyInterestOld = annualInterestOld / 12;
     
     // UI 업데이트 (결괏값 포맷팅)
     document.getElementById('calcResultContractPyeong').textContent = '약 ' + contractPyeong.toFixed(1) + ' 평';
     document.getElementById('calcResultTotalPrice').textContent = '약 ' + Math.round(totalPrice).toLocaleString('ko-KR') + ' 원';
     document.getElementById('calcResultEquity').textContent = '약 ' + Math.round(equityAmount).toLocaleString('ko-KR') + ' 원';
     document.getElementById('calcResultLoan').textContent = '약 ' + Math.round(loanAmount).toLocaleString('ko-KR') + ' 원';
+    
+    const oldInterestEl = document.getElementById('calcResultMonthlyInterestOld');
+    if (oldInterestEl) oldInterestEl.textContent = '약 ' + Math.round(monthlyInterestOld).toLocaleString('ko-KR') + ' 원';
     document.getElementById('calcResultMonthlyInterest').textContent = '약 ' + Math.round(monthlyInterest).toLocaleString('ko-KR') + ' 원';
   } else {
     // 입력값이 없거나 0일 때 초기화
@@ -1088,12 +1098,15 @@ function calculateInterest() {
     document.getElementById('calcResultTotalPrice').textContent = '0 원';
     document.getElementById('calcResultEquity').textContent = '0 원';
     document.getElementById('calcResultLoan').textContent = '0 원';
+    
+    const oldInterestEl = document.getElementById('calcResultMonthlyInterestOld');
+    if (oldInterestEl) oldInterestEl.textContent = '0 원';
     document.getElementById('calcResultMonthlyInterest').textContent = '0 원';
     
     // 라벨 초기화
     loanLabel.textContent = isDetailedCalcMode ? `대출 가능액 (${parseFloat(loanRatioInput.value) || 0}%)` : '대출 가능액 (50%)';
     equityLabel.textContent = isDetailedCalcMode ? `자기자본금 (${parseFloat(equityRatioInput.value) || 0}%)` : '자기자본금 (10%)';
-    interestLabel.textContent = isDetailedCalcMode ? `월 납입 이자 (연 ${parseFloat(rateInput.value) || 0}%)` : '월 납입 이자 (연 4%)';
+    interestLabel.textContent = isDetailedCalcMode ? `전매특가 적용시 월이자 (연 ${parseFloat(rateInput.value) || 0}%)` : '전매특가 적용시 월이자 (연 4%)';
   }
 }
 
