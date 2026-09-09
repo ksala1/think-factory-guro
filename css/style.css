@@ -3821,6 +3821,7 @@ footer {
   color: var(--text-secondary);
   word-break: keep-all;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .result-row.total-row {
