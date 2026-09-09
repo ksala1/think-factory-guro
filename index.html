@@ -36,7 +36,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/tab-logo.png">
 
-  <link rel="stylesheet" href="css/style.css?v=28.1">
+  <link rel="stylesheet" href="css/style.css?v=28.3">
 </head>
 
 <body>
@@ -549,19 +549,19 @@
                 style="margin-top:20px; padding-top:20px; border-top:1px dashed rgba(214, 163, 84, 0.4); flex-direction: column; align-items: stretch; gap: 15px;">
                 
                 <!-- 타 지식산업센터 (평당 2400만) 비교 -->
-                <div style="display: flex; justify-content: space-between; align-items: center; opacity: 0.85;">
+                <div style="display: flex; justify-content: space-between; align-items: center; opacity: 0.85; word-break: keep-all; gap: 10px;">
                   <span style="font-size: 1rem; text-decoration: line-through; color: #a8947b;">원분양가 (평당 2,400만) 월 이자</span>
-                  <span id="calcResultMonthlyInterestOld" style="font-size: 1.2rem; text-decoration: line-through; color: #ff6b6b;">0 원</span>
+                  <span id="calcResultMonthlyInterestOld" style="font-size: 1.2rem; text-decoration: line-through; color: #ff6b6b; white-space: nowrap; text-align: right;">0 원</span>
                 </div>
 
                 <!-- 생각공장 구로 (평당 1400만) 강조 -->
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; position: relative; word-break: keep-all; gap: 10px;">
                   <div style="display: flex; flex-direction: column; gap: 6px;">
                     <span style="background: var(--accent-gold); color: #000; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 900; width: fit-content; letter-spacing: -0.5px;">전매가 적용</span>
                     <span id="calcResultInterestLabel" style="font-size: 1.15rem; color: var(--accent-gold); font-weight: bold; letter-spacing: -0.5px;">전매특가 적용시 월이자 (연 4%)</span>
                   </div>
                   <span id="calcResultMonthlyInterest" class="result-val"
-                    style="color: var(--accent-gold); font-size: 2.2rem; font-weight: 900; line-height: 1; letter-spacing: -1px;">0 원</span>
+                    style="color: var(--accent-gold); font-size: 2.2rem; font-weight: 900; line-height: 1; letter-spacing: -1px; white-space: nowrap; text-align: right;">0 원</span>
                 </div>
               </div>
             </div>
