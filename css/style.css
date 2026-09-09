@@ -3819,6 +3819,8 @@ footer {
   align-items: center;
   font-size: 1rem;
   color: var(--text-secondary);
+  word-break: keep-all;
+  gap: 10px;
 }
 
 .result-row.total-row {
@@ -3833,6 +3835,8 @@ footer {
 .result-val {
   font-weight: 700;
   color: var(--text-primary);
+  white-space: nowrap;
+  text-align: right;
 }
 
 .result-val.highlight {
