@@ -3824,6 +3824,12 @@ footer {
   flex-wrap: wrap;
 }
 
+.result-row + .result-row:not(.total-row) {
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(214, 163, 84, 0.15);
+}
+
 @media (max-width: 480px) {
   .result-row:not(.total-row) {
     flex-direction: column;
