@@ -332,6 +332,8 @@ footer .logo img {
   position: relative;
   padding: 0.25rem 0;
   text-transform: uppercase;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .nav-links a::after {
